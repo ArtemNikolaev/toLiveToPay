@@ -22,38 +22,45 @@
 
 <script>
 import moment from 'moment';
+import storage from '../services/localstorageService';
 
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      minDate: moment().format('YYYY-MM-DD'),
-      msg: 'Welcome to Your Vue.js App',
+      minDate: moment().add(1, 'days').format('YYYY-MM-DD'),
       summ: 0,
-      finishDate: new Date(),
+      finishDate: null,
       summZero: false,
       badDate: false
     }
   },
   methods: {
     calculate: function () {
-      let error = false;
+      if (!this.validation()) return;
+
+      const finishDate = moment(this.finishDate, 'YYYY-MM-DD').format('x');
+
+      storage.setBalance(this.summ, finishDate)
+        .then(() => this.$router.push('/'))
+        .catch(console.error);
+    },
+    validation: function() {
+      let valid = true;
 
       if (this.summ === 0) {
-        error = false;
+        valid = false;
 
         this.summZero = true;
       }
 
       if (!this.finishDate || this.finishDate === '') {
-        error = false;
+        valid = false;
 
         this.badDate = true;
       }
 
-      if (error) return;
-
-      
+      return valid;
     }
   }
 }

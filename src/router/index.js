@@ -1,13 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import NewBalance from '@/components/NewBalance'
+import AddExpenditure from '@/components/AddExpenditure'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
+  	{
+  		path: '/add',
+  		name: 'AddExpenditure',
+  		component: AddExpenditure
+  	},
     {
-      path: '/',
+      path: '/new',
       name: 'NewBalance',
       component: NewBalance
     }
