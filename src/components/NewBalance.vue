@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import moment from 'moment';
-import storage from '../services/localstorageService';
+import moment from 'moment'
+import storage from '../services/localstorageService'
 
 export default {
   name: 'HelloWorld',
@@ -37,30 +37,30 @@ export default {
   },
   methods: {
     calculate: function () {
-      if (!this.validation()) return;
+      if (!this.validation()) return
 
-      const finishDate = moment(this.finishDate, 'YYYY-MM-DD').format('x');
+      const finishDate = moment(this.finishDate, 'YYYY-MM-DD').format('x')
 
-      storage.setBalance(this.summ, finishDate)
-        .then(() => this.$router.push('/'))
-        .catch(console.error);
+      const setBalance = storage.setBalance(this.summ, finishDate)
+      if (setBalance[0]) console.error(setBalance[0])
+      else this.$router.push('/')
     },
-    validation: function() {
-      let valid = true;
+    validation: function () {
+      let valid = true
 
       if (this.summ === 0) {
-        valid = false;
+        valid = false
 
-        this.summZero = true;
+        this.summZero = true
       }
 
       if (!this.finishDate || this.finishDate === '') {
-        valid = false;
+        valid = false
 
-        this.badDate = true;
+        this.badDate = true
       }
 
-      return valid;
+      return valid
     }
   }
 }

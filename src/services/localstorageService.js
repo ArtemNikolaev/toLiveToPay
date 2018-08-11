@@ -1,82 +1,93 @@
-import of from './await-of';
-import moment from 'moment';
+import moment from 'moment'
 
 class LocalstorageService {
-	summ = 'summ';
-	finishDate = 'finishDate';
-	expenses = 'expenses';
+  summ = 'summ'
+  finishDate = 'finishDate'
+  expenses = 'expenses'
 
-	_getJSON(varName) {
-		let value;
-		const str = localStorage.getItem(varName);
+  _getJSON (varName) {
+    let value
+    const str = localStorage.getItem(varName)
 
-		if (!str) return Promise.reject(new Error(`[LocalstorageService:_getSumm()] - \`${varName}\` is not defined`));
+    if (!str) return [new Error(`[LocalstorageService:_getSumm()] - \`${varName}\` is not defined`)]
 
-		try {
-			value = JSON.parse(str);
-		} catch (e) {
-			return Promise.reject(e);
-		}
+    try {
+      value = JSON.parse(str)
+    } catch (e) {
+      return [e]
+    }
 
-		return Promise.resolve(value);
-	}
+    return [null, value]
+  }
 
-	_setJSON(varName, value) {
-		if (!value) return Promise.reject(new Error(`[LocalstorageService:_setJSON] - \`${varName}\` is not definad`));
+  _setJSON (varName, value) {
+    if (!value) return [new Error(`[LocalstorageService:_setJSON] - \`${varName}\` is not definad`)]
 
-		localStorage.setItem(varName, JSON.stringify(value));
-		return Promise.resolve();
-	}
+    localStorage.setItem(varName, JSON.stringify(value))
 
-	_getNumber(varName) {
-		const value = localStorage.getItem(varName);
+    return [null]
+  }
 
-		if (isNaN(value)) return Promise.reject(new Error(`[LocalstorageService:_getSumm()] - \`${varName}\` is not defined or not a number`))
-		else return Promise.resolve();
-	}
+  _getNumber (varName) {
+    const value = localStorage.getItem(varName)
 
-	_setNumber(varName, value) {
-		if (isNaN(value)) return Promise.reject(new Error(`[LocalstorageService:_setSumm()] - \`${varName}\` should be a number`))
+    if (isNaN(value)) return [new Error(`[LocalstorageService:_getSumm()] - \`${varName}\` is not defined or not a number`)]
+    else return [null]
+  }
 
-		localStorage.setItem(varName, value);
+  _setNumber (varName, value) {
+    if (isNaN(value)) return [new Error(`[LocalstorageService:_setSumm()] - \`${varName}\` should be a number`)]
 
-		return Promise.resolve();
-	}
+    localStorage.setItem(varName, value)
 
-	_removeItem(varName) {
-		localStorage.removeItem(varName);
+    return [null]
+  }
 
-		return Promise.resolve();
-	}
+  _removeItem (varName) {
+    localStorage.removeItem(varName)
 
-	async setBalance(summ, finishDate) {
-		const setSumm = await of(this._setNumber(this.summ, summ));
-		if (setSumm[1]) return Promise.reject(setSumm[1]);
+    return [null]
+  }
 
-		const setFinishDate = await of(this._setNumber(this.finishDate, finishDate));
-		if (setFinishDate[1]) return Promise.reject(setFinishDate[1]);
+  setBalance (summ, finishDate) {
+    const setSumm = this._setNumber(this.summ, summ)
+    if (setSumm[0]) return [setSumm[0]]
 
-		const setExpenses = await of(this._setJSON(this.expenses, []));
-		if (setExpenses[1]) return Promise.reject(setExpenses[1]);
+    const setFinishDate = this._setNumber(this.finishDate, finishDate)
+    if (setFinishDate[0]) return [setFinishDate[0]]
 
-		return Promise.resolve();
-	}
+    const setExpenses = this._setJSON(this.expenses, [])
+    if (setExpenses[0]) return [setExpenses[0]]
 
-	async addExpenditure(summ, description) {
-		const expenditure = {
-			summ, description,
-			date: moment().startOf('day').format('x'),
-			time: moment() - moment().startOf('day')
-		};
-		const expenses = await of(this._getJSON(this.expenses));
-		if (expenses[1]) return Promise.reject(expenses[1])
+    return [null]
+  }
 
-		expenses[0].push(expenditure);
+  addExpenditure (summ, description) {
+    const expenditure = {
+      summ,
+      description,
+      date: moment().startOf('day').format('x'),
+      time: moment() - moment().startOf('day')
+    }
+    const expenses = this._getJSON(this.expenses)
+    if (expenses[0]) return [expenses[0]]
 
-	  this._setJSON(this.expenses, expenses[0]);
+    expenses[1].push(expenditure)
 
-	  return Promise.resolve();
-	}
+    this._setJSON(this.expenses, expenses[1])
+
+    return [null]
+  }
+
+  homeCalculation () {
+    return {
+      loading: true,
+      daysToSalary: 10,
+      moneyPerday: 20,
+      moneyForToday: 30,
+      todaysSpendings: 40
+    }
+  }
 }
 
-export default new LocalstorageService();
+export default new LocalstorageService()

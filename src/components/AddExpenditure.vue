@@ -1,5 +1,5 @@
 <template>
-	<article>
+  <article>
     <section id="summ">
       <label>Amount of expenditure</label>
       <input type="number" name="summ" v-model.number="summ" min=1>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import storage from '../services/localstorageService';
+import storage from '../services/localstorageService'
 
 export default {
   name: 'AddExpenditure',
@@ -31,28 +31,27 @@ export default {
   },
   methods: {
     add: function () {
-      if (!this.validation()) return;
+      if (!this.validation()) return
 
-      storage
-      	.addExpenditure(this.summ, this.desc)
-      	.then(() => this.$router.push('/'))
-      	.catch(console.error);
+      const addExpenditure = storage.addExpenditure(this.summ, this.desc)
+      if (addExpenditure[0]) console.error(addExpenditure[0])
+      else this.$router.push('/')
     },
-    validation: function() {
-      let valid = true;
+    validation: function () {
+      let valid = true
 
       if (this.summ === 0) {
-        valid = false;
+        valid = false
 
-        this.summZero = true;
+        this.summZero = true
       }
 
-      return valid;
+      return valid
     }
   }
 }
 </script>
 
 <style scoped>
-	
+
 </style>
