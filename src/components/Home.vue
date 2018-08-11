@@ -1,13 +1,17 @@
 <template>
   <article>
-    <section v-if='loading'>
-      loading...
-    </section>
-
     <section>
-      <h2>Осталось n дней<br/>по nnn денег</h2>
+      <h2>Осталось {{daysToSalary}} дней<br/>по {{moneyPerDay}} денег</h2>
 
-      <h1>bla</h1>
+      <h1>{{moneyForToday}} денег на сегодня</h1>
+
+      <div><button v-on:click='add'>Add</button></div>
+
+      <ul v-if="expenses.length">
+        <li v-for="expenditure in expenses" :key="expenditure.datetime">
+          {{expenditure.summ}} - {{expenditure.description}}
+        </li>
+      </ul>
     </section>
   </article>
 </template>
@@ -18,7 +22,16 @@ import storage from '../services/localstorageService'
 export default {
   name: 'Home',
   data () {
-    return storage.homeCalculation()
+    const [err, data] = storage.homeCalculation()
+
+    if (err) this.$router.push('/new')
+
+    return data
+  },
+  methods: {
+    add: function () {
+      this.$router.push('/add')
+    }
   }
 }
 </script>

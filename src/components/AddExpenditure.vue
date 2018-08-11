@@ -1,6 +1,6 @@
 <template>
   <article>
-    <section id="summ">
+    <section>
       <label>Amount of expenditure</label>
       <input type="number" name="summ" v-model.number="summ" min=1>
       <article id="errors">
@@ -8,9 +8,17 @@
       </article>
     </section>
 
-    <section id="date">
+    <section>
       <label>Description</label>
       <input type="text" name="desc" v-model="desc">
+    </section>
+
+    <section>
+      <label>Date of Expenditure</label>
+      <input type="date" name="date" v-model="date" v-bind:max="maxDate">
+      <article id="errors">
+        <p v-if="badDate">Date should be correct</p>
+      </article>
     </section>
 
     <button v-on:click="add">Add</button>
@@ -19,6 +27,7 @@
 
 <script>
 import storage from '../services/localstorageService'
+import moment from 'moment'
 
 export default {
   name: 'AddExpenditure',
@@ -26,14 +35,19 @@ export default {
     return {
       summ: 0,
       desc: null,
-      summZero: false
+      date: moment().format('YYYY-MM-DD'),
+      maxDate: moment().format('YYYY-MM-DD'),
+      summZero: false,
+      badDate: false
     }
   },
   methods: {
     add: function () {
       if (!this.validation()) return
 
-      const addExpenditure = storage.addExpenditure(this.summ, this.desc)
+      const date = moment(this.date, 'YYYY-MM-DD').format('x')
+      const addExpenditure = storage.addExpenditure(this.summ, this.desc, date)
+
       if (addExpenditure[0]) console.error(addExpenditure[0])
       else this.$router.push('/')
     },
@@ -44,6 +58,12 @@ export default {
         valid = false
 
         this.summZero = true
+      }
+
+      if (!this.date || this.date === '') {
+        valid = false
+
+        this.badDate = true
       }
 
       return valid

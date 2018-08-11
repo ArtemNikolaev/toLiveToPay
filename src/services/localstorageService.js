@@ -29,10 +29,10 @@ class LocalstorageService {
   }
 
   _getNumber (varName) {
-    const value = localStorage.getItem(varName)
+    const value = Number(localStorage.getItem(varName))
 
     if (isNaN(value)) return [new Error(`[LocalstorageService:_getSumm()] - \`${varName}\` is not defined or not a number`)]
-    else return [null]
+    else return [null, value]
   }
 
   _setNumber (varName, value) {
@@ -62,12 +62,13 @@ class LocalstorageService {
     return [null]
   }
 
-  addExpenditure (summ, description) {
+  addExpenditure (summ, description, date) {
     const expenditure = {
       summ,
       description,
-      date: moment().startOf('day').format('x'),
-      time: moment() - moment().startOf('day')
+      date: Number(date),
+      time: moment() - moment().startOf('day'),
+      datetime: moment().format('x')
     }
     const expenses = this._getJSON(this.expenses)
     if (expenses[0]) return [expenses[0]]
@@ -80,13 +81,44 @@ class LocalstorageService {
   }
 
   homeCalculation () {
-    return {
-      loading: true,
-      daysToSalary: 10,
-      moneyPerday: 20,
-      moneyForToday: 30,
-      todaysSpendings: 40
+    const defaultData = {
+      daysToSalary: null,
+      moneyPerDay: null,
+      moneyForToday: null,
+      expenses: []
     }
+
+    const [expensesError, expenses] = this._getJSON(this.expenses)
+    if (expensesError) return [expensesError, defaultData]
+
+    const [finishDateError, finishDate] = this._getNumber(this.finishDate)
+    if (finishDateError) return [finishDateError, defaultData]
+
+    const [summError, summ] = this._getNumber(this.summ)
+    if (summError) return [summError, defaultData]
+
+    const today = Number(moment().startOf('day').format('x'))
+
+    const todaySpendings = expenses.filter((expenditure) => expenditure.date === today)
+    const todaySpendingsSumm = todaySpendings.reduce((a, b) => a + b.summ, 0)
+
+    const otherSpendings = expenses.filter((expenditure) => expenditure.date !== today)
+    const otherSpendingsSumm = otherSpendings.reduce((a, b) => a + b.summ, 0)
+
+    const daysToSalary = (finishDate - moment().startOf('day').format('x')) / 1000 / 60 / 60 / 24
+
+    const moneyPerDay = Math.floor((summ - otherSpendingsSumm) / daysToSalary)
+    const moneyForToday = moneyPerDay - todaySpendingsSumm
+
+    return [
+      null,
+      {
+        daysToSalary,
+        moneyPerDay,
+        moneyForToday,
+        expenses: todaySpendings
+      }
+    ]
   }
 }
 
