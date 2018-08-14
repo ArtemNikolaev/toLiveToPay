@@ -1,28 +1,38 @@
 <template>
-  <article>
-    <section>
-      <label>Amount of expenditure</label>
-      <input type="number" name="summ" v-model.number="summ" min=1>
-      <article id="errors">
-        <p v-if="summZero">Amount can't be 0</p>
-      </article>
-    </section>
+  <section id="add-section" class="col">
+    <article class="widget single">
+      <section class="content single">
+        <span></span>
+        <article>
+          <label>Сумма💰:</label>
+          <input type="number" name="summ" v-model.number="summ" min=1 autofocus>
+          <article id="errors">
+            <p v-if="summZero">Amount can't be 0</p>
+          </article>
+        </article>
 
-    <section>
-      <label>Description</label>
-      <input type="text" name="desc" v-model="desc">
-    </section>
+        <article>
+          <label>Описание</label>
+          <input type="text" name="desc" v-model="desc">
+        </article>
 
-    <section>
-      <label>Date of Expenditure</label>
-      <input type="date" name="date" v-model="date" v-bind:max="maxDate">
-      <article id="errors">
-        <p v-if="badDate">Date should be correct</p>
-      </article>
-    </section>
+        <article>
+          <label>Дата:</label>
+          <input type="date" name="date" v-model="date" v-bind:max="maxDate">
+          <article id="errors">
+            <p v-if="badDate">Date should be correct</p>
+          </article>
+        </article>
+        <span></span>
+        <article>
+          <button v-on:click="add">Потратить</button>
+          <button v-on:click="cancel">Отмена</button>
+        </article>
 
-    <button v-on:click="add">Add</button>
-  </article>
+        <span></span>
+      </section>
+    </article>
+  </section>
 </template>
 
 <script>
@@ -51,6 +61,9 @@ export default {
       if (addExpenditure[0]) console.error(addExpenditure[0])
       else this.$router.push('/')
     },
+    cancel: function () {
+      this.$router.push('/')
+    },
     validation: function () {
       let valid = true
 
@@ -73,5 +86,8 @@ export default {
 </script>
 
 <style scoped>
-
+  #add-section {
+    height: 50vh;
+    font-size: 3vh;
+  }
 </style>

@@ -1,23 +1,31 @@
 <template>
-  <article>
-    <section id="summ">
-      <label>Amount of money</label>
-      <input type="number" name="summ" v-model.number="summ" min=1>
-      <article id="errors">
-        <p v-if="summZero">Amount can't be 0</p>
-      </article>
-    </section>
+  <section id="new-balance">
+    <article class="widget single">
+      <section class="content single">
+        <span></span>
 
-    <section id="date">
-      <label>To live up to:</label>
-      <input type="date" name="date" v-model="finishDate" v-bind:min="minDate">
-      <article id="errors">
-        <p v-if="badDate">Date should be correct</p>
-      </article>
-    </section>
+        <section id="summ">
+          <label> Сколько денег:</label>
+          <input type="number" name="summ" v-model.number="summ" min=1>
+          <article id="errors">
+            <p v-if="summZero">Amount can't be 0</p>
+          </article>
+        </section>
 
-    <button v-on:click="calculate">Calculate</button>
-  </article>
+        <section id="date">
+          <label>Нужно дожить до:</label>
+          <input type="date" name="date" v-model="finishDate" v-bind:min="minDate">
+          <article id="errors">
+            <p v-if="badDate">Date should be correct</p>
+          </article>
+        </section>
+
+        <span></span>
+        <button v-on:click="calculate">Посчитать!</button>
+        <span></span>
+      </section>
+    </article>
+  </section>
 </template>
 
 <script>
@@ -67,5 +75,8 @@ export default {
 </script>
 
 <style scoped>
-
+  #new-balance {
+    height: 40vh;
+    font-size: 3vh;
+  }
 </style>

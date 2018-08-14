@@ -65,7 +65,7 @@ class LocalstorageService {
   addExpenditure (summ, description, date) {
     const expenditure = {
       summ,
-      description,
+      description: description || '—',
       date: Number(date),
       time: moment() - moment().startOf('day'),
       datetime: moment().format('x')
@@ -85,7 +85,8 @@ class LocalstorageService {
       daysToSalary: null,
       moneyPerDay: null,
       moneyForToday: null,
-      expenses: []
+      expenses: [],
+      availableSumm: null
     }
 
     const [expensesError, expenses] = this._getJSON(this.expenses)
@@ -107,7 +108,10 @@ class LocalstorageService {
 
     const daysToSalary = (finishDate - moment().startOf('day').format('x')) / 1000 / 60 / 60 / 24
 
-    const moneyPerDay = Math.floor((summ - otherSpendingsSumm) / daysToSalary)
+    const yesterdayAvailableSumm = summ - otherSpendingsSumm
+    const availableSumm = yesterdayAvailableSumm - todaySpendingsSumm
+
+    const moneyPerDay = Math.floor(yesterdayAvailableSumm / daysToSalary)
     const moneyForToday = moneyPerDay - todaySpendingsSumm
 
     return [
@@ -116,7 +120,8 @@ class LocalstorageService {
         daysToSalary,
         moneyPerDay,
         moneyForToday,
-        expenses: todaySpendings
+        expenses: todaySpendings,
+        availableSumm
       }
     ]
   }

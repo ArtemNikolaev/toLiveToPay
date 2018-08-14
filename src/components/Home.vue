@@ -1,19 +1,47 @@
 <template>
-  <article>
-    <section>
-      <h2>Осталось {{daysToSalary}} дней<br/>по {{moneyPerDay}} денег</h2>
+  <section id="home-section" class="col col-all">
+    <article id="home-current" class="widget">
+      <section class="content">
+        <p></p>
+        <p>Бюджет на сегодня:</p>
+        <p>{{moneyForToday}}💰</p>
+        <button v-on:click='add'>Потратить!</button>
+        <p></p>
+      </section>
+    </article>
 
-      <h1>{{moneyForToday}} денег на сегодня</h1>
+    <article id="home-expenditures" class="widget">
+      <section class="content">
+        <article class="left">
+          <p>💰</p>
+          <p v-for="expenditure in expenses" :key="expenditure.datetime">{{expenditure.summ}}💰</p>
+        </article>
+        <article class="right">
+          <p>Description</p>
+          <p v-for="expenditure in expenses" :key="expenditure.datetime">{{expenditure.description}}</p>
+        </article>
+      </section>
+    </article>
 
-      <div><button v-on:click='add'>Add</button></div>
-
-      <ul v-if="expenses.length">
-        <li v-for="expenditure in expenses" :key="expenditure.datetime">
-          {{expenditure.summ}} - {{expenditure.description}}
-        </li>
-      </ul>
-    </section>
-  </article>
+    <article id="home-other" class="widget">
+      <section class="content">
+        <article class="left">
+          <p></p>
+          <p>Дневной Бюджет:</p>
+          <p>Осталось Дней:</p>
+          <p>Осталось Денег:</p>
+          <p></p>
+        </article>
+        <article class="right">
+          <p></p>
+          <p>{{moneyPerDay}}💰</p>
+          <p>{{daysToSalary}}</p>
+          <p>{{availableSumm}}💰</p>
+          <p></p>
+        </article>
+      </section>
+    </article>
+  </section>
 </template>
 
 <script>
@@ -37,5 +65,53 @@ export default {
 </script>
 
 <style>
+  #home-current, #home-other {
+    height: 30vh;
+    padding: 5%;
+  }
 
+  #home-expenditures {
+    height: 40vh;
+  }
+
+  #home-other .content,
+  #home-current .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 3.5vh;
+  }
+
+  #home-current .content {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  #home-expenditures .content{
+    display: flex;
+
+    font-size: 3.5vh;
+    overflow-x: scroll;
+  }
+  #home-expenditures .content p {
+    height: 4vh;
+    margin: 0.5vh;
+  }
+
+  #home-other .content article   {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .left {
+    text-align: right;
+  }
+
+  .right {
+    text-align: left;
+    padding-left: 2vw;
+  }
 </style>
