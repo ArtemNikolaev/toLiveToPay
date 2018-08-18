@@ -73,4 +73,13 @@ export default {
     border-radius: 10px;
     font-size: 2.5vh;
   }
+
+  .left {
+    text-align: right;
+  }
+
+  .right {
+    text-align: left;
+    padding-left: 2vw;
+  }
 </style>

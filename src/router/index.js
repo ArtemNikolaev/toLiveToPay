@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import NewBalance from '@/components/NewBalance'
 import AddExpenditure from '@/components/AddExpenditure'
-import Home from '@/components/Home'
+import Home from '@/components/home/Home'
 
 Vue.use(Router)
 
