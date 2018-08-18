@@ -12,14 +12,24 @@
 
     <article id="home-expenditures" class="widget">
       <section class="content">
-        <article class="left">
+        <p>
+          <span>💰</span>
+          <span>Описание</span>
+        </p>
+
+        <p v-for="expenditure in expenses" :key="expenditure.datetime">
+          <span>{{expenditure.summ}}💰</span>
+          <span>{{expenditure.description}}</span>
+        </p>
+
+        <!-- <article class="left">
           <p>💰</p>
           <p v-for="expenditure in expenses" :key="expenditure.datetime">{{expenditure.summ}}💰</p>
         </article>
         <article class="right">
           <p>Description</p>
           <p v-for="expenditure in expenses" :key="expenditure.datetime">{{expenditure.description}}</p>
-        </article>
+        </article> -->
       </section>
     </article>
 
@@ -89,14 +99,27 @@ export default {
   }
 
   #home-expenditures .content{
-    display: flex;
-
     font-size: 3.5vh;
     overflow-x: scroll;
   }
   #home-expenditures .content p {
-    height: 4vh;
-    margin: 0.5vh;
+    display: flex;
+    align-items: space-between;
+
+    text-align: left;
+    min-height: 4vh;
+    margin: 0.5vh 0.5vw;
+  }
+
+  #home-expenditures .content p span:nth-child(1) {
+    text-align: right;
+    width: 30%;
+  }
+  #home-expenditures .content p span:nth-child(2) {
+    width: 70%;
+  }
+  #home-expenditures .content p span:nth-child(2):first-letter {
+    text-transform: capitalize;
   }
 
   #home-other .content article   {
