@@ -80,6 +80,15 @@ class LocalstorageService {
     return [null]
   }
 
+  updateSumm (add) {
+    const [err, summ] = this._getNumber(this.summ)
+    if (err) return [err]
+
+    this._setNumber(this.summ, summ + add)
+
+    return [null]
+  }
+
   homeCalculation () {
     const defaultData = {
       daysToSalary: null,

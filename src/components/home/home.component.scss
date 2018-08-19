@@ -1,4 +1,13 @@
 #home-section {
+  .edit {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 5vh;
+    line-height: 5vh;
+  }
+
   #home-current, #home-other {
     height: 30vh;
     padding: 5%;
@@ -10,6 +19,7 @@
 
   #home-other .content,
   #home-current .content {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;

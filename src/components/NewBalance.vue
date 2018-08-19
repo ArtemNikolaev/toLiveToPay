@@ -25,6 +25,19 @@
         <span></span>
       </section>
     </article>
+
+    <article class="widget single">
+      <section class="content single">
+        <section id="add">
+          <label> Добавить к сумме:</label>
+          <input type="number" name="add" v-model.number="add" min=1>
+        </section>
+
+        <span></span>
+        <button v-on:click="addToSumm">Добавить:</button>
+        <span></span>
+      </section>
+    </article>
   </section>
 </template>
 
@@ -38,12 +51,18 @@ export default {
     return {
       minDate: moment().add(1, 'days').format('YYYY-MM-DD'),
       summ: 0,
+      add: 0,
       finishDate: null,
       summZero: false,
       badDate: false
     }
   },
   methods: {
+    addToSumm: function () {
+      const updateSumm = storage.updateSumm(this.add)
+      if (updateSumm[0]) console.error(updateSumm[0])
+      else this.$router.push('/')
+    },
     calculate: function () {
       if (!this.validation()) return
 

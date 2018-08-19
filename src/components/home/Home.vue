@@ -21,20 +21,12 @@
           <span>{{expenditure.summ}}💰</span>
           <span>{{expenditure.description}}</span>
         </p>
-
-        <!-- <article class="left">
-          <p>💰</p>
-          <p v-for="expenditure in expenses" :key="expenditure.datetime">{{expenditure.summ}}💰</p>
-        </article>
-        <article class="right">
-          <p>Description</p>
-          <p v-for="expenditure in expenses" :key="expenditure.datetime">{{expenditure.description}}</p>
-        </article> -->
       </section>
     </article>
 
     <article id="home-other" class="widget">
       <section class="content">
+        <span v-on:click='editBudget' class="edit">⚙</span>
         <article class="left">
           <p></p>
           <p>Дневной Бюджет:</p>
@@ -69,6 +61,10 @@ export default {
   methods: {
     add: function () {
       this.$router.push('/add')
+    },
+    editBudget: function () {
+      console.log('bla')
+      this.$router.push('/new')
     }
   }
 }
