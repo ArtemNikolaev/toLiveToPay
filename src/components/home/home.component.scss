@@ -8,28 +8,13 @@
     line-height: 5vh;
   }
 
-  #home-current, #home-other {
-    height: 30vh;
-    padding: 5%;
-  }
-
-  #home-expenditures {
-    height: 40vh;
-  }
-
-  #home-other .content,
-  #home-current .content {
+  #home-other .content {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 
     font-size: 3.5vh;
-  }
-
-  #home-current .content {
-    flex-direction: column;
-    justify-content: space-around;
   }
 
   #home-expenditures .content{

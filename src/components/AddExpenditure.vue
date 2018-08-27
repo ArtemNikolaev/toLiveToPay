@@ -28,7 +28,6 @@
           <button v-on:click="add">Потратить</button>
           <button v-on:click="cancel">Отмена</button>
         </article>
-
         <span></span>
       </section>
     </article>

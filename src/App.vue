@@ -9,6 +9,17 @@ export default {
 </script>
 
 <style>
+  :root {
+    /*Button variables*/
+    --btn-bg: hsl(143, 100%, 98%);
+    --btn-border-width: 2px;
+    --btn-border-style: solid;
+    --btn-border-color: hsl(143, 81%, 91%);
+    --btn-border-radius: 10px;
+    --btn-padding: 10px;
+    --btn-font-size: 2.5vh;
+  }
+
   html, body, h1, h2, p {
     margin: 0;
     padding: 0;
@@ -64,14 +75,6 @@ export default {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-  }
-
-  button {
-    background: hsl(143, 100%, 98%);
-    padding: 10px;
-    border: 2px solid hsl(143, 81%, 91%);
-    border-radius: 10px;
-    font-size: 2.5vh;
   }
 
   .left {

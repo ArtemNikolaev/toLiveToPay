@@ -1,16 +1,8 @@
 <template>
   <section id="home-section" class="col col-all">
-    <article id="home-current" class="widget">
-      <section class="content">
-        <p></p>
-        <p>Бюджет на сегодня:</p>
-        <p>{{moneyForToday}}💰</p>
-        <button v-on:click='add'>Потратить!</button>
-        <p></p>
-      </section>
-    </article>
+    <today-balance></today-balance>
 
-    <article id="home-expenditures" class="widget">
+    <widget height="forty" padding="top" id="home-expenditures">
       <section class="content">
         <p>
           <span>💰</span>
@@ -22,9 +14,9 @@
           <span>{{expenditure.description}}</span>
         </p>
       </section>
-    </article>
+    </widget>
 
-    <article id="home-other" class="widget">
+    <widget height="thirty" padding="bottom" id="home-other">
       <section class="content">
         <span v-on:click='editBudget' class="edit">⚙</span>
         <article class="left">
@@ -42,15 +34,18 @@
           <p></p>
         </article>
       </section>
-    </article>
+    </widget>
   </section>
 </template>
 
 <script>
 import storage from '../../services/localstorageService'
+import todayBalance from './todayBalance.component'
+import widget from '../widget.component'
 
 export default {
   name: 'Home',
+  components: { todayBalance, widget },
   data () {
     const [err, data] = storage.homeCalculation()
 
@@ -63,12 +58,10 @@ export default {
       this.$router.push('/add')
     },
     editBudget: function () {
-      console.log('bla')
       this.$router.push('/new')
     }
   }
 }
 </script>
 
-<style lang='scss' src='./home.component.scss'>
-</style>
+<style lang='scss' src='./home.component.scss'></style>
