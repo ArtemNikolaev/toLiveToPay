@@ -30,8 +30,7 @@ function getNumber (varName) {
   const value = Number(localStorage.getItem(varName))
 
   if (isNaN(value)) {
-    setNumber(varName, 0)
-    return 0
+    return null
   }
 
   return value

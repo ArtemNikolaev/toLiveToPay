@@ -1,5 +1,7 @@
 <template>
-  <section id="new-balance">
+  <article class="md-content">
+    <input-data></input-data>
+
     <article class="widget single">
       <section class="content single">
         <span></span>
@@ -14,7 +16,7 @@
 
         <section id="date">
           <label>Нужно дожить до:</label>
-          <input type="date" name="date" v-model="finishDate" v-bind:min="minDate">
+          <input type="date" name="date" v-model="finishDate" v-bind:min="minDate" >
           <article id="errors">
             <p v-if="badDate">Date should be correct</p>
           </article>
@@ -38,15 +40,17 @@
         <span></span>
       </section>
     </article>
-  </section>
+  </article>
 </template>
 
 <script>
+import inputData from './input-data.component'
 import moment from 'moment'
-import storage from '../services/localstorageService'
+import storage from '../../services/localstorageService'
 
 export default {
   name: 'HelloWorld',
+  components: { inputData },
   data () {
     return {
       minDate: moment().add(1, 'days').format('YYYY-MM-DD'),
@@ -54,7 +58,10 @@ export default {
       add: 0,
       finishDate: null,
       summZero: false,
-      badDate: false
+      badDate: false,
+      disabledDates: date => {
+        return moment() > moment(date)
+      }
     }
   },
   methods: {
@@ -94,8 +101,4 @@ export default {
 </script>
 
 <style scoped>
-  #new-balance {
-    height: 40vh;
-    font-size: 3vh;
-  }
 </style>

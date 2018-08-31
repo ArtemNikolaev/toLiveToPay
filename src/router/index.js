@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import NewBalance from '@/components/NewBalance'
+import NewBalance from '@/components/new/NewBalance'
 import AddExpenditure from '@/components/AddExpenditure'
 import Home from '@/components/home/Home'
 
