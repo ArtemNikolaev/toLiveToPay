@@ -5,7 +5,20 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>To Live to Pay</title>
 
+    <meta name="theme-color" content="#f5fff9" />
     <link rel="manifest" href="/manifest.json">
+    <script>
+      if (navigator.serviceWorker.controller) {
+        console.log('[PWA Builder] active service worker found, no need to register')
+      } else {
+        //Register the ServiceWorker
+        navigator.serviceWorker.register('pwabuilder-sw.js', {
+          scope: './'
+        }).then(function(reg) {
+          console.log('Service worker has been registered for scope:'+ reg.scope);
+        });
+      }
+    </script>
   </head>
   <body>
     <section id="app"></section>
