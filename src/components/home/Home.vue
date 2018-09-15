@@ -54,7 +54,7 @@ export default {
   data () {
     const [err, data] = storage.homeCalculation()
 
-    if (err) this.$router.push('/new')
+    if (err || data.daysToSalary < 1) this.$router.push('/new')
 
     return data
   },
