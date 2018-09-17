@@ -9,25 +9,6 @@ export default {
 </script>
 
 <style>
-  html, body, h1, h2, p {
-    margin: 0;
-    padding: 0;
-    border: 0;
-  }
-
-  html, body {
-    box-sizing: border-box;
-    height: 100vh;
-  }
-
-  body {
-    font-family: monospace;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-  }
-
   .col{
     height: 100vh;
     display: flex;
