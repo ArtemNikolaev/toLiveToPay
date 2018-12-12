@@ -118,10 +118,10 @@ class LocalstorageService {
     const daysToSalary = (finishDate - moment().startOf('day').format('x')) / 1000 / 60 / 60 / 24
 
     const yesterdayAvailableSumm = summ - otherSpendingsSumm
-    const availableSumm = yesterdayAvailableSumm - todaySpendingsSumm
+    const availableSumm = (yesterdayAvailableSumm - todaySpendingsSumm).toFixed(2)
 
-    const moneyPerDay = Math.floor(yesterdayAvailableSumm / daysToSalary)
-    const moneyForToday = moneyPerDay - todaySpendingsSumm
+    const moneyPerDay = (yesterdayAvailableSumm / daysToSalary).toFixed(2)
+    const moneyForToday = (moneyPerDay - todaySpendingsSumm).toFixed(2)
 
     return [
       null,
