@@ -63,7 +63,6 @@ export default {
       this.$router.push('/add')
     },
     editBudget: function () {
-      console.log('bla')
       this.$router.push('/new')
     }
   }

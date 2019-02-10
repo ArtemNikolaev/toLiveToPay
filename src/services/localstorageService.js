@@ -4,6 +4,7 @@ class LocalstorageService {
   summ = 'summ'
   finishDate = 'finishDate'
   expenses = 'expenses'
+  startDate = 'startDate'
 
   _getJSON (varName) {
     let value
@@ -29,9 +30,13 @@ class LocalstorageService {
   }
 
   _getNumber (varName) {
-    const value = Number(localStorage.getItem(varName))
+    let value = localStorage.getItem(varName)
 
-    if (isNaN(value)) return [new Error(`[LocalstorageService:_getSumm()] - \`${varName}\` is not defined or not a number`)]
+    if (!value) return [new Error(`[LocalstorageService:_getSumm()] - \`${varName}\` is not defined`)]
+
+    value = Number(value)
+
+    if (isNaN(value)) return [new Error(`[LocalstorageService:_getSumm()] - \`${varName}\` is  not a number`)]
     else return [null, value]
   }
 
@@ -49,17 +54,27 @@ class LocalstorageService {
     return [null]
   }
 
-  setBalance (summ, finishDate) {
+  setBalance (summ, finishDate, startDate) {
     const setSumm = this._setNumber(this.summ, summ)
     if (setSumm[0]) return [setSumm[0]]
 
     const setFinishDate = this._setNumber(this.finishDate, finishDate)
     if (setFinishDate[0]) return [setFinishDate[0]]
 
+    this._setStartDate(startDate)
+
     const setExpenses = this._setJSON(this.expenses, [])
     if (setExpenses[0]) return [setExpenses[0]]
 
     return [null]
+  }
+
+  _setStartDate (date) {
+    if (!date) date = moment().startOf('day').format('x')
+
+    this._setNumber(this.startDate, date)
+
+    return date
   }
 
   addExpenditure (summ, description, date) {
@@ -98,6 +113,10 @@ class LocalstorageService {
       availableSumm: null
     }
 
+    // startDate
+    let [startDateError, startDate] = this._getNumber(this.startDate)
+    if (startDateError) startDate = this._setStartDate()
+
     const [expensesError, expenses] = this._getJSON(this.expenses)
     if (expensesError) return [expensesError, defaultData]
 
@@ -116,11 +135,15 @@ class LocalstorageService {
     const otherSpendingsSumm = otherSpendings.reduce((a, b) => a + b.summ, 0)
 
     const daysToSalary = (finishDate - moment().startOf('day').format('x')) / 1000 / 60 / 60 / 24
-
+    const days = (finishDate - startDate) / 1000 / 60 / 60 / 24
     const yesterdayAvailableSumm = summ - otherSpendingsSumm
     const availableSumm = (yesterdayAvailableSumm - todaySpendingsSumm).toFixed(2)
 
-    const moneyPerDay = (yesterdayAvailableSumm / daysToSalary).toFixed(2)
+    const moneyPerDaySumm = Number((summ / days).toFixed(2))
+    const moneyPerDayActual = (yesterdayAvailableSumm / daysToSalary).toFixed(2)
+    const moneyPerDay = (moneyPerDayActual < moneyPerDaySumm)
+      ? moneyPerDayActual
+      : moneyPerDaySumm + (summ - daysToSalary * moneyPerDaySumm - otherSpendingsSumm)
     const moneyForToday = (moneyPerDay - todaySpendingsSumm).toFixed(2)
 
     return [
