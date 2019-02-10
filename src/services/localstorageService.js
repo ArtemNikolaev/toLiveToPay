@@ -139,12 +139,12 @@ class LocalstorageService {
     const yesterdayAvailableSumm = summ - otherSpendingsSumm
     const availableSumm = (yesterdayAvailableSumm - todaySpendingsSumm).toFixed(2)
 
-    const moneyPerDaySumm = Number((summ / days).toFixed(2))
+    const moneyPerDay = Number((summ / days).toFixed(2))
     const moneyPerDayActual = (yesterdayAvailableSumm / daysToSalary).toFixed(2)
-    const moneyPerDay = (moneyPerDayActual < moneyPerDaySumm)
+    const moneyPerDay1 = (moneyPerDayActual < moneyPerDay)
       ? moneyPerDayActual
-      : moneyPerDaySumm + (summ - daysToSalary * moneyPerDaySumm - otherSpendingsSumm)
-    const moneyForToday = (moneyPerDay - todaySpendingsSumm).toFixed(2)
+      : moneyPerDay + (summ - daysToSalary * moneyPerDay - otherSpendingsSumm)
+    const moneyForToday = (moneyPerDay1 - todaySpendingsSumm).toFixed(2)
 
     return [
       null,
