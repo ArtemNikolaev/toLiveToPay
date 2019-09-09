@@ -1,6 +1,6 @@
 <script>
-	import TextNumber from './TextNumber.svelte';
-	import Button from './custom/Button.svelte';
+	import TextNumber from '../blocks/TextNumber.svelte';
+	import Button from '../elements/Button.svelte';
 
 	export let remained = 40;
 	export let total = 60;

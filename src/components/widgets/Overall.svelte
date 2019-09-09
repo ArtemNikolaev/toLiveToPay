@@ -1,7 +1,7 @@
 <script>
-	import TextNumber from './TextNumber.svelte';
-	import Header from './custom/Header.svelte';
-	import Button from './custom/Button.svelte';
+	import TextNumber from '../blocks/TextNumber.svelte';
+	import Header from '../elements/Header.svelte';
+	import Button from '../elements/Button.svelte';
 
 	const txt = 'Overall Left'
 	const settings = 'Change';
