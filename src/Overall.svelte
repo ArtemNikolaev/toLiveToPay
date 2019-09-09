@@ -5,10 +5,23 @@
 	const txt = 'Overall Left'
 </script>
 
+<style>
+	section {
+		display: grid;
+		justify-items: center;
+	}
+	article {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+
+		width: 100%;
+	}
+</style>
+
 <section class="widget">
 	<Header {txt} />
 	<article>
-		<TextNumber text='Money' num=320/>
-		<TextNumber text='Days'  num=22/>
+		<TextNumber txt='Money' num=320/>
+		<TextNumber txt='Days'  num=22/>
 	</article>
 </section>
