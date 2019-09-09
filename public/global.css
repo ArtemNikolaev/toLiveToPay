@@ -10,7 +10,7 @@ h1 {
 }
 body {
 	display: grid;
-	grid-template-rows: 3fr 1fr 6fr 3fr;
+	grid-template-rows: 2fr 2fr 1fr 10fr;
 	grid-row-gap: 1vh;
 
 
