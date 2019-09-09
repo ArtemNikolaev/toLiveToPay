@@ -10,22 +10,16 @@
 </script>
 
 <style>
-	section {
+	.widget {
 		display: grid;
-		grid-template-columns: 2fr 1fr;
-	}
-
-	article {
-		display: grid;
+		grid-template-columns: 1fr 2fr 1fr;
 		align-items: center;
 		justify-items: center;
 	}
 </style>
 
 <section class="widget">
+	<Button txt="Spend" />
 	<TextNumber {txt} {num} />
-	<article>
-		<Button txt="Spend" />
-		<Button txt="Save" />
-	</article>
+	<Button txt="Save" />
 </section>
