@@ -1,8 +1,10 @@
 <script>
 	import TextNumber from './TextNumber.svelte';
 	import Header from './custom/Header.svelte';
+	import Button from './custom/Button.svelte';
 
 	const txt = 'Overall Left'
+	const settings = 'Change';
 </script>
 
 <style>
@@ -12,7 +14,9 @@
 	}
 	article {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 2fr 1fr 2fr;;
+		align-items: center;
+		justify-items: center;
 
 		width: 100%;
 	}
@@ -22,6 +26,7 @@
 	<Header {txt} />
 	<article>
 		<TextNumber txt='Money' num=320/>
+		<Button txt='Change' />
 		<TextNumber txt='Days'  num=22/>
 	</article>
 </section>
