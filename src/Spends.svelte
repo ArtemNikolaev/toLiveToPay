@@ -1,0 +1,17 @@
+<section>
+	<header>
+		<h1>Spends</h1>
+	</header>
+	<p>
+		<span>Sum</span>
+		<span>Description</span>
+	</p>
+	<p>
+		<span>Dinner</span>
+		<span>12</span>
+	</p>
+	<p>
+		<span>Stuff</span>
+		<span>45</span>
+	</p>
+</section>

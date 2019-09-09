@@ -2,6 +2,7 @@
 	import Day from './Day.component.svelte';
 	import Savings from './Savings.component.svelte';
 	import Overall from './Overall.svelte';
+	import Spends from './Spends.svelte';
 
 	export let name;
 </script>
@@ -14,4 +15,5 @@
 
 <Day />
 <Savings />
+<Spends />
 <Overall />
