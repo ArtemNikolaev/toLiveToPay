@@ -1,11 +1,31 @@
 <script>
 	import TextNumber from './TextNumber.svelte';
+	import Button from './custom/Button.svelte';
+
+	export let remained = 40;
+	export let total = 60;
+	export let txt = 'Day budget';
+
+	$: num = `${remained} / ${total}`;
 </script>
 
-<section>
-	<TextNumber text='Day budget' num='40 / 60' />
+<style>
+	section {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+	}
+
+	article {
+		display: grid;
+		align-items: center;
+		justify-items: center;
+	}
+</style>
+
+<section class="widget">
+	<TextNumber {txt} {num} />
 	<article>
-		<button>Spend</button>
-		<button>Save</button>
+		<Button txt="Spend" />
+		<Button txt="Save" />
 	</article>
 </section>
