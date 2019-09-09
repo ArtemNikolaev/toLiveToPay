@@ -1,11 +1,7 @@
-<script>
-	import TextNumber from './TextNumber.svelte';
-</script>
-
 <section>
-	<TextNumber text='Savings' num='60' />
-	<article>
-		<button>Save</button>
+	<p>
+		<span>Savings</span>
+		<span>60</span>
 		<button>Withdraw</button>
-	</article>
+	</p>
 </section>
