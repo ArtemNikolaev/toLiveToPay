@@ -1,13 +1,18 @@
 html, body {
-	position: relative;
+	position: fixed;
 	width: 100%;
 	height: 100%;
+	overflow: hidden;
 }
 
 body {
+	display: grid;
+	grid-row-gap: 1vh;
+
+
 	color: #333;
 	margin: 0;
-	padding: 8px;
+	padding: 1vh;
 	box-sizing: border-box;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
