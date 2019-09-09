@@ -1,19 +1,51 @@
-<section>
-	<header>
-		<h1>Spends</h1>
-	</header>
-	<p>
-		<span>Sum</span>
-		<span>Description</span>
-	</p>
+<script>
+	import Header from './custom/Header.svelte';
+
+	export let spends = [];
+</script>
+
+<style>
+	.widget {
+		height: 100%;
+		display: grid;
+		grid-template-rows: 1fr 1fr 9fr;
+		justify-items: center;
+		overflow: hidden;
+	}
+
+	article {
+		width: 100%;
+	}
+
+	p {
+		display: grid;
+		grid-template-columns: 2fr 2fr;
+		justify-items: center;
+		margin: 0;
+	}
+
+	article.list {
+		display: flex;
+		flex-direction: column;
+		overflow-y: scroll;
+	}
+
+</style>
+
+<section class="widget">
+	<Header txt="Spends" />
 	<article>
 		<p>
-			<span>Dinner</span>
-			<span>12</span>
+			<strong>Description</strong>
+			<strong>Sum</strong>
 		</p>
-		<p>
-			<span>Stuff</span>
-			<span>45</span>
-		</p>
+	</article>
+	<article class="list">
+		{#each spends as spend}
+			<p>
+				<span>{spend.desc}</span>
+				<span>{spend.sum}</span>
+			</p>
+		{/each}
 	</article>
 </section>
