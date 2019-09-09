@@ -4,7 +4,7 @@
 	import Overall 	from './widgets/Overall.svelte';
 	import Spends 	from './widgets/Spends.svelte';
 
-	export let name;
+	export let token;
 </script>
 
 <style>
