@@ -1,5 +1,5 @@
 <script>
-	import Header from './custom/Header.svelte';
+	import Header from '../elements/Header.svelte';
 
 	export let txt = 'defauld';
 	export let num = 0;

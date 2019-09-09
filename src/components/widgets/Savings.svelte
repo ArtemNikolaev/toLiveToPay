@@ -1,6 +1,6 @@
 <script>
-	import Header from './custom/Header.svelte';
-	import Button from './custom/Button.svelte';
+	import Header from '../elements/Header.svelte';
+	import Button from '../elements/Button.svelte';
 
 	export let savings = 'Savings';
 	export let sum = 60;
