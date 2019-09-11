@@ -1,6 +1,6 @@
 <script>
 	export let txt = 'empty button'
-	export let func;
+	export let func = null;
 </script>
 
 <style>

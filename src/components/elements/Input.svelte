@@ -1,9 +1,9 @@
 <script>
 	export let type = 'text';
-	export let value;
+	export let value = null;
 	export let label;
-	export let max;
-	export let min;
+	export let max = null;
+	export let min = null;
 </script>
 
 <style>
@@ -19,12 +19,12 @@
 {#if type === 'number'}
 	<input
 		type='number'
-		bind:value={value}
+		bind:value
 	/>
 {:else if type === 'date'}
 	<input
 		type='date'
-		bind:value={value}
+		bind:value
 		{max}
 		{min}
 	/>
