@@ -36,15 +36,15 @@
 	<Header txt="Spends" />
 	<article>
 		<p>
-			<strong>Description</strong>
 			<strong>Sum</strong>
+			<strong>Description</strong>
 		</p>
 	</article>
 	<article class="list">
 		{#each spends as spend}
 			<p>
-				<span>{spend.desc}</span>
 				<span>{spend.sum}</span>
+				<span>{spend.desc}</span>
 			</p>
 		{/each}
 	</article>
