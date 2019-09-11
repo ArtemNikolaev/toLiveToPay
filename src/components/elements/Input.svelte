@@ -1,13 +1,19 @@
 <script>
 	export let type = 'text';
 	export let value = null;
+	
 	export let label;
+
+	// for date
 	export let max = null;
 	export let min = null;
+
+	// for select
+	export let selectArr = [];
 </script>
 
 <style>
-	input {
+	input, select {
 		width: 100%;
 	}
 </style>
@@ -28,6 +34,19 @@
 		{max}
 		{min}
 	/>
+{:else if type === 'text'}
+	<input
+		type='text'
+		bind:value
+	/>
+{:else if type === 'select'}
+	<select bind:value>
+		<option value=''>No Category</option>
+
+		{#each selectArr as item}
+			<option value={item}>{item}</option>
+		{/each}
+	</select>
 {:else}
 	<p>[Input] Unknown Type</p>
 {/if}

@@ -3,7 +3,10 @@
 	import Savings 	from './widgets/Savings.svelte';
 	import Overall 	from './widgets/Overall.svelte';
 	import Spends 	from './widgets/Spends.svelte';
-	import Settings	from './widgets/Settings.svelte';
+
+	// Modals
+	import Settings		from './widgets/Settings.svelte';
+	import AddSpend 	from './widgets/AddSpend.svelte';
 
 	export let token;
 </script>
@@ -21,3 +24,4 @@
 
 <!-- Modals -->
 <Settings />
+<AddSpend />

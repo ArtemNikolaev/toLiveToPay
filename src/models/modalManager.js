@@ -1,5 +1,6 @@
 export const modalsNames = {
-	settings: 'settings'
+	settings: 'settings',
+	addSpend: 'add-spend',
 }
 
 export function openModal(modal) {
