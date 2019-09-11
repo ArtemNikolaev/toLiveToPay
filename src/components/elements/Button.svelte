@@ -1,5 +1,6 @@
 <script>
 	export let txt = 'empty button'
+	export let func;
 </script>
 
 <style>
@@ -8,4 +9,4 @@
 	}
 </style>
 
-<button>{txt}</button>
+<button on:click={func}>{txt.toUpperCase()}</button>

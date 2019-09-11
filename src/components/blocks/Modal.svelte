@@ -1,9 +1,17 @@
 <script>
+	import Header from '../elements/Header.svelte';
+
 	export let id='modal';
+	export let header = 'Empty Model Header [id:{id}]'
 </script>
 
 <style>
-	.background {
+	.modal-background {
+		display: grid;
+
+		align-items: center;
+		justify-items: center;
+
 		position: fixed;
 		background-color: rgba(0, 0, 0, 0.50);
 		top: 0;
@@ -20,8 +28,23 @@
     	visibility: visible;
 		opacity: 1;
 	}
+
+	.modal-content {
+		display: grid;
+		grid-template-rows: 1fr 4fr 1fr;
+
+		align-items: center;
+		justify-items: center;
+
+		background: white;
+		padding: 0 1.5em;
+	}
 </style>
 
-<section class='background' {id}>
-	<slot>Empty Modal id:{id}</slot>
+<section class='modal-background' {id}>
+	<article class="modal-content">		
+		<Header txt={header} />
+		<slot name='body'><div>Empty Modal Body [id:{id}]</div></slot>
+		<slot name='footer'><footer>Empty Modal Footer [id:{id}]</footer></slot>
+	</article>
 </section>
