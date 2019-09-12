@@ -5,8 +5,9 @@
 	import Spends 	from './widgets/Spends.svelte';
 
 	// Modals
-	import Settings		from './widgets/Settings.svelte';
-	import AddSpend 	from './widgets/AddSpend.svelte';
+	import ModalSettings		from './widgets/ModalSettings.svelte';
+	import ModalSpend 	from './widgets/ModalSpend.svelte';
+	import ModalSave			from './widgets/ModalSave.svelte';
 
 	export let token;
 </script>
@@ -23,5 +24,6 @@
 <Spends />
 
 <!-- Modals -->
-<Settings />
-<AddSpend />
+<ModalSettings />
+<ModalSpend />
+<ModalSave />
