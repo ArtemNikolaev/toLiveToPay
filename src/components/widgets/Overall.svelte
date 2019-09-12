@@ -1,4 +1,5 @@
 <script>
+	import Money from '../blocks/Money.svelte';
 	import TextNumber from '../blocks/TextNumber.svelte';
 	import Header from '../elements/Header.svelte';
 	import Button from '../elements/Button.svelte';
@@ -29,7 +30,7 @@
 <section class="widget">
 	<Header {txt} />
 	<article>
-		<TextNumber txt='Money' num=320/>
+		<Money />
 		<Button txt={modalsNames.settings} func={openSettings} />
 		<TextNumber txt='Days'  num=22/>
 	</article>
