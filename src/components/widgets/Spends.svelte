@@ -1,5 +1,6 @@
 <script>
 	import Header from '../elements/Header.svelte';
+	import Button from '../elements/Button.svelte';
 
 	export let spends = [];
 </script>
@@ -24,6 +25,14 @@
 		margin: 0;
 	}
 
+	article.header {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		justify-items: center;
+		align-items: center;
+		padding: 0.4em 0;
+	}
+
 	article.list {
 		display: flex;
 		flex-direction: column;
@@ -33,7 +42,11 @@
 </style>
 
 <section class="widget">
-	<Header txt="Spends" />
+	<article class='header'>
+		<span></span>
+		<Header txt="Spends" />
+		<Button txt='Categories'/>
+	</article>
 	<article>
 		<p>
 			<strong>Sum</strong>
