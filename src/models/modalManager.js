@@ -5,10 +5,14 @@ export const modalsNames = {
 	withdraw: 'withdraw',
 }
 
-export function openModal(modal) {
+function openModal(modal) {
 	location.hash = modal;
 }
 
 export function closeModal() {
 	location.hash = '';
+}
+
+export function openModalFactory(modal) {
+	return () => openModal(modal);
 }
