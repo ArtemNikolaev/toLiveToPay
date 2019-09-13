@@ -2,7 +2,7 @@
 	export let type = 'text';
 	export let value = null;
 	
-	export let label;
+	export let label = '';
 
 	// for date
 	export let max = null;
@@ -15,6 +15,7 @@
 <style>
 	input, select {
 		width: 100%;
+		margin: 0;
 	}
 </style>
 

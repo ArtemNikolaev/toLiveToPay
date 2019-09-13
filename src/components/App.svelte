@@ -9,6 +9,7 @@
 	import ModalSpend		from './widgets/ModalSpend.svelte';
 	import ModalSave		from './widgets/ModalSave.svelte';
 	import ModalWithdraw 	from './widgets/ModalWithdraw.svelte';
+	import ModalCategories	from './widgets/ModalCategories.svelte';
 
 	export let token;
 </script>
@@ -29,3 +30,4 @@
 <ModalSpend />
 <ModalSave />
 <ModalWithdraw />
+<ModalCategories />

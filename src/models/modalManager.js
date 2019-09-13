@@ -3,6 +3,7 @@ export const modalsNames = {
 	addSpend: 'add-spend',
 	save: 'save',
 	withdraw: 'withdraw',
+	categories: 'categories',
 }
 
 function openModal(modal) {
