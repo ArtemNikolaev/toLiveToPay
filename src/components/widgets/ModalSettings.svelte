@@ -3,7 +3,10 @@
 	import Modal	from '../blocks/Modal.svelte';
 	import Button 	from '../elements/Button.svelte';
 	import Input 	from '../elements/Input.svelte';
-	import { closeModal, modalsNames } from '../../models/modalManager';
+	import {
+		closeModal,
+		modalsNames
+	}				from '../../models/modalManager';
 
 	const id = modalsNames.settings;
 	const header = 'Settings';
