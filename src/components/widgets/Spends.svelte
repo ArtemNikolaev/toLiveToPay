@@ -1,6 +1,7 @@
 <script>
 	import Header from '../elements/Header.svelte';
 	import Button from '../elements/Button.svelte';
+	import { modalsNames, openModalFactory } from '../../models/modalManager';
 
 	export let spends = [];
 </script>
@@ -38,14 +39,13 @@
 		flex-direction: column;
 		overflow-y: scroll;
 	}
-
 </style>
 
 <section class="widget">
 	<article class='header'>
 		<span></span>
 		<Header txt="Spends" />
-		<Button txt='Categories'/>
+		<Button txt='Categories' func={openModalFactory(modalsNames.categories)}/>
 	</article>
 	<article>
 		<p>
