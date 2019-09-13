@@ -1,10 +1,12 @@
 <script>
-	import Modal from '../blocks/Modal.svelte';
-	import Button from '../elements/Button.svelte';
-	import Input from '../elements/Input.svelte';
-	import TextNumber from '../blocks/TextNumber.svelte';
-
-	import { modalsNames, closeModal } from '../../models/modalManager';
+	import Modal		from '../blocks/Modal.svelte';
+	import Button		from '../elements/Button.svelte';
+	import Input		from '../elements/Input.svelte';
+	import TextNumber	from '../blocks/TextNumber.svelte';
+	import {
+		modalsNames,
+		closeModal
+	}					from '../../models/modalManager';
 
 	const header = 'Withdraw';
 	let sumToWithdraw = 0;

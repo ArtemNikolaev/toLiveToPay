@@ -1,11 +1,13 @@
 <script>
-	import Modal from '../blocks/Modal.svelte';
-	import Money from '../blocks/Money.svelte';
-	import DayBudget from '../blocks/DayBudget.svelte';
-	import Button from '../elements/Button.svelte';
-	import Input from '../elements/Input.svelte';
-
-	import { modalsNames, closeModal } from '../../models/modalManager';
+	import Modal		from '../blocks/Modal.svelte';
+	import Money		from '../blocks/Money.svelte';
+	import DayBudget	from '../blocks/DayBudget.svelte';
+	import Button		from '../elements/Button.svelte';
+	import Input		from '../elements/Input.svelte';
+	import {
+		modalsNames,
+		closeModal
+	}					from '../../models/modalManager';
 
 	const header = 'Save Money';
 	let sumToSave = 0;

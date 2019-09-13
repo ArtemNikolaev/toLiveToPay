@@ -3,3 +3,7 @@
 /dist/
 /*.js
 /test/unit/coverage/
+/coverage/
+/public/
+/node_modules
+.eslintrc.js
