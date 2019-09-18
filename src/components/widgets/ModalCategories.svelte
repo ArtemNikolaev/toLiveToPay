@@ -1,4 +1,10 @@
 <script>
+	import AddCategory from '../blocks/AddCategory.svelte';
+	import {
+		categoriesStore,
+		addCategoryToStore,
+		removeCategoryFromStore,
+	} from '../../stores/categoriesStore';
 	import Modal from '../blocks/Modal.svelte';
 	import Button from '../elements/Button.svelte';
 	import Input from '../elements/Input.svelte';
@@ -8,30 +14,7 @@
 		modalsNames
 	}			from '../../models/modalManager';
 
-	let newCategory = '';
-
 	export let categories = [];
-
-	$: console.log({categories});
-
-	function addCategory() {
-		if (!newCategory) return;
-
-		newCategory = newCategory.trim();
-
-		const exist = categories.some(cat => cat.name === newCategory);
-		if (exist) return;
-
-		categories = [
-			{
-				name: newCategory,
-				edit: false,
-			},
-			...categories,
-		];
-
-		newCategory = '';
-	}
 
 	function removeCategory(cat) {
 		categories.splice(categories.indexOf(cat), 1);
@@ -41,13 +24,6 @@
 </script>
 
 <style>
-	.add {
-		display: grid;
-		grid-template-columns: 3fr 1fr;
-		align-items: center;
-		justify-items: center;
-	}
-
 	.categories {
 		height: 30vh;
 	}
@@ -67,25 +43,24 @@
 
 <Modal id={modalsNames.categories} header="Categories">
 	<section slot='body'>
-		<article class='add'>
-			<Input type='text' bind:value={newCategory}/>
-
-			<Button txt='Add' func={addCategory}/>
-		</article>
+		<AddCategory />
 
 		<article class='categories'>
 			<ScrollableList>
 				<ul slot='list'>
-					{#each categories as category}
+					{#each $categoriesStore as $category}
 						<li>
-							{#if !category.edit}
-								<span>{category.name}</span>
+							{#if !$category.edit}
+								<span>{JSON.stringify($category)}</span>
 							{:else}
-								<Input type='text' bind:value={category.name}/>
+								<Input type='text' bind:value={$category.name}/>
 							{/if}
 
-							<Button txt='✎' func={() => category.edit = !category.edit}/>
-							<Button txt='🗑' func={() => removeCategory(category)}/>
+							<Button txt='✎' func={() => $category.edit = !$category.edit}/>
+							<Button
+								txt='🗑'
+								func={() => removeCategoryFromStore($category.id)}
+							/>
 						</li>
 					{/each}
 				</ul>
