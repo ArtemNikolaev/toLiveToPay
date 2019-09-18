@@ -22,5 +22,7 @@ function connectToDb(set) {
   request.onerror = console.error;
   request.onsuccess = event => set(event.target.result);
   request.onupgradeneeded = onupgradeneeded;
+
+  return () => console.log('no more subscribers');
 }
 

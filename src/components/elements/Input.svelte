@@ -16,6 +16,7 @@
 	input, select {
 		width: 100%;
 		margin: 0;
+		/*TODO: long string is disaster*/
 	}
 </style>
 
