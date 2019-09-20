@@ -51,6 +51,8 @@ input, button, select, textarea {
 
 input, select, textarea {
 	padding: 0.4em;
+	width: 100%;
+	margin: 0;
 }
 
 input:disabled {
