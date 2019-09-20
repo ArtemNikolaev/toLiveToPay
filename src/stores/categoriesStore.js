@@ -1,53 +1,67 @@
-import { readable, writable } from 'svelte/store';
-import dbConnection from '../models/indexedDBInit';
+import { writable } from 'svelte/store';
+import config from '../../etc/config';
+import { localStorage } from '../utils/browserMocks';
 
-let db;
-let set;
+const storeName = config.storeName.categories;
 
-/* Dummy Data */
-	let id = 0;
-	const categories = [];
-	categories[id] = {id, name: 'lunch'};
-	categories[++id] = {id, name: 'shop'};
-	categories[++id] = {id, name: 'uber'};
+function categoriesGet () {
+	let result;
 
-	function categoriesMapper () {
-		const storeCategories = categories.map(
-			category => Object.assign({}, category, {edit: false}),
-		);
+	try {
+		result = JSON.parse(localStorage.getItem(storeName));
+		if (!result) throw new Error();
+	} catch (e) {
+		result = [];
 
-		return storeCategories;
+		localStorage.setItem(storeName, JSON.stringify(result));
 	}
 
-/* /Dummy Data */
+	return result;
+};
 
-export const categoriesStore = readable(categoriesMapper(), setFunc => set = setFunc);
+function categoriesSet (arr) {
+	const categories = JSON.stringify(arr.map(cat => cat.trim()))
+	const oldCategories = JSON.stringify(categoriesGet());
 
-const unsubscribe = dbConnection.subscribe((connection) => {
-	if (!connection) return;
+	if (categories === oldCategories) return console.log(`Nothing new in categories`);
 
-	db = connection;
+	console.log(`Set Categories ${categories}`);
+	localStorage.setItem(
+		storeName,
+		categories,
+	);
+}
 
-	unsubscribe();
-})
+function isExist(name) {
+	const data = name.trim();
+
+	return categoriesGet().indexOf(data) !== -1;
+}
+
+export const categoriesStore = writable(categoriesGet());
+
+categoriesStore.subscribe(categoriesSet);
 
 export function addCategory (name) {
 	console.log('addCategory: ', { name });
 
-	// TODO: name validation
-	// TODO: saving to DB
+	if (isExist(name)) return console.log(`Category "${name}" already exist.`);
+
+	const categories = categoriesGet();
+	
+	categories.unshift(name);
+
+	categoriesStore.set(categories);
 }
 
-export function deleteCategory (id) {
-	console.log('deleteCategory:', { id });
+export function deleteCategory (name) {
+	console.log('deleteCategory:', { name });
 
-	// TODO: removing from DB
-}
+	if (!isExist(name)) return console.log(`Category "${name}" isn't exist or was removed before.`);
 
-export function updateCategory(id, name) {
-	console.log('updateCategory: ', { id, name });
+	const categories = categoriesGet();
 
-	// TODO: update in DB
+	categories.splice(categories.indexOf(name), 1);
 
-	set(categoriesMapper());
+	categoriesStore.set(categories);
 }

@@ -10,6 +10,13 @@
 
 		name = '';
 	}
+
+	function keyup(event) {
+		console.log('keyup:', event.keyCode);
+		const enter = 13;
+
+		if (event.keyCode === enter) add();
+	}
 </script>
 
 <style>
@@ -22,6 +29,11 @@
 </style>
 
 <article>
-	<Input type='text' bind:value={name}/>
+	<input
+		type='text'
+		bind:value={name}
+
+		on:keyup|preventDefault|stopPropagation={keyup}
+	/>
 	<Button txt='Add' func={add}/>
 </article>
