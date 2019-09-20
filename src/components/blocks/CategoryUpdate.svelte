@@ -1,10 +1,7 @@
 <script>
 	import Button from '../elements/Button.svelte';
 	import Input from '../elements/Input.svelte';
-	import {
-		deleteCategory,
-		updateCategory
-	} from '../../stores/categoriesStore';
+	import { deleteCategory } from '../../stores/categoriesStore';
 
 	export let category;
 </script>
@@ -19,20 +16,10 @@
 </style>
 
 <li>
-	{#if !category.edit}
-		<span>{category.name}</span>
-	{:else}
-		<Input type='text' bind:value={category.name}/>
-	{/if}
-
-	{#if !category.edit}
-		<Button txt='✏️' func={() => category.edit = !category.edit}/>
-	{:else}
-		<Button txt='💾' func={() => updateCategory(category.id, category.name)}/>
-	{/if}
+	<Input type='text' bind:value={category}/>
 
 	<Button
 		txt='🗑'
-		func={() => deleteCategory(category.id)}
+		func={() => deleteCategory(category)}
 	/>
 </li>

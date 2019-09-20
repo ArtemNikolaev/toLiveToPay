@@ -27,7 +27,7 @@
 			<ScrollableList>
 				<ul slot='list'>
 					{#each $categoriesStore as category}
-						<CategoryUpdate {category} />
+						<CategoryUpdate bind:category={category} />
 					{/each}
 				</ul>
 			</ScrollableList>
