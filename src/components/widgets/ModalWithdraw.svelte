@@ -1,4 +1,6 @@
+<!-- TODO: compile with ModalSave -->
 <script>
+	import { add }		from '../../stores/savingsStore';
 	import Modal		from '../blocks/Modal.svelte';
 	import Button		from '../elements/Button.svelte';
 	import Input		from '../elements/Input.svelte';
@@ -12,7 +14,9 @@
 	let sumToWithdraw = 0;
 
 	function withdraw() {
-		console.log({ sumToWithdraw });
+		add(-sumToWithdraw);
+
+		sumToWithdraw = 0;
 
 		closeModal();
 	}
