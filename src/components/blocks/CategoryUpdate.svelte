@@ -1,6 +1,5 @@
 <script>
 	import Button from '../elements/Button.svelte';
-	import Input from '../elements/Input.svelte';
 	import { deleteCategory } from '../../stores/categoriesStore';
 
 	export let category;
@@ -16,7 +15,7 @@
 </style>
 
 <li>
-	<Input type='text' bind:value={category}/>
+	<input type='text' bind:value={category}/>
 
 	<Button
 		txt='🗑'
