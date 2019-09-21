@@ -1,4 +1,6 @@
+<!-- TODO: compile with ModalWithdraw -->
 <script>
+	import { add }		from '../../stores/savingsStore';
 	import Modal		from '../blocks/Modal.svelte';
 	import Money		from '../blocks/Money.svelte';
 	import DayBudget	from '../blocks/DayBudget.svelte';
@@ -13,7 +15,9 @@
 	let sumToSave = 0;
 
 	function save() {
-		console.log({ sumToSave });
+		add(sumToSave);
+
+		sumToSave = 0;
 
 		closeModal();
 	}
@@ -36,6 +40,8 @@
 			<DayBudget />
 			<Money />
 		</article>
+
+		<!-- TODO: input with enter keyup -->
 		<Input
 			type='number'
 			label='Sum To Save'

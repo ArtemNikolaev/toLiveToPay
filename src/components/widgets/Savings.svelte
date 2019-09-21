@@ -1,10 +1,10 @@
 <script>
 	import Header from '../elements/Header.svelte';
 	import Button from '../elements/Button.svelte';
+	import { savingsStore as sum } from '../../stores/savingsStore';
 	import { modalsNames, openModalFactory } from '../../models/modalManager';
 
 	export let savings = 'Savings';
-	export let sum = 60;
 	export let withdraw = 'Withdraw';
 
 	$: header = savings.toUpperCase();
@@ -26,6 +26,6 @@
 
 <section class="widget">
 		<Header txt={header} />
-		<span>{sum}</span>
+		<span>{$sum}</span>
 		<Button txt={withdraw} func={openModalFactory(modalsNames.withdraw)}/>
 </section>
