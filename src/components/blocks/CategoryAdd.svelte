@@ -1,6 +1,5 @@
 <script>
 	import Button from '../elements/Button.svelte';
-	import Input from '../elements/Input.svelte';
 	import { addCategory } from '../../stores/categoriesStore';
 
 	let name = '';
