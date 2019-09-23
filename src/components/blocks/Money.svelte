@@ -1,8 +1,10 @@
 <script>
 	import TextNumber from './TextNumber.svelte';
+	import { dataStore } from '../../stores/dataStore';
 
 	const txt = 'Money';
-	const num = 320;
+
+	$: num = `${$dataStore.moneyLeft} / ${$dataStore.moneyAll}`;
 </script>
 
 <TextNumber {txt} {num}/>

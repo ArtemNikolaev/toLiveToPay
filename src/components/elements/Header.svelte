@@ -4,6 +4,7 @@
 
 <style>
 	header {
+		text-align: center;
 		font-size: 1.4em;
 		font-weight: 700;
 	}
