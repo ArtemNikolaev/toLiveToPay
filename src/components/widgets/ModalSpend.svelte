@@ -6,29 +6,24 @@
 		closeModal,
 		modalsNames
 	}				from '../../models/modalManager';
-
+	import {
+		categoriesStore
+	}				from '../../stores/categoriesStore';
+	import { addSpend } from '../../stores/spendsStore';
 
 	const id = modalsNames.addSpend;
 	const header = 'Add Spend';
 
-	// TODO: temp, should go from server
-	const selectArr = [
-		'phone',
-		'lunch',
-		'beer',
-		'pizza'
-	];
-
-	let amountOfMoney = 0;
+	let sum = 0;
 	let description = '';
 	let category = '';
 
 	function add() {
-		console.log(JSON.stringify(
-			{amountOfMoney, description, category},
-			null,
-			4
-		));
+		addSpend({sum, description, category});
+
+		sum = 0;
+		description = '';
+		category = '';
 
 		closeModal();
 	}
@@ -48,16 +43,18 @@
 		<Input
 			type='number'
 			label='Amount of Money'
-			bind:value={amountOfMoney}
+			bind:value={sum}
 		/>
 
-		{#if selectArr.length}
-			<Input
-				type='select'
-				label='Category'
-				{selectArr}
-				bind:value={category}
-			/>
+		{#if $categoriesStore.length}
+			<label>Category</label>
+			<select bind:value={category}>
+				<option value=''>No Category</option>
+
+				{#each $categoriesStore as category}
+					<option value={category}>{category}</option>			
+				{/each}
+			</select>
 		{/if}
 
 		<Input
