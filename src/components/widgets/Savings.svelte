@@ -4,10 +4,7 @@
 	import { savingsStore as sum } from '../../stores/savingsStore';
 	import { modalsNames, openModalFactory } from '../../models/modalManager';
 
-	export let savings = 'Savings';
 	export let withdraw = 'Withdraw';
-
-	$: header = savings.toUpperCase();
 </script>
 
 <style>
@@ -25,7 +22,7 @@
 </style>
 
 <section class="widget">
-		<Header txt={header} />
+		<Header txt='SAVINGS' />
 		<span>{$sum}</span>
 		<Button txt={withdraw} func={openModalFactory(modalsNames.withdraw)}/>
 </section>
