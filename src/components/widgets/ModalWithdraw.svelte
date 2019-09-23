@@ -6,6 +6,9 @@
 	import Input		from '../elements/Input.svelte';
 	import TextNumber	from '../blocks/TextNumber.svelte';
 	import {
+		savingsStore as sum
+	}					from '../../stores/savingsStore';
+	import {
 		modalsNames,
 		closeModal
 	}					from '../../models/modalManager';
@@ -35,7 +38,7 @@
 
 <Modal id={modalsNames.withdraw} {header}>
 	<section slot='body'>
-		<TextNumber txt='Available Sum' num=60/>
+		<TextNumber txt='Available Sum' num={$sum}/>
 		<Input
 			type='number'
 			label='Sum To Withdraw'
