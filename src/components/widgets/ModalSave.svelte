@@ -42,6 +42,7 @@
 		</article>
 
 		<!-- TODO: input with enter keyup -->
+		<!-- TODO: only num values -->
 		<Input
 			type='number'
 			label='Sum To Save'

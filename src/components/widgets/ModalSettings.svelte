@@ -1,31 +1,35 @@
 <script>
-	import moment 	from 'moment';
-	import Modal	from '../blocks/Modal.svelte';
-	import Button 	from '../elements/Button.svelte';
-	import Input 	from '../elements/Input.svelte';
-	import {
-		closeModal,
-		modalsNames
-	}				from '../../models/modalManager';
+import moment 	from 'moment';
+import Modal	from '../blocks/Modal.svelte';
+import Button 	from '../elements/Button.svelte';
+import Input 	from '../elements/Input.svelte';
+import {
+	getSettings,
+	setSettings
+}				from '../../stores/dataStore';
+import {
+	closeModal,
+	modalsNames
+}				from '../../models/modalManager';
 
-	const id = modalsNames.settings;
-	const header = 'Settings';
-	const max = moment().format('YYYY-MM-DD');
-	const min = moment().add(1, 'day').format('YYYY-MM-DD');
+const id = modalsNames.settings;
+const header = 'Settings';
+const max = moment().format('YYYY-MM-DD');
+const min = moment().add(1, 'day').format('YYYY-MM-DD');
 
-	let amountOfMoney = 0;
-	let beginDate = max;
-	let endDate;
+const settings = getSettings();
+settings.bDate = settings.bDate || max;
+settings.eDate = settings.eDate || min;
 
-	function start() {
-		console.log(JSON.stringify(
-			{amountOfMoney, beginDate, endDate},
-			null,
-			4
-		));
+let amountOfMoney = 0;
+let beginDate = max;
+let endDate;
 
-		closeModal();
-	}
+function start() {
+	setSettings(settings);
+
+	closeModal();
+}
 </script>
 
 <style>
@@ -40,22 +44,23 @@
 
 <Modal {id} {header}>
 	<section slot='body'>
+		<!-- TODO: only numbers -->
 		<Input
 			type='number'
 			label='Amount of Money'
-			bind:value={amountOfMoney}
+			bind:value={settings.sum}
 		/>
 		<Input
 			type='date'
 			label='Begin Date'
 			{max}
-			bind:value={beginDate}
+			bind:value={settings.bDate}
 		/>
 		<Input
 			type='date'
 			label='End Date'
 			{min}
-			bind:value={endDate}
+			bind:value={settings.eDate}
 		/>
 	</section>
 
