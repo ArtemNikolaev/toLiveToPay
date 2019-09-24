@@ -2,8 +2,7 @@
 	import Header from '../elements/Header.svelte';
 	import Button from '../elements/Button.svelte';
 	import { modalsNames, openModalFactory } from '../../models/modalManager';
-
-	export let spends = [];
+	import { todayStore } from '../../stores/spendsStore';
 </script>
 
 <style>
@@ -21,7 +20,7 @@
 
 	p {
 		display: grid;
-		grid-template-columns: 2fr 2fr;
+		grid-template-columns: 1fr 1fr 2fr;
 		justify-items: center;
 		margin: 0;
 	}
@@ -50,14 +49,16 @@
 	<article>
 		<p>
 			<strong>Sum</strong>
+			<strong>Category</strong>
 			<strong>Description</strong>
 		</p>
 	</article>
 	<article class="list">
-		{#each spends as spend}
+		{#each $todayStore as spend}
 			<p>
 				<span>{spend.sum}</span>
-				<span>{spend.desc}</span>
+				<span>{spend.category}</span>
+				<span>{spend.description}</span>
 			</p>
 		{/each}
 	</article>
