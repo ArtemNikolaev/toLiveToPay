@@ -1,11 +1,35 @@
 import moment from 'moment';
 import { localStorage } from '../utils/browserMocks';
 import { readable } from 'svelte/store';
-import { settings as config} from '../../etc/storeConfig';
+import { storeName } from '../../etc/config';
+import { settings as config } from '../../etc/storeConfig';
 import { savingsStore, add } from './savingsStore';
+import { openModal, modalsNames } from '../models/modalManager';
+import { todayStore, spendsStore } from './spendsStore';
 
 let previousSpends = 0;
 let todaySpends = 0;
+
+spendsStore.subscribe(val => {
+	const {bDate, eDate} = getSettings();
+
+	const data = val.filter(item => {
+		return moment(item.date, 'x') - moment(bDate, 'YYYY-MM-DD') > 0 &&
+			moment(item.date, 'x') - moment(eDate, 'YYYY-MM-DD') < 0;
+	});
+
+	previousSpends = data.reduce(
+	 	(val, acc) => val += acc.sum,
+	 	0,
+ 	)
+});
+
+todayStore.subscribe(val =>
+	todaySpends = val.reduce(
+	 	(val, acc) => val += acc.sum,
+	 	0,
+ 	)
+);
 
 let savings;
 savingsStore.subscribe(val => savings = val);
@@ -14,11 +38,16 @@ let setData;
 export const dataStore = readable(calculate(), set => setData = set);
 
 export function getSettings() {
-	if (!config.mapper) {
-		config.mapper = val => val;
+	const data = JSON.parse(localStorage.getItem(storeName.settings));
+
+	if (
+		!data ||
+		moment(data.eDate, 'YYYY-MM-DD').add(1, 'day') - moment().startOf('day') < 0
+	) {
+		openModal(modalsNames.settings);
 	}
 
-	return config.mapper(JSON.parse(localStorage.getItem(config.name))) || config.default;
+	return data || {};
 }
 
 export function setSettings(obj) {
@@ -36,7 +65,7 @@ export function setSettings(obj) {
 	) return;
 
 	add(-savings);
-	localStorage.setItem(config.name, JSON.stringify(obj));
+	localStorage.setItem(storeName.settings, JSON.stringify(obj));
 	setData(calculate());
 }
 

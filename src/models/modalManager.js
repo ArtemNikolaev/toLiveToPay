@@ -6,7 +6,7 @@ export const modalsNames = {
 	categories: 'categories',
 }
 
-function openModal(modal) {
+export function openModal(modal) {
 	location.hash = modal;
 }
 
