@@ -39,6 +39,7 @@
 <Modal id={modalsNames.withdraw} {header}>
 	<section slot='body'>
 		<TextNumber txt='Available Sum' num={$sum}/>
+		<!-- TODO: only num -->
 		<Input
 			type='number'
 			label='Sum To Withdraw'

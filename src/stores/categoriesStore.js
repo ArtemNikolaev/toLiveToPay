@@ -23,9 +23,8 @@ function categoriesSet (arr) {
 	const categories = JSON.stringify(arr.map(cat => cat.trim()))
 	const oldCategories = JSON.stringify(categoriesGet());
 
-	if (categories === oldCategories) return console.log(`Nothing new in categories`);
+	if (categories === oldCategories) return;
 
-	console.log(`Set Categories ${categories}`);
 	localStorage.setItem(
 		storeName,
 		categories,
@@ -43,8 +42,6 @@ export const categoriesStore = writable(categoriesGet());
 categoriesStore.subscribe(categoriesSet);
 
 export function addCategory (name) {
-	console.log('addCategory: ', { name });
-
 	if (isExist(name)) return console.log(`Category "${name}" already exist.`);
 
 	const categories = categoriesGet();
@@ -55,8 +52,6 @@ export function addCategory (name) {
 }
 
 export function deleteCategory (name) {
-	console.log('deleteCategory:', { name });
-
 	if (!isExist(name)) return console.log(`Category "${name}" isn't exist or was removed before.`);
 
 	const categories = categoriesGet();
