@@ -2,9 +2,8 @@
 	import moment from 'moment';
 
 	import Modal from '../blocks/Modal.svelte';
-	import Button from '../elements/Button.svelte';
 	import Input from '../elements/Input.svelte';
-	import { store, actions } from '../../utils/store';
+	import store from '../../utils/store';
 	import { name, close } from '../../models/modalManager';
 
 	let settings = store.getState().settings;
@@ -12,7 +11,7 @@
 
 	function start() {
 		store.dispatch({
-			type: actions.SET_SETTINGS,
+			type: 'SAVE_SETTINGS',
 			payload: settings,
 		});
 
@@ -56,7 +55,7 @@
 	</section>
 
 	<footer slot='footer'>
-		<Button txt='Go' func={start}/>
-		<Button txt='Cancel' func={close}/>
+	    <button on:click={start}>Go</button>
+	    <button on:click={close}>Cancel</button>
 	</footer>
 </Modal>

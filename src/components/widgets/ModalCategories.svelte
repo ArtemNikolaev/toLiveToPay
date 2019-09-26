@@ -2,7 +2,7 @@
 	import InputButton from '../blocks/InputButton.svelte';
 	import Modal from '../blocks/Modal.svelte';
 	import ScrollableList from '../blocks/ScrollableList.svelte';
-	import { store } from '../../utils/store';
+	import store from '../../utils/store';
 	import { close, name } from '../../models/modalManager';
 
 	function mapCategories(name) {
