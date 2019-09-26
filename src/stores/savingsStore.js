@@ -1,6 +1,7 @@
 import { localStorage } from '../utils/browserMocks';
 import { readable } from 'svelte/store';
 import { storeName } from '../../etc/config';
+import { addSpend } from './spendsStore';
 
 let setStore;
 
@@ -18,7 +19,12 @@ function get() {
 
 const set = num => localStorage.setItem(storeName.savings, num);
 
-export const add = num => setStore(get() + num);
+export const add = sum => {
+	const category = sum >=0 ? 'save' : 'withdraw';
+
+	addSpend({sum, category});
+	setStore(get() + sum);
+}
 
 export const savingsStore = readable(get(), store => setStore = store);
 
