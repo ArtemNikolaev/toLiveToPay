@@ -11,7 +11,6 @@
 	}
 
 	function keyup(event) {
-		console.log('keyup:', event.keyCode);
 		const enter = 13;
 
 		if (event.keyCode === enter) add();

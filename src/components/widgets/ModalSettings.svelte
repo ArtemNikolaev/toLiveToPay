@@ -1,35 +1,30 @@
 <script>
-import moment 	from 'moment';
-import Modal	from '../blocks/Modal.svelte';
-import Button 	from '../elements/Button.svelte';
-import Input 	from '../elements/Input.svelte';
-import {
-	getSettings,
-	setSettings
-}				from '../../stores/dataStore';
-import {
-	closeModal,
-	modalsNames
-}				from '../../models/modalManager';
+	import moment from 'moment';
 
-const id = modalsNames.settings;
-const header = 'Settings';
-const max = moment().format('YYYY-MM-DD');
-const min = moment().add(1, 'day').format('YYYY-MM-DD');
+	import Modal from '../blocks/Modal.svelte';
+	import Button from '../elements/Button.svelte';
+	import Input from '../elements/Input.svelte';
+	import { store, actions } from '../../utils/store';
+	import {
+		closeModal,
+		modalsNames
+	} from '../../models/modalManager';
 
-const settings = getSettings();
-settings.bDate = settings.bDate || max;
-settings.eDate = settings.eDate || min;
 
-let amountOfMoney = 0;
-let beginDate = max;
-let endDate;
+	let settings = store.getState().settings;
+	store.subscribe(() => settings = store.getState().settings);
 
-function start() {
-	setSettings(settings);
+	function start() {
+		store.dispatch({
+			type: actions.SET_SETTINGS,
+			payload: settings,
+		});
 
-	closeModal();
-}
+		closeModal();
+	}
+
+	const today = moment().format('YYYY-MM-DD');
+	const tomorrow = moment().add(1, 'day').format('YYYY-MM-DD');
 </script>
 
 <style>
@@ -42,7 +37,7 @@ function start() {
 
 </style>
 
-<Modal {id} {header}>
+<Modal id={modalsNames.settings} header='Settings'>
 	<section slot='body'>
 		<!-- TODO: only numbers -->
 		<Input
@@ -53,13 +48,13 @@ function start() {
 		<Input
 			type='date'
 			label='Begin Date'
-			{max}
+			max={today}
 			bind:value={settings.bDate}
 		/>
 		<Input
 			type='date'
 			label='End Date'
-			{min}
+			min={tomorrow}
 			bind:value={settings.eDate}
 		/>
 	</section>

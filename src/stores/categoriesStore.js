@@ -42,7 +42,7 @@ export const categoriesStore = writable(categoriesGet());
 categoriesStore.subscribe(categoriesSet);
 
 export function addCategory (name) {
-	if (isExist(name)) return console.log(`Category "${name}" already exist.`);
+	if (isExist(name)) return;
 
 	const categories = categoriesGet();
 	
@@ -52,7 +52,7 @@ export function addCategory (name) {
 }
 
 export function deleteCategory (name) {
-	if (!isExist(name)) return console.log(`Category "${name}" isn't exist or was removed before.`);
+	if (!isExist(name)) return;
 
 	const categories = categoriesGet();
 
