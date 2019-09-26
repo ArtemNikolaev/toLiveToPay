@@ -3,7 +3,6 @@ import { localStorage } from '../utils/browserMocks';
 import { readable } from 'svelte/store';
 import { storeName } from '../../etc/config';
 import { settings as config } from '../../etc/storeConfig';
-import { savingsStore, add } from './savingsStore';
 import { openModal, modalsNames } from '../models/modalManager';
 import { todayStore, spendsStore } from './spendsStore';
 
@@ -30,9 +29,6 @@ todayStore.subscribe(val =>
 	 	0,
  	)
 );
-
-let savings;
-savingsStore.subscribe(val => savings = val);
 
 let setData;
 export const dataStore = readable(calculate(), set => setData = set);
@@ -64,7 +60,6 @@ export function setSettings(obj) {
 		)
 	) return;
 
-	add(-savings);
 	localStorage.setItem(storeName.settings, JSON.stringify(obj));
 	setData(calculate());
 }
@@ -74,7 +69,7 @@ function calculate() {
 	const day = 1000 * 60 * 60 * 24;
 	const { sum, bDate, eDate } = getSettings();
 
-	const money = sum - savings - previousSpends;
+	const money = sum - previousSpends;
 	const moneyLeft = money - todaySpends;
 	const daysAll = (moment(eDate, format).add(1, 'day') - moment(bDate, format)) / day;
 	const daysLeft = (moment(eDate, format).add(1, 'day') - moment().startOf('day')) / day;
