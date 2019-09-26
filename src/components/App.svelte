@@ -10,15 +10,7 @@
 	import ModalSave		from './widgets/ModalSave.svelte';
 	import ModalWithdraw 	from './widgets/ModalWithdraw.svelte';
 	import ModalCategories	from './widgets/ModalCategories.svelte';
-
-	export let token;
 </script>
-
-<style>
-	h1 {
-		color: purple;
-	}
-</style>
 
 <Overall />
 <Day />
