@@ -43,7 +43,6 @@ label {
 input, button, select, textarea {
 	font-family: inherit;
 	font-size: inherit;
-	margin: 0 0 0.5em 0;
 	box-sizing: border-box;
 	border: 1px solid #ccc;
 	border-radius: 2px;
@@ -52,7 +51,6 @@ input, button, select, textarea {
 input, select, textarea {
 	padding: 0.4em;
 	width: 100%;
-	margin: 0;
 }
 
 input:disabled {
@@ -66,6 +64,7 @@ input[type="range"] {
 button {
 	color: #333;
 	background-color: #f4f4f4;
+  margin: 0;
 	outline: none;
 }
 

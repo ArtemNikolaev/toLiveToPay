@@ -1,6 +1,6 @@
 {
   "name": "toLiveToPay",
-  "version": "2.27.0",
+  "version": "2.27.1",
   "devDependencies": {
     "@testing-library/svelte": "^1.8.0",
     "jest": "^24.9.0",
