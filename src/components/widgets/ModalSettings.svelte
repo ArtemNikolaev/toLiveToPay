@@ -5,11 +5,7 @@
 	import Button from '../elements/Button.svelte';
 	import Input from '../elements/Input.svelte';
 	import { store, actions } from '../../utils/store';
-	import {
-		closeModal,
-		modalsNames
-	} from '../../models/modalManager';
-
+	import { name, close } from '../../models/modalManager';
 
 	let settings = store.getState().settings;
 	store.subscribe(() => settings = store.getState().settings);
@@ -20,7 +16,7 @@
 			payload: settings,
 		});
 
-		closeModal();
+		close();
 	}
 
 	const today = moment().format('YYYY-MM-DD');
@@ -37,7 +33,7 @@
 
 </style>
 
-<Modal id={modalsNames.settings} header='Settings'>
+<Modal id={name.settings} header='Settings'>
 	<section slot='body'>
 		<!-- TODO: only numbers -->
 		<Input
@@ -61,6 +57,6 @@
 
 	<footer slot='footer'>
 		<Button txt='Go' func={start}/>
-		<Button txt='Cancel' func={closeModal}/>
+		<Button txt='Cancel' func={close}/>
 	</footer>
 </Modal>

@@ -5,7 +5,7 @@
 	import Button from '../elements/Button.svelte';
 	import ScrollableList from '../blocks/ScrollableList.svelte';
 	import { categoriesStore } from '../../stores/categoriesStore';
-	import { closeModal, modalsNames } from '../../models/modalManager';
+	import { close, name } from '../../models/modalManager';
 </script>
 
 <style>
@@ -19,7 +19,7 @@
 	}
 </style>
 
-<Modal id={modalsNames.categories} header="Categories">
+<Modal id={name.categories} header="Categories">
 	<section slot='body'>
 		<CategoryAdd />
 
@@ -35,6 +35,6 @@
 	</section>
 
 	<footer slot='footer'>
-		<Button txt='Cancel' func={closeModal}/>
+		<Button txt='Cancel' func={close}/>
 	</footer>
 </Modal>

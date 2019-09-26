@@ -1,19 +1,19 @@
-export const modalsNames = {
+export const name = {
 	settings: 'settings',
 	addSpend: 'add-spend',
 	save: 'save',
 	withdraw: 'withdraw',
 	categories: 'categories',
-}
+};
 
-export function openModal(modal) {
+export function open(modal) {
 	location.hash = modal;
 }
 
-export function closeModal() {
+export function close() {
 	location.hash = '';
 }
 
-export function openModalFactory(modal) {
-	return () => openModal(modal);
+export function factory(modal) {
+	return () => open(modal);
 }

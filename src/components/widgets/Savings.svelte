@@ -2,7 +2,7 @@
 	import Header from '../elements/Header.svelte';
 	import Button from '../elements/Button.svelte';
 	import { savingsStore as sum } from '../../stores/savingsStore';
-	import { modalsNames, openModalFactory } from '../../models/modalManager';
+	import { name, factory } from '../../models/modalManager';
 
 	export let withdraw = 'Withdraw';
 </script>
@@ -24,5 +24,5 @@
 <section class="widget">
 		<Header txt='SAVINGS' />
 		<span>{$sum}</span>
-		<Button txt={withdraw} func={openModalFactory(modalsNames.withdraw)}/>
+		<Button txt={withdraw} func={factory(name.withdraw)}/>
 </section>

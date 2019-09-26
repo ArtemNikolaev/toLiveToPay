@@ -3,7 +3,7 @@
 	import TextNumber from '../blocks/TextNumber.svelte';
 	import Header from '../elements/Header.svelte';
 	import Button from '../elements/Button.svelte';
-	import { modalsNames, openModalFactory } from '../../models/modalManager';
+	import { name, factory } from '../../models/modalManager';
 	import { dataStore } from '../../stores/dataStore';
 
 	const txt = 'Overall Left';
@@ -37,7 +37,7 @@
 	<article class='header'>
 		<span></span>
 		<Header {txt} />
-		<Button txt={modalsNames.settings} func={openModalFactory(modalsNames.settings)} />
+		<Button txt={name.settings} func={factory(name.settings)} />
 	</article>
 	<article>
 		<Money />
