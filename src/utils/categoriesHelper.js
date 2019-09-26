@@ -1,12 +1,18 @@
 import { categories as initialValue } from './defaults';
 import { localStorage } from "./browserMocks";
 
+const name = 'categories';
+
 export function initial() {
-  return JSON.parse(localStorage.getItem('categories')) || initialValue;
+  try {
+    return JSON.parse(localStorage.getItem(name)) || initialValue;
+  } catch (e) {
+    return initialValue;
+  }
 }
 
 export function save(categories) {
-  localStorage.setItem('categories', JSON.stringify(categories));
+  localStorage.setItem(name, JSON.stringify(categories));
 }
 
 export function add (state, category) {
