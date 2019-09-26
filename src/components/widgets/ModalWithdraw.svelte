@@ -8,10 +8,7 @@
 	import {
 		savingsStore as sum
 	}					from '../../stores/savingsStore';
-	import {
-		modalsNames,
-		closeModal
-	}					from '../../models/modalManager';
+	import { name, close } from '../../models/modalManager';
 
 	const header = 'Withdraw';
 	let sumToWithdraw = 0;
@@ -21,7 +18,7 @@
 
 		sumToWithdraw = 0;
 
-		closeModal();
+		close();
 	}
 </script>
 
@@ -36,7 +33,7 @@
 	}
 </style>
 
-<Modal id={modalsNames.withdraw} {header}>
+<Modal id={name.withdraw} {header}>
 	<section slot='body'>
 		<TextNumber txt='Available Sum' num={$sum}/>
 		<!-- TODO: only num -->
@@ -49,6 +46,6 @@
 
 	<footer slot='footer'>
 		<Button txt='Withdraw' func={withdraw}/>
-		<Button txt='Cancel' func={closeModal}/>
+		<Button txt='Cancel' func={close}/>
 	</footer>
 </Modal>

@@ -6,10 +6,7 @@
 	import DayBudget	from '../blocks/DayBudget.svelte';
 	import Button		from '../elements/Button.svelte';
 	import Input		from '../elements/Input.svelte';
-	import {
-		modalsNames,
-		closeModal
-	}					from '../../models/modalManager';
+	import { name, close } from '../../models/modalManager';
 
 	const header = 'Save Money';
 	let sumToSave = 0;
@@ -19,7 +16,7 @@
 
 		sumToSave = 0;
 
-		closeModal();
+		close();
 	}
 </script>
 
@@ -34,7 +31,7 @@
 	}
 </style>
 
-<Modal id={modalsNames.save} {header}>
+<Modal id={name.save} {header}>
 	<section slot='body'>
 		<article>
 			<DayBudget />
@@ -52,6 +49,6 @@
 
 	<footer slot='footer'>
 		<Button txt='Save' func={save}/>
-		<Button txt='Cancel' func={closeModal}/>
+		<Button txt='Cancel' func={close}/>
 	</footer>
 </Modal>

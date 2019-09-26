@@ -1,7 +1,7 @@
 <script>
 	import DayBudget from '../blocks/DayBudget.svelte';
 	import Button from '../elements/Button.svelte';
-	import { modalsNames, openModalFactory } from '../../models/modalManager';
+	import { name, factory } from '../../models/modalManager';
 </script>
 
 <style>
@@ -14,7 +14,7 @@
 </style>
 
 <section class="widget">
-	<Button txt="Spend" func={openModalFactory(modalsNames.addSpend)}/>
+	<Button txt="Spend" func={factory(name.addSpend)}/>
 	<DayBudget />
-	<Button txt="Save" func={openModalFactory(modalsNames.save)}/>
+	<Button txt="Save" func={factory(name.save)}/>
 </section>

@@ -1,7 +1,7 @@
 <script>
 	import Header from '../elements/Header.svelte';
 	import Button from '../elements/Button.svelte';
-	import { modalsNames, openModalFactory } from '../../models/modalManager';
+	import { name, factory } from '../../models/modalManager';
 	import { todayStore } from '../../stores/spendsStore';
 </script>
 
@@ -44,7 +44,7 @@
 	<article class='header'>
 		<span></span>
 		<Header txt="Spends" />
-		<Button txt='Categories' func={openModalFactory(modalsNames.categories)}/>
+		<Button txt='Categories' func={factory(name.categories)}/>
 	</article>
 	<article>
 		<p>

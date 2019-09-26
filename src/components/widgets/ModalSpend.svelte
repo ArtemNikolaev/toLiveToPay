@@ -2,16 +2,12 @@
 	import Modal	from '../blocks/Modal.svelte';
 	import Button 	from '../elements/Button.svelte';
 	import Input 	from '../elements/Input.svelte';
-	import {
-		closeModal,
-		modalsNames
-	}				from '../../models/modalManager';
+	import { close, name } from '../../models/modalManager';
 	import {
 		categoriesStore
 	}				from '../../stores/categoriesStore';
 	import { addSpend } from '../../stores/spendsStore';
 
-	const id = modalsNames.addSpend;
 	const header = 'Add Spend';
 
 	let sum = 0;
@@ -25,7 +21,7 @@
 		description = '';
 		category = '';
 
-		closeModal();
+		close();
 	}
 </script>
 
@@ -38,7 +34,7 @@
 	}
 </style>
 
-<Modal {id} {header}>
+<Modal id={name.addSpend} {header}>
 	<section slot='body'>
 		<Input
 			type='number'
@@ -66,6 +62,6 @@
 
 	<footer slot='footer'>
 		<Button txt='Add' func={add}/>
-		<Button txt='Cancel' func={closeModal}/>
+		<Button txt='Cancel' func={close}/>
 	</footer>
 </Modal>

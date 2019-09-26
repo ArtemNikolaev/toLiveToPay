@@ -3,7 +3,7 @@ import { localStorage } from '../utils/browserMocks';
 import { readable } from 'svelte/store';
 import { storeName } from '../../etc/config';
 import { settings as config } from '../../etc/storeConfig';
-import { openModal, modalsNames } from '../models/modalManager';
+import { open, name } from '../models/modalManager';
 import { todayStore, spendsStore } from './spendsStore';
 
 let previousSpends = 0;
@@ -40,7 +40,7 @@ export function getSettings() {
 		!data ||
 		moment(data.eDate, 'YYYY-MM-DD').add(1, 'day') - moment().startOf('day') < 0
 	) {
-		openModal(modalsNames.settings);
+		open(name.settings);
 	}
 
 	return data || {};
