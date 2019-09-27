@@ -1,18 +1,28 @@
 <!-- TODO: compile with ModalWithdraw -->
 <script>
-	import { add }		from '../../stores/savingsStore';
 	import Modal		from '../blocks/Modal.svelte';
 	import Money		from '../blocks/Money.svelte';
 	import DayBudget	from '../blocks/DayBudget.svelte';
 	import Button		from '../elements/Button.svelte';
 	import Input		from '../elements/Input.svelte';
 	import { name, close } from '../../models/modalManager';
+    import state from '../../utils/store';
+    import moment from 'moment';
 
 	const header = 'Save Money';
 	let sumToSave = 0;
 
 	function save() {
-		add(sumToSave);
+		state.dispatch({
+		    type: 'ADD_SPEND',
+		    payload: {
+                sum: sumToSave,
+                description: '',
+                category: 'deposit',
+                date: Number(moment().startOf('day').format('x')),
+                time: moment() - moment().startOf('day'),
+            },
+		});
 
 		sumToSave = 0;
 
