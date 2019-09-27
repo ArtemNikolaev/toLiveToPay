@@ -1,10 +1,12 @@
 <script>
 	import TextNumber from './TextNumber.svelte';
-	import { dataStore } from '../../stores/dataStore';
+    import state from '../../utils/store';
+	let data = state.getState();
+	state.subscribe(() => data = state.getState());
 
 	const txt = 'Money';
 
-	$: num = `${$dataStore.moneyLeft} / ${$dataStore.moneyAll}`;
+	$: num = `${data.moneyLeft} / ${data.moneyAll}`;
 </script>
 
 <TextNumber {txt} {num}/>

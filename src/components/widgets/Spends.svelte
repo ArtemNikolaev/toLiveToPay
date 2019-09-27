@@ -2,15 +2,11 @@
 	import Header from '../elements/Header.svelte';
 	import Button from '../elements/Button.svelte';
 	import { name, factory } from '../../models/modalManager';
-	import moment from 'moment';
 	import store from '../../utils/store';
-    let spends = store.getState().spends.filter( item =>
-        item.date === moment().startOf('day').format('x')
-    );
+
+    let spends = store.getState().spendsToday;
 	store.subscribe(() =>
-	    spends = store.getState().spends.filter( item =>
-	        item.date === moment().startOf('day').format('x')
-        )
+	    spends = store.getState().spendsToday
     );
 
 </script>
