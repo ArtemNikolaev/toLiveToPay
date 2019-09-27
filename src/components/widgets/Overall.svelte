@@ -4,11 +4,13 @@
 	import Header from '../elements/Header.svelte';
 	import Button from '../elements/Button.svelte';
 	import { name, factory } from '../../models/modalManager';
-	import { dataStore } from '../../stores/dataStore';
+    import state from '../../utils/store';
+	let data = state.getState();
+	state.subscribe(() => data = state.getState());
 
 	const txt = 'Overall Left';
 
-	$: num = `${$dataStore.daysLeft} / ${$dataStore.daysAll}`;
+	$: num = `${data.daysLeft} / ${data.daysAll}`;
 </script>
 
 <style>

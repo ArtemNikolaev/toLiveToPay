@@ -1,8 +1,10 @@
 <script>
 	import Header from '../elements/Header.svelte';
 	import Button from '../elements/Button.svelte';
-	import { savingsStore as sum } from '../../stores/savingsStore';
 	import { name, factory } from '../../models/modalManager';
+    import state from '../../utils/store';
+	let data = state.getState();
+	state.subscribe(() => data = state.getState());
 
 	export let withdraw = 'Withdraw';
 </script>
@@ -23,6 +25,6 @@
 
 <section class="widget">
 		<Header txt='SAVINGS' />
-		<span>{$sum}</span>
+		<span>{data.savings}</span>
 		<Button txt={withdraw} func={factory(name.withdraw)}/>
 </section>

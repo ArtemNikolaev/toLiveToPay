@@ -2,8 +2,44 @@ import { createStore } from 'redux';
 import { localStorage } from './browserMocks';
 import { settings, spends } from './defaults';
 import * as categories from './categoriesHelper';
-//
-import { setSettings } from '../stores/dataStore';
+import moment from "moment";
+
+function calculate(state) {
+  // intermediate
+  state.todayDate = moment().startOf('day').format('x');
+  state.spendsToday = state.spends.filter( item =>
+    item.date == state.todayDate
+  );
+  state.spendsSumToday = state.spendsToday.reduce((prev, cur) => prev += cur.sum, 0);
+  state.spendsSumBeforeToday = state.spendsToday.filter(item => {
+    return item.date >= moment(state.settings.bDate, 'YYYY-MM-DD').format('x') &&
+      item.date < state.todayDate;
+  }).reduce((prev, cur) => prev += cur.sum, 0);
+  state.spendsAllSum = state.spendsSumBeforeToday + state.spendsSumToday;
+  state.spendsSavings = state.spends.filter( item =>
+    item.category === 'deposit'
+  ).reduce((prev, cur) => prev += cur.sum, 0);
+  state.spendsWithdraw = state.spends.filter( item =>
+    item.category === 'withdraw'
+  ).reduce((prev, cur) => prev += cur.sum, 0);
+
+  // global
+  state.moneyAll = Math.round(state.settings.sum * 100) / 100;
+  state.moneyLeft = Math.round((state.moneyAll - state.spendsAllSum) * 100) / 100;
+  state.daysAll = Math.round((
+    moment(state.settings.eDate, 'YYYY-MM-DD') -
+    moment(state.settings.bDate, 'YYYY-MM-DD')
+  ) / (1000 * 60 * 60 * 24) * 100) / 100;
+  state.daysLeft = Math.round((
+    moment(state.settings.eDate, 'YYYY-MM-DD') -
+    moment(state.todayDate, 'x')
+  ) / (1000 * 60 * 60 * 24) * 100) / 100;
+  state.dayBudget = Math.round((state.moneyAll - state.spendsSumBeforeToday) / state.daysLeft * 100) / 100;
+  state.dayBudgetLeft = Math.round((state.dayBudget - state.spendsSumToday) * 100) / 100;
+  state.savings = Math.round((state.spendsSavings + state.spendsWithdraw) * 100) / 100;
+
+  return state;
+}
 
 function initialState() {
   const state = {
@@ -33,17 +69,17 @@ function reducer(state, action) {
 
   switch (action.type) {
     case 'SAVE_SETTINGS':
-      return settingsReducer(state, action.payload);
+      return calculate(settingsReducer(state, action.payload));
 
     case 'ADD_CATEGORY':
-      return categories.add(state, action.payload);
+      return calculate(categories.add(state, action.payload));
     case 'UPDATE_CATEGORY':
-      return categories.update(state, action.payload);
+      return calculate(categories.update(state, action.payload));
     case 'REMOVE_CATEGORY':
-      return categories.remove(state, action.payload);
+      return calculate(categories.remove(state, action.payload));
 
     case 'ADD_SPEND':
-      return spendsAdd(state, action.payload);
+      return calculate(spendsAdd(state, action.payload));
     case 'UPDATE_SPEND':
     case 'REMOVE_SPEND':
       return state;
@@ -52,7 +88,7 @@ function reducer(state, action) {
   }
 }
 
-const store = createStore(reducer, initialState());
+const store = createStore(reducer, calculate(initialState()));
 
 // TODO: remove after all checks
 store.subscribe(() => {
@@ -60,7 +96,7 @@ store.subscribe(() => {
 
   console.log('subscribe: ', state);
 
-  setSettings(state.settings);
+  localStorage.setItem('settings', JSON.stringify(state.settings));
 
   categories.save(state.categories);
 
