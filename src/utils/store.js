@@ -2,36 +2,37 @@ import { createStore } from 'redux';
 import { localStorage } from './browserMocks';
 import { settings, spends } from './defaults';
 import * as categories from './categoriesHelper';
-import moment from "moment";
+import moment from 'moment';
 
-function calculate(state) {
+function calculate (state) {
   // intermediate
   state.todayDate = moment().startOf('day').format('x');
-  state.spendsToday = state.spends.filter( item =>
+  state.spendsToday = state.spends.filter(item =>
+    // eslint-disable-next-line eqeqeq
     item.date == state.todayDate
   );
-  state.spendsSumToday = state.spendsToday.reduce((prev, cur) => prev += cur.sum, 0);
+  state.spendsSumToday = state.spendsToday.reduce((prev, cur) => { prev += cur.sum }, 0);
   state.spendsSumBeforeToday = state.spendsToday.filter(item => {
     return item.date >= moment(state.settings.bDate, 'YYYY-MM-DD').format('x') &&
       item.date < state.todayDate;
-  }).reduce((prev, cur) => prev += cur.sum, 0);
+  }).reduce((prev, cur) => { prev += cur.sum }, 0);
   state.spendsAllSum = state.spendsSumBeforeToday + state.spendsSumToday;
-  state.spendsSavings = state.spends.filter( item =>
+  state.spendsSavings = state.spends.filter(item =>
     item.category === 'deposit'
-  ).reduce((prev, cur) => prev += cur.sum, 0);
-  state.spendsWithdraw = state.spends.filter( item =>
+  ).reduce((prev, cur) => { prev += cur.sum }, 0);
+  state.spendsWithdraw = state.spends.filter(item =>
     item.category === 'withdraw'
-  ).reduce((prev, cur) => prev += cur.sum, 0);
+  ).reduce((prev, cur) => { prev += cur.sum }, 0);
 
   // global
   state.moneyAll = Math.round(state.settings.sum * 100) / 100;
   state.moneyLeft = Math.round((state.moneyAll - state.spendsAllSum) * 100) / 100;
   state.daysAll = Math.round((
-    moment(state.settings.eDate, 'YYYY-MM-DD') -
+    moment(state.settings.eDate, 'YYYY-MM-DD').add(1, 'day') -
     moment(state.settings.bDate, 'YYYY-MM-DD')
   ) / (1000 * 60 * 60 * 24) * 100) / 100;
   state.daysLeft = Math.round((
-    moment(state.settings.eDate, 'YYYY-MM-DD') -
+    moment(state.settings.eDate, 'YYYY-MM-DD').add(1, 'day') -
     moment(state.todayDate, 'x')
   ) / (1000 * 60 * 60 * 24) * 100) / 100;
   state.dayBudget = Math.round((state.moneyAll - state.spendsSumBeforeToday) / state.daysLeft * 100) / 100;
@@ -41,7 +42,7 @@ function calculate(state) {
   return state;
 }
 
-function initialState() {
+function initialState () {
   const state = {
     settings: JSON.parse(localStorage.getItem('settings')) || settings,
     categories: categories.initial(),
@@ -51,7 +52,7 @@ function initialState() {
   return JSON.parse(JSON.stringify(state));
 }
 
-function spendsAdd(state, spend) {
+function spendsAdd (state, spend) {
   state.spends = [
     spend,
     ...state.spends,
@@ -64,7 +65,7 @@ function settingsReducer (state, settings) {
   return Object.assign({}, state, { settings });
 }
 
-function reducer(state, action) {
+function reducer (state, action) {
   state = Object.assign({}, state);
 
   switch (action.type) {
