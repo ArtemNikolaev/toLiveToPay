@@ -1,20 +1,29 @@
 <!-- TODO: compile with ModalSave -->
 <script>
-	import { add }		from '../../stores/savingsStore';
 	import Modal		from '../blocks/Modal.svelte';
 	import Button		from '../elements/Button.svelte';
 	import Input		from '../elements/Input.svelte';
 	import TextNumber	from '../blocks/TextNumber.svelte';
-	import {
-		savingsStore as sum
-	}					from '../../stores/savingsStore';
 	import { name, close } from '../../models/modalManager';
+    import state from '../../utils/store';
+    import moment from 'moment';
+	let data = state.getState();
+	state.subscribe(() => data = state.getState());
 
 	const header = 'Withdraw';
 	let sumToWithdraw = 0;
 
 	function withdraw() {
-		add(-sumToWithdraw);
+	    state.dispatch({
+	        type: 'ADD_SPEND',
+	        payload: {
+                sum: -sumToWithdraw,
+                description: '',
+                category: 'withdraw',
+                date: Number(moment().startOf('day').format('x')),
+                time: moment() - moment().startOf('day'),
+            },
+	    });
 
 		sumToWithdraw = 0;
 
@@ -35,7 +44,7 @@
 
 <Modal id={name.withdraw} {header}>
 	<section slot='body'>
-		<TextNumber txt='Available Sum' num={$sum}/>
+		<TextNumber txt='Available Sum' num={data.savings}/>
 		<!-- TODO: only num -->
 		<Input
 			type='number'
