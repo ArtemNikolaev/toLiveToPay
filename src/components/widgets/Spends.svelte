@@ -2,7 +2,17 @@
 	import Header from '../elements/Header.svelte';
 	import Button from '../elements/Button.svelte';
 	import { name, factory } from '../../models/modalManager';
-	import { todayStore } from '../../stores/spendsStore';
+	import moment from 'moment';
+	import store from '../../utils/store';
+    let spends = store.getState().spends.filter( item =>
+        item.date === moment().startOf('day').format('x')
+    );
+	store.subscribe(() =>
+	    spends = store.getState().spends.filter( item =>
+	        item.date === moment().startOf('day').format('x')
+        )
+    );
+
 </script>
 
 <style>
@@ -54,7 +64,7 @@
 		</p>
 	</article>
 	<article class="list">
-		{#each $todayStore as spend}
+		{#each spends as spend}
 			<p>
 				<span>{spend.sum}</span>
 				<span>{spend.category}</span>
