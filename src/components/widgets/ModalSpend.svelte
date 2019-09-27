@@ -3,19 +3,27 @@
 	import Button 	from '../elements/Button.svelte';
 	import Input 	from '../elements/Input.svelte';
 	import { close, name } from '../../models/modalManager';
-	import {
-		categoriesStore
-	}				from '../../stores/categoriesStore';
-	import { addSpend } from '../../stores/spendsStore';
+	import store from '../../utils/store';
+	import moment from 'moment';
 
-	const header = 'Add Spend';
+	let categories = store.getState().categories;
+	store.subscribe(() => categories = store.getState().categories);
 
 	let sum = 0;
 	let description = '';
 	let category = '';
 
 	function add() {
-		addSpend({sum, description, category});
+	    store.dispatch({
+	        type: 'ADD_SPEND',
+	        payload: {
+                sum,
+                description,
+                category,
+                date: Number(moment().startOf('day').format('x')),
+                time: moment() - moment().startOf('day'),
+            },
+	    });
 
 		sum = 0;
 		description = '';
@@ -34,7 +42,7 @@
 	}
 </style>
 
-<Modal id={name.addSpend} {header}>
+<Modal id={name.addSpend} header="Add Spend">
 	<section slot='body'>
 		<Input
 			type='number'
@@ -42,13 +50,13 @@
 			bind:value={sum}
 		/>
 
-		{#if $categoriesStore.length}
+		{#if categories.length}
 			<label>Category</label>
 			<select bind:value={category}>
 				<option value=''>No Category</option>
 
-				{#each $categoriesStore as category}
-					<option value={category}>{category}</option>			
+				{#each categories as category}
+					<option value={category}>{category}</option>
 				{/each}
 			</select>
 		{/if}
