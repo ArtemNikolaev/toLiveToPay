@@ -1,6 +1,6 @@
 {
   "name": "toLiveToPay",
-  "version": "2.31.2",
+  "version": "2.31.3",
   "devDependencies": {
     "@testing-library/svelte": "^1.8.0",
     "babel-eslint": "^10.0.3",

@@ -17,12 +17,12 @@ function calculate (state) {
       item.date < state.todayDate;
   }).reduce((prev, cur) => { prev += cur.sum }, 0);
   state.spendsAllSum = state.spendsSumBeforeToday + state.spendsSumToday;
-  state.spendsSavings = state.spends.filter(item =>
-    item.category === 'deposit'
-  ).reduce((prev, cur) => { prev += cur.sum }, 0);
-  state.spendsWithdraw = state.spends.filter(item =>
-    item.category === 'withdraw'
-  ).reduce((prev, cur) => { prev += cur.sum }, 0);
+  state.spendsSavings = state.spends
+    .filter(item => item.category === 'deposit')
+    .reduce((prev, cur) => prev + cur.sum, 0);
+  state.spendsWithdraw = state.spends
+    .filter(item => item.category === 'withdraw')
+    .reduce((prev, cur) => prev + cur.sum, 0);
 
   // global
   state.moneyAll = Math.round(state.settings.sum * 100) / 100;
