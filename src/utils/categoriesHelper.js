@@ -1,9 +1,9 @@
 import { categories as initialValue } from './defaults';
-import { localStorage } from "./browserMocks";
+import { localStorage } from './browserMocks';
 
 const name = 'categories';
 
-export function initial() {
+export function initial () {
   try {
     return JSON.parse(localStorage.getItem(name)) || initialValue;
   } catch (e) {
@@ -11,7 +11,7 @@ export function initial() {
   }
 }
 
-export function save(categories) {
+export function save (categories) {
   localStorage.setItem(name, JSON.stringify(categories));
 }
 
@@ -26,7 +26,7 @@ export function add (state, category) {
   return state;
 }
 
-export function update(state, update) {
+export function update (state, update) {
   state.categories = [
     ...state.categories.slice(0, update.index),
     update.value,
@@ -36,7 +36,7 @@ export function update(state, update) {
   return state;
 }
 
-export function remove(state, index) {
+export function remove (state, index) {
   state.categories = [
     ...state.categories.slice(0, index),
     ...state.categories.slice(index + 1),
