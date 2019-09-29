@@ -1,6 +1,7 @@
 const { name, version } = require('./package.json');
 
 module.exports = {
+  automock: false,
 	clearMocks: true,
 	collectCoverage: true,
 	collectCoverageFrom: [
