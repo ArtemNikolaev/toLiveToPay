@@ -12,7 +12,7 @@ function calculate (state) {
     item.date == state.todayDate
   );
   state.spendsSumToday = state.spendsToday.reduce((prev, cur) => prev + cur.sum, 0);
-  state.spendsSumBeforeToday = state.spendsToday.filter(item => {
+  state.spendsSumBeforeToday = state.spends.filter(item => {
     return item.date >= moment(state.settings.bDate, 'YYYY-MM-DD').format('x') &&
       item.date < state.todayDate;
   }).reduce((prev, cur) => prev + cur.sum, 0);
