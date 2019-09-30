@@ -11,11 +11,11 @@ function calculate (state) {
     // eslint-disable-next-line eqeqeq
     item.date == state.todayDate
   );
-  state.spendsSumToday = state.spendsToday.reduce((prev, cur) => { prev += cur.sum }, 0);
+  state.spendsSumToday = state.spendsToday.reduce((prev, cur) => prev + cur.sum, 0);
   state.spendsSumBeforeToday = state.spendsToday.filter(item => {
     return item.date >= moment(state.settings.bDate, 'YYYY-MM-DD').format('x') &&
       item.date < state.todayDate;
-  }).reduce((prev, cur) => { prev += cur.sum }, 0);
+  }).reduce((prev, cur) => prev + cur.sum, 0);
   state.spendsAllSum = state.spendsSumBeforeToday + state.spendsSumToday;
   state.spendsSavings = state.spends
     .filter(item => item.category === 'deposit')
