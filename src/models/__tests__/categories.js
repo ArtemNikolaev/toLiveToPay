@@ -45,7 +45,7 @@ describe('categories.js', () => {
         cat.name = name;
         let dispatch;
 
-        store.dispatch = jest.fn((val) => {dispatch = val});
+        store.dispatch = jest.fn((val) => { dispatch = val });
 
         expect(cat.add()).toBeTruthy();
         expect(store.getState).toHaveBeenCalledTimes(1);
@@ -58,7 +58,7 @@ describe('categories.js', () => {
         cat.name = '   ' + name + '   ';
         let dispatch;
 
-        store.dispatch = jest.fn((val) => {dispatch = val});
+        store.dispatch = jest.fn((val) => { dispatch = val });
 
         expect(cat.add()).toBeTruthy();
         expect(dispatch.payload).toBe(name);

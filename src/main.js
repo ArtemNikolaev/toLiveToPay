@@ -6,7 +6,7 @@ import { init } from './utils/trirdparty';
 init();
 
 const app = new App({
-	target: document.body,
+  target: document.body,
 });
 
 export default app;
