@@ -1,6 +1,4 @@
 <script>
-	import Header from '../elements/Header.svelte';
-
 	export let txt = 'defauld';
 	export let num = 0;
 </script>
@@ -19,7 +17,7 @@
 </style>
 
 <article>
-	<Header {txt} />
+  <header>{txt}</header>
 
 	<div>{num}</div>
 </article>

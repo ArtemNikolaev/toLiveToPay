@@ -1,5 +1,4 @@
 <script>
-	import Header from '../elements/Header.svelte';
 	import Button from '../elements/Button.svelte';
 	import { name, factory } from '../../models/modalManager';
 	import store from '../../utils/store';
@@ -49,7 +48,7 @@
 <section class="widget">
 	<article class='header'>
 		<span></span>
-		<Header txt="Spends" />
+		<header>Spends</header>
 		<Button txt='Categories' func={factory(name.categories)}/>
 	</article>
 	<article>

@@ -1,6 +1,4 @@
 <script>
-	import Header from '../elements/Header.svelte';
-
 	export let id='modal';
 	export let header = 'Empty Model Header [id:{id}]'
 </script>
@@ -42,8 +40,8 @@
 </style>
 
 <section class='modal-background' {id}>
-	<article class="modal-content">		
-		<Header txt={header} />
+	<article class="modal-content">
+		<header>{header}</header>
 		<slot name='body'><div>Empty Modal Body [id:{id}]</div></slot>
 		<slot name='footer'><footer>Empty Modal Footer [id:{id}]</footer></slot>
 	</article>
