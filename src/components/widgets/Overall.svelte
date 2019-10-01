@@ -41,6 +41,9 @@
 		<Button txt={name.settings} func={factory(name.settings)} />
 	</article>
 	<article>
+		<Button txt='Change' func={factory(name.setSum)} />
+	</article>
+	<article>
 		<Money />
 		<TextNumber txt='Days'  {num}/>
 	</article>

@@ -4,6 +4,7 @@ export const name = {
   save: 'save',
   withdraw: 'withdraw',
   categories: 'categories',
+  setSum: 'set-sum',
 };
 
 export function open (modal) {

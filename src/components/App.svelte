@@ -10,6 +10,7 @@
 	import ModalSave		from './widgets/ModalSave.svelte';
 	import ModalWithdraw 	from './widgets/ModalWithdraw.svelte';
 	import ModalCategories	from './widgets/ModalCategories.svelte';
+	import ModalSum from './widgets/ModalSum.svelte';
 </script>
 
 <Overall />
@@ -23,3 +24,4 @@
 <ModalSave />
 <ModalWithdraw />
 <ModalCategories />
+<ModalSum />
