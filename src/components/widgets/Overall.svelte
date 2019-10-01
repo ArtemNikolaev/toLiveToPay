@@ -1,7 +1,6 @@
 <script>
 	import Money from '../blocks/Money.svelte';
 	import TextNumber from '../blocks/TextNumber.svelte';
-	import Header from '../elements/Header.svelte';
 	import Button from '../elements/Button.svelte';
 	import { name, factory } from '../../models/modalManager';
     import state from '../../utils/store';
@@ -38,7 +37,7 @@
 <section class="widget">
 	<article class='header'>
 		<span></span>
-		<Header {txt} />
+		<header>{txt}</header>
 		<Button txt={name.settings} func={factory(name.settings)} />
 	</article>
 	<article>
