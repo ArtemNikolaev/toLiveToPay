@@ -72,6 +72,11 @@ function reducer (state, action) {
     case 'SAVE_SETTINGS':
       return calculate(settingsReducer(state, action.payload));
 
+    case 'SET_SUM':
+      state.settings = Object.assign({}, state.settings);
+      state.settings.sum = action.payload;
+
+      return calculate(state);
     case 'ADD_CATEGORY':
       return calculate(categories.add(state, action.payload));
     case 'UPDATE_CATEGORY':
