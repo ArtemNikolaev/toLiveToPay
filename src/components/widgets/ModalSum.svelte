@@ -1,35 +1,35 @@
 <script>
-	import Modal		from '../blocks/Modal.svelte';
-	import TextNumber from '../blocks/TextNumber.svelte';
-	import Button		from '../elements/Button.svelte';
-	import { name, close } from '../../models/modalManager';
-	import store from '../../utils/store';
+  import Modal from '../blocks/Modal.svelte';
+  import TextNumber from '../blocks/TextNumber.svelte';
+  import Button from '../elements/Button.svelte';
+  import { name, close } from '../../models/modalManager';
+  import store from '../../utils/store';
 
-	let {moneyAll, moneyLeft} = store.getState();
-	store.subscribe(() => {
+  let {moneyAll, moneyLeft} = store.getState();
+  store.subscribe(() => {
     const state = store.getState();
     moneyAll = state.moneyAll;
     moneyLeft = state.moneyLeft;
-	});
+  });
 
 
-	let add = 0;
+  let add = 0;
 
-	$: sum = (add) ? moneyAll + add : moneyAll;
-	$: sumLeft = (add) ? moneyLeft + add : moneyLeft;
+  $: sum = (add) ? moneyAll + add : moneyAll;
+  $: sumLeft = (add) ? moneyLeft + add : moneyLeft;
 
-	function setSum () {
+  function setSum () {
     if (sumLeft <= 0) return;
 
     store.dispatch({
       type: 'SET_SUM',
-      payload: sumLeft,
+      payload: sum,
     });
 
     add = 0;
 
     close();
-	}
+  }
 </script>
 
 <style>
