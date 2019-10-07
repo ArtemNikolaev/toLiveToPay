@@ -33,11 +33,17 @@ export class Category {
   _validate () {
     delete this.error;
 
-    if (this.name === this._name) this.error = errors.isNotChange;
+    if (this.name === this._name) {
+      this.error = errors.isNotChange;
+    }
 
-    if (!this.name.length) this.error = errors.isEmpty;
+    if (!this.name.length) {
+      this.error = errors.isEmpty;
+    }
 
-    if (store.getState().categories.indexOf(this.name) !== -1) this.error = errors.isExist;
+    if (store.getState().categories.indexOf(this.name) !== -1) {
+      this.error = errors.isExist;
+    }
 
     return this;
   }
@@ -53,7 +59,9 @@ export class Category {
   }
 
   add () {
-    if (Number.isInteger(this._index) && this._index >= 0) return false;
+    if (Number.isInteger(this._index) && this._index >= 0) {
+      return false;
+    }
 
     return this._map()._validate()._dispatch('ADD_CATEGORY', this.name);
   }

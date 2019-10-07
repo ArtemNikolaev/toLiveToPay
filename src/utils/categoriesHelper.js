@@ -1,13 +1,13 @@
-import { categories as initialValue } from './defaults';
+import { categories } from './defaults';
 import { localStorage } from './browserMocks';
 
 const name = 'categories';
 
 export function initial () {
   try {
-    return JSON.parse(localStorage.getItem(name)) || initialValue;
+    return JSON.parse(localStorage.getItem(name)) || categories;
   } catch (e) {
-    return initialValue;
+    return categories;
   }
 }
 
@@ -16,7 +16,9 @@ export function save (categories) {
 }
 
 export function add (state, category) {
-  if (state.categories.indexOf(category) !== -1) return state;
+  if (state.categories.indexOf(category) !== -1) {
+    return state;
+  }
 
   state.categories = [
     category,
