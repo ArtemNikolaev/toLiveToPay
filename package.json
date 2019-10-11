@@ -1,15 +1,15 @@
 {
   "name": "toLiveToPay",
-  "version": "2.37.0",
+  "version": "2.38.0",
   "devDependencies": {
     "@testing-library/svelte": "^1.8.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.5.1",
     "eslint-plugin-jest": "^22.17.0",
     "eslint-plugin-vue": "^5.2.3",
-    "jest": "^24.9.0",
-    "jest-transform-svelte": "^2.1.0",
+    "mocha": "^6.2.1",
     "npm-run-all": "^4.1.5",
+    "nyc": "^14.1.1",
     "rollup": "^1.22.0",
     "rollup-jest": "0.0.2",
     "rollup-plugin-commonjs": "^10.0.0",
@@ -19,6 +19,7 @@
     "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^4.0.4",
+    "sinon": "^7.5.0",
     "sirv-cli": "^0.4.4",
     "standard": "^14.3.1",
     "svelte": "^3.12.1"
@@ -34,7 +35,8 @@
     "dev": "run-p start:dev autobuild",
     "start": "sirv public --single",
     "start:dev": "sirv public --single --dev",
-    "test": "jest",
+    "test:unit": "mocha",
+    "test": "nyc npm run test:unit --reporter=lcov",
     "lint": "eslint ."
   }
 }
