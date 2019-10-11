@@ -5,6 +5,7 @@
 	import Input from '../elements/Input.svelte';
 	import store from '../../utils/store';
 	import { name, close } from '../../models/modalManager';
+	import validateSettings from '../../utils/validateBudget';
 
 	let settings = store.getState().settings;
 	store.subscribe(() => settings = store.getState().settings);
@@ -16,10 +17,18 @@
 		});
 
 		close();
+
+		validateSettings();
 	}
 
 	const today = moment().format('YYYY-MM-DD');
 	const tomorrow = moment().add(1, 'day').format('YYYY-MM-DD');
+
+	function cancel() {
+	   close();
+
+	   validateSettings();
+	}
 </script>
 
 <style>
@@ -56,6 +65,6 @@
 
 	<footer slot='footer'>
 	    <button on:click={start}>Go</button>
-	    <button on:click={close}>Cancel</button>
+	    <button on:click={cancel}>Cancel</button>
 	</footer>
 </Modal>
