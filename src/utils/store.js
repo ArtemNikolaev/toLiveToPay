@@ -1,7 +1,8 @@
 import { createStore } from 'redux';
 import { localStorage } from './browserMocks';
-import { settings, spends } from './defaults';
+import { settings } from './defaults';
 import * as categories from './categoriesHelper';
+import * as spends from './spendsHelper';
 import moment from 'moment';
 
 function calculate (state) {
@@ -46,19 +47,10 @@ function initialState () {
   const state = {
     settings: JSON.parse(localStorage.getItem('settings')) || settings,
     categories: categories.initial(),
-    spends: JSON.parse(localStorage.getItem('spends')) || spends,
+    spends: spends.initial(),
   };
 
   return JSON.parse(JSON.stringify(state));
-}
-
-function spendsAdd (state, spend) {
-  state.spends = [
-    spend,
-    ...state.spends,
-  ];
-
-  return state;
 }
 
 function settingsReducer (state, settings) {
@@ -85,10 +77,9 @@ function reducer (state, action) {
       return calculate(categories.remove(state, action.payload));
 
     case 'ADD_SPEND':
-      return calculate(spendsAdd(state, action.payload));
+      return calculate(spends.add(state, action.payload));
     case 'UPDATE_SPEND':
     case 'REMOVE_SPEND':
-      return state;
     default:
       return state;
   }
