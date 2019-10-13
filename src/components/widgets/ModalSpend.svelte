@@ -79,7 +79,7 @@
   </section>
 
   <footer slot='footer'>
-    <Button txt='Add' func={add}/>
-    <Button txt='Cancel' func={close}/>
+    <Button txt='Add' func={add} />
+    <Button txt='Cancel' func={close} />
   </footer>
 </Modal>

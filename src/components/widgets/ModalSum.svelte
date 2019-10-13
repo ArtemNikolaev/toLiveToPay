@@ -12,7 +12,6 @@
     moneyLeft = state.moneyLeft;
   });
 
-
   let add = 0;
 
   $: sum = (add) ? moneyAll + add : moneyAll;
@@ -33,34 +32,34 @@
 </script>
 
 <style>
-	article {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		align-items: center;
-		justify-items: center;
+  article {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
 
-		width: 100%;
-	}
+    width: 100%;
+  }
 </style>
 
 <Modal id={name.setSum} header='Change Sum'>
-	<section slot='body'>
-	  <article>
-	    <TextNumber txt="All" num={moneyAll} />
-	    <TextNumber txt="Left" num={moneyLeft} />
-    </article>
-		<article>
-		  <header>+/-</header>
-		  <input type="number" bind:value={add}>
+  <section slot='body'>
+    <article>
+      <TextNumber txt="All" num={moneyAll} />
+      <TextNumber txt="Left" num={moneyLeft} />
     </article>
     <article>
-	    <TextNumber txt="All" num={sum} />
-	    <TextNumber txt="Left" num={sumLeft} />
+      <header>+/-</header>
+      <input type="number" bind:value={add}>
     </article>
-	</section>
+    <article>
+      <TextNumber txt="All" num={sum} />
+      <TextNumber txt="Left" num={sumLeft} />
+    </article>
+  </section>
 
-	<footer slot='footer'>
-		<Button txt='Save' func={setSum}/>
-		<Button txt='Cancel' func={close}/>
-	</footer>
+  <footer slot='footer'>
+    <Button txt='Save' func={setSum} />
+    <Button txt='Cancel' func={close} />
+  </footer>
 </Modal>

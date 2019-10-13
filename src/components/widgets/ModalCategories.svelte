@@ -10,43 +10,43 @@
   let newCategory = new Category();
 
   function add() {
-      newCategory.add();
+    newCategory.add();
 
-      newCategory = newCategory;
+    newCategory = newCategory;
   }
 
   function mapCategories(name) {
-      return { name, old: name, disabled: true};
+    return { name, old: name, disabled: true};
   }
   let categories = store.getState().categories.map(mapCategories);
   store.subscribe(() => categories = store.getState().categories.map(mapCategories));
 
     function editCategory(category, index) {
-        if (!category.name) {
-            category.name = category.old;
-            categories[index] = category;
-            return;
-        }
-
-        category.disabled = !category.disabled;
-
+      if (!category.name) {
+        category.name = category.old;
         categories[index] = category;
+        return;
+      }
 
-        if (category.disabled) {
-            store.dispatch({
-                type: 'UPDATE_CATEGORY',
-                payload: {
-                    index,
-                    value: category.name,
-                }
-            });
-        }
+      category.disabled = !category.disabled;
+
+      categories[index] = category;
+
+      if (category.disabled) {
+        store.dispatch({
+          type: 'UPDATE_CATEGORY',
+          payload: {
+            index,
+            value: category.name,
+          }
+        });
+      }
     }
     function removeCategory(index) {
-        store.dispatch({
-            type: 'REMOVE_CATEGORY',
-            payload: index,
-        });
+      store.dispatch({
+        type: 'REMOVE_CATEGORY',
+        payload: index,
+      });
     }
 </script>
 
@@ -60,11 +60,11 @@
     padding: 0;
   }
   li {
-        display: grid;
-        grid-template-columns: 4fr 1fr ;
-        align-items: center;
-        justify-items: center;
-    }
+    display: grid;
+    grid-template-columns: 4fr 1fr ;
+    align-items: center;
+    justify-items: center;
+  }
 </style>
 
 <Modal id={name.categories} header="Categories">
@@ -81,13 +81,13 @@
           {#each categories as category, index}
             <li>
               <InputButton
-                  bind:inputValue={category.name}
-                  disabled={category.disabled}
-                  btnTxt="Edit"
-                  btnClick={() => editCategory(category, index)}
+                bind:inputValue={category.name}
+                disabled={category.disabled}
+                btnTxt="Edit"
+                btnClick='{()=>editCategory(category, index)}'
               />
 
-              <button on:click={() => removeCategory(index)}>DEL</button>
+              <button on:click={()=>removeCategory(index)}>DEL</button>
             </li>
           {/each}
         </ul>

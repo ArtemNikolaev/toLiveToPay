@@ -1,12 +1,13 @@
 <script>
-	import TextNumber from './TextNumber.svelte';
-    import state from '../../utils/store';
-	let data = state.getState();
-	state.subscribe(() => data = state.getState());
+  import TextNumber from './TextNumber.svelte';
+  import state from '../../utils/store';
 
-	const txt = 'Money';
+  let data = state.getState();
+  state.subscribe(() => data = state.getState());
 
-	$: num = `${data.moneyLeft} / ${data.moneyAll}`;
+  const txt = 'Money';
+
+  $: num = `${data.moneyLeft} / ${data.moneyAll}`;
 </script>
 
 <TextNumber {txt} {num}/>

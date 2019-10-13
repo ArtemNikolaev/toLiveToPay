@@ -1,23 +1,23 @@
 <script>
-	export let txt = 'defauld';
-	export let num = 0;
+  export let txt = 'default';
+  export let num = 0;
 </script>
 
 <style>
-	article	{
-		display: grid;
-		justify-content: center;
-		align-items: center;
-	}
+  article	{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
 
-	div {
-		font-size: 2em;
-		text-align: center;
-	}
+  div {
+    font-size: 2em;
+    text-align: center;
+  }
 </style>
 
 <article>
   <header>{txt}</header>
 
-	<div>{num}</div>
+  <div>{num}</div>
 </article>

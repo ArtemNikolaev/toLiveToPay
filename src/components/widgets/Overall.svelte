@@ -1,50 +1,53 @@
 <script>
-	import Money from '../blocks/Money.svelte';
-	import TextNumber from '../blocks/TextNumber.svelte';
-	import Button from '../elements/Button.svelte';
-	import { name, factory } from '../../models/modalManager';
-    import state from '../../utils/store';
-	let data = state.getState();
-	state.subscribe(() => data = state.getState());
+  import Money from '../blocks/Money.svelte';
+  import TextNumber from '../blocks/TextNumber.svelte';
+  import Button from '../elements/Button.svelte';
+  import { name, factory } from '../../models/modalManager';
+  import state from '../../utils/store';
 
-	const txt = 'Overall Left';
+  let data = state.getState();
+  state.subscribe(() => data = state.getState());
 
-	$: num = `${data.daysLeft} / ${data.daysAll}`;
+  const txt = 'Overall Left';
+
+  $: num = `${data.daysLeft} / ${data.daysAll}`;
 </script>
 
 <style>
-	section {
-		display: grid;
-		justify-items: center;
-	}
-	article {
-		display: grid;
-		grid-template-columns: 2fr 2fr;
-		align-items: center;
-		justify-items: center;
+  section {
+    display: grid;
+    justify-items: center;
+  }
+  article {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    align-items: center;
+    justify-items: center;
 
-		width: 100%;
-	}
-	article.header {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		justify-items: center;
-		align-items: center;
-		padding: 0.4em 0;
-	}
+    width: 100%;
+  }
+  article.header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    padding: 0.4em 0;
+  }
 </style>
 
 <section class="widget">
-	<article class='header'>
-		<span></span>
-		<header>{txt}</header>
-		<Button txt={name.settings} func={factory(name.settings)} />
-	</article>
-	<article>
-		<Button txt='Change' func={factory(name.setSum)} />
-	</article>
-	<article>
-		<Money />
-		<TextNumber txt='Days'  {num}/>
-	</article>
+  <article class='header'>
+    <span></span>
+    <header>{txt}</header>
+    <Button txt={name.settings} func={factory(name.settings)} />
+  </article>
+
+  <article>
+    <Button txt='Change' func={factory(name.setSum)} />
+  </article>
+
+  <article>
+    <Money />
+    <TextNumber txt='Days'  {num}/>
+  </article>
 </section>

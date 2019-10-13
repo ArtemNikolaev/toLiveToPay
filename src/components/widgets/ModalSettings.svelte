@@ -49,12 +49,14 @@
 			label='Amount of Money'
 			bind:value={settings.sum}
 		/>
+
 		<Input
 			type='date'
 			label='Begin Date'
 			max={today}
 			bind:value={settings.bDate}
 		/>
+
 		<Input
 			type='date'
 			label='End Date'
@@ -64,7 +66,8 @@
 	</section>
 
 	<footer slot='footer'>
-	    <button on:click={start}>Go</button>
-	    <button on:click={cancel}>Cancel</button>
+    <button on:click={start}>Go</button>
+
+    <button on:click={cancel}>Cancel</button>
 	</footer>
 </Modal>
