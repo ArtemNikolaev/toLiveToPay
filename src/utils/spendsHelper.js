@@ -19,3 +19,7 @@ export function add (state, spend) {
 
   return state;
 }
+
+export function save (categories) {
+  localStorage.setItem(name, JSON.stringify(categories));
+}

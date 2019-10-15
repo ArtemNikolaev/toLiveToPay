@@ -96,8 +96,7 @@ store.subscribe(() => {
   localStorage.setItem('settings', JSON.stringify(state.settings));
 
   categories.save(state.categories);
-
-  localStorage.setItem('spends', JSON.stringify(state.spends));
+  spends.save(state.spends);
 });
 
 export default store;
