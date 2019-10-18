@@ -11,7 +11,7 @@ export function initial () {
   }
 }
 
-export function save (categories) {
+function save (categories) {
   localStorage.setItem(name, JSON.stringify(categories));
 }
 
@@ -23,6 +23,8 @@ export function add (state, category) {
     ...state.categories,
   ];
 
+  save(state.categories);
+
   return state;
 }
 
@@ -33,6 +35,8 @@ export function update (state, update) {
     ...state.categories.slice(update.index + 1),
   ];
 
+  save(state.categories);
+
   return state;
 }
 
@@ -41,6 +45,8 @@ export function remove (state, index) {
     ...state.categories.slice(0, index),
     ...state.categories.slice(index + 1),
   ];
+
+  save(state.categories);
 
   return state;
 }
