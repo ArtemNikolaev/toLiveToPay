@@ -1,8 +1,11 @@
 language: node_js
 node_js:
   - '10'
+install:
+  - npm ci
+  - npm install -g codecov
 before_script:
   - npm run lint
-git:
-  depth: 2
-  quiet: true
+script:
+  - npm test
+  - codecov
