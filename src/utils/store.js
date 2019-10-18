@@ -1,6 +1,5 @@
 import { createStore } from 'redux';
-import { localStorage } from './browserMocks';
-import { settings } from './defaults';
+import * as settings from './settingsHelper';
 import * as categories from './categoriesHelper';
 import * as spends from './spendsHelper';
 import moment from 'moment';
@@ -45,7 +44,7 @@ function calculate (state) {
 
 function initialState () {
   const state = {
-    settings: JSON.parse(localStorage.getItem('settings')) || settings,
+    settings: settings.initial(),
     categories: categories.initial(),
     spends: spends.initial(),
   };
@@ -53,22 +52,14 @@ function initialState () {
   return JSON.parse(JSON.stringify(state));
 }
 
-function settingsReducer (state, settings) {
-  return Object.assign({}, state, { settings });
-}
-
 function reducer (state, action) {
   state = Object.assign({}, state);
 
   switch (action.type) {
     case 'SAVE_SETTINGS':
-      return calculate(settingsReducer(state, action.payload));
-
+      return calculate(settings.update(state, action.payload));
     case 'SET_SUM':
-      state.settings = Object.assign({}, state.settings);
-      state.settings.sum = action.payload;
-
-      return calculate(state);
+      return calculate(settings.updateSum(state, action.payload));
     case 'ADD_CATEGORY':
       return calculate(categories.add(state, action.payload));
     case 'UPDATE_CATEGORY':
@@ -86,12 +77,5 @@ function reducer (state, action) {
 }
 
 const store = createStore(reducer, calculate(initialState()));
-
-// TODO: remove after all checks
-store.subscribe(() => {
-  const state = store.getState();
-
-  localStorage.setItem('settings', JSON.stringify(state.settings));
-});
 
 export default store;
