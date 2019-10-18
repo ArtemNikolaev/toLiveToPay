@@ -91,12 +91,7 @@ const store = createStore(reducer, calculate(initialState()));
 store.subscribe(() => {
   const state = store.getState();
 
-  console.log('subscribe: ', state);
-
   localStorage.setItem('settings', JSON.stringify(state.settings));
-
-  categories.save(state.categories);
-  spends.save(state.spends);
 });
 
 export default store;
