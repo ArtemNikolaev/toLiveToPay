@@ -1,0 +1,34 @@
+version: '3.1'
+
+services:
+  db:
+    image: "mysql:8.0.19"
+    container_name: db
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    ports:
+      - 3306:3306
+    networks:
+      - tolivetopay
+  add-data:
+    image: add-data
+    container_name: add-data
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    networks:
+      - tolivetopay
+
+  adminer:
+    image: "adminer:4.7.5-standalone"
+    container_name: adminer
+    ports:
+      - 8080:8080
+    networks:
+      - tolivetopay
+networks:
+  tolivetopay:
+    external: true
