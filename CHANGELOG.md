@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - styles for Day Budget
 - styles for Savings
 - styles for Spends
+- modals for buttons
 
 ### Fixed
 - back favicon
