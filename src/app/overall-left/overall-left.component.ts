@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {SettingsComponent} from "../settings/settings.component";
 
 @Component({
   selector: 'overall-left',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OverallLeftComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
+  openSettings() {
+    this.dialog.open(SettingsComponent);
+  }
 }
