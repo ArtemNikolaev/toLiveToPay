@@ -1,0 +1,28 @@
+:host {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 9fr;
+  justify-items: center;
+  overflow: hidden;
+}
+article {
+  width: 100%;
+}
+p {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  justify-items: center;
+  margin: 0;
+}
+article.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  padding: 0.4em 0;
+}
+article.list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
