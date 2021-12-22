@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - basic app components
 - [Angular Material](https://material.angular.io/)
 - borders across main components
+- styles for Overall left
 
 ### Fixed
 - back favicon

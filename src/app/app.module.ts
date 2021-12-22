@@ -13,7 +13,6 @@ import { SaveMoneyComponent } from './save-money/save-money.component';
 import { WithdrawComponent } from './withdraw/withdraw.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -32,7 +31,6 @@ import {MatButtonModule} from "@angular/material/button";
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatButtonModule,
   ],
   providers: [
   ],

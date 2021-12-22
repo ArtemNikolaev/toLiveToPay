@@ -1,4 +1,23 @@
 :host {
-  box-sizing: border-box;
-  border: 1px solid hsl(0, 0%, 0%);
+  display: grid;
+  justify-items: center;
+}
+section {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+}
+section.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  padding: 0.4em 0;
+}
+
+section article div {
+  font-size: 2em;
+  text-align: center;
 }
