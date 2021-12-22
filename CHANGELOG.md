@@ -9,8 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - previous version of the app
 
 ### Added
-- Angular initial repo
+- [Angular](https://angular.io/)
 - basic app-components
+- [Angular Material](https://material.angular.io/)
 
 ### Fixed
 - back favicon
