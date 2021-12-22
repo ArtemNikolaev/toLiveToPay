@@ -1,7 +1,13 @@
 # To Live To Pay
+
 [![Build Status](https://travis-ci.com/ArtemNikolaev/toLiveToPay.svg?branch=master)](https://travis-ci.com/ArtemNikolaev/toLiveToPay)
+<br/>
+###[v2.42.1](https://github.com/olivierlacan/keep-a-changelog/releases/tag/v2.42.1)
+####[CHANGELOG](CHANGELOG.md)
 
 _Easy budgeting application, which helps you spend your money wisely._
+
+
 
 ## Get started
 
