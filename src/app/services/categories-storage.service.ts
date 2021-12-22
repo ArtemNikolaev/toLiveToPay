@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
-import {Subject} from "rxjs";
+import {BehaviorSubject, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriesStorageService {
-  public $categories = new Subject<string[]>();
+  public $categories = new BehaviorSubject<string[]>([]);
   private name= 'categories';
 
   constructor() {
-    this.validate();
-
     this.get();
   }
 
   get() {
-    this.validate();
+    let value = localStorage.getItem(this.name);
 
-    const value = localStorage.getItem(this.name) || '';
+    if (!value) {
+      value = '[]'
+      localStorage.setItem(this.name, value);
+    }
 
     this.$categories.next(JSON.parse(value));
   }
@@ -34,9 +35,14 @@ export class CategoriesStorageService {
     return true;
   }
 
-  validate() {
-    if (!localStorage.getItem(this.name)) {
-      localStorage.setItem(this.name, '[]');
-    }
+  add(name: string): void {
+    this.$categories.subscribe((categories: any): boolean => {
+      if (categories.indexOf(name) !== -1) {
+        return false;
+      }
+      categories.push(name);
+      this.save(categories);
+      return true;
+    })
   }
 }

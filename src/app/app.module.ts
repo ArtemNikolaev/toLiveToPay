@@ -14,6 +14,7 @@ import { WithdrawComponent } from './withdraw/withdraw.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from "@angular/material/dialog";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MatDialogModule } from "@angular/material/dialog";
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatDialogModule,
   ],
   providers: [

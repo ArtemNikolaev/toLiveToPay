@@ -1,1 +1,15 @@
-<p>categories works!</p>
+<h1 mat-dialog-title>CATEGORIES</h1>
+<div mat-dialog-content>
+  <section>
+    <input type="text" [(ngModel)]="newCategory" />
+    <button (click)="addCategory(newCategory)">ADD</button>
+  </section>
+  <ul *ngIf="categories.length" >
+    <li *ngFor="let category of categories; index as i;">
+      <span>{{i + 1}}</span> <span>{{category}}</span>
+    </li>
+  </ul>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>
