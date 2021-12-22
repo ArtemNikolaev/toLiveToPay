@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [Angular Material](https://material.angular.io/)
 - borders across main components
 - styles for Overall left
+- styles for Day Budget
+- styles for Savings
 
 ### Fixed
 - back favicon
