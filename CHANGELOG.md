@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Angular initial repo
 
+### Fixed
+- back favicon
+
 ## [2.42.1] - 2021-12-22
 
 [Unreleased]: https://github.com/ArtemNikolaev/toLiveToPay/compare/v2.42.1...HEAD
