@@ -1,0 +1,16 @@
+:host {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+article div {
+  font-size: 2em;
+  text-align: center;
+}
+article {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
