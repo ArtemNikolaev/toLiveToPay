@@ -1,0 +1,11 @@
+:host {
+  display: grid;
+  grid-template-rows: 2fr 2fr 1fr 10fr;
+  grid-row-gap: 1vh;
+  color: #333;
+  margin: 0;
+  padding: 1vh;
+  box-sizing: border-box;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1em;
+}

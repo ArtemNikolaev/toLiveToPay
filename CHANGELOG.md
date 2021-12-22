@@ -10,8 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - [Angular](https://angular.io/)
-- basic app-components
+- basic app components
 - [Angular Material](https://material.angular.io/)
+- borders across main components
 
 ### Fixed
 - back favicon

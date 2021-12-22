@@ -12,6 +12,8 @@ import { AddSpendComponent } from './add-spend/add-spend.component';
 import { SaveMoneyComponent } from './save-money/save-money.component';
 import { WithdrawComponent } from './withdraw/withdraw.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -25,12 +27,15 @@ import { CategoriesComponent } from './categories/categories.component';
     AddSpendComponent,
     SaveMoneyComponent,
     WithdrawComponent,
-    CategoriesComponent
+    CategoriesComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
