@@ -6,7 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Storage service for localStorage
+- storage service for localStorage
+- settings service
+- [dayjs](https://day.js.org/) dependency
+
+### Changed
+- theme for material from purple-green to deeppurple-blue
+- styles for settings dialog
 
 ## [3.0.0] - 2021-12-23
 ### Added

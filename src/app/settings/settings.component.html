@@ -1,1 +1,21 @@
-<p>settings works!</p>
+<header mat-dialog-title>SETTINGS</header>
+<form mat-dialog-content id="settings-form" [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="outline">
+    <mat-label>Amount</mat-label>
+    <input type="number" matInput formControlName="amount">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="outline">
+    <mat-label>Begin Date</mat-label>
+    <input type="date" [min]="minBeginDate" matInput formControlName="beginDate">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="outline">
+    <mat-label>End Date</mat-label>
+    <input type="date" [min]="minEndDate" matInput formControlName="endDate">
+  </mat-form-field>
+</form>
+<footer mat-dialog-actions>
+  <button mat-flat-button color="primary" mat-dialog-close form="settings-form" type="submit" [disabled]="!settingsForm.valid">SAVE</button>
+  <button mat-flat-button color="accent" mat-dialog-close>CLOSE</button>
+</footer>

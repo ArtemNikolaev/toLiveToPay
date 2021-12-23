@@ -18,7 +18,7 @@ export class CategoriesStorageService {
     try {
       value = await this.storage.get(this.storageName);
     } catch (e) {
-      value = [];
+      value = this.defaultValue();
       await this.storage.set(this.storageName, value);
     }
 
@@ -67,5 +67,9 @@ export class CategoriesStorageService {
         this.save(categories);
       })
       .unsubscribe();
+  }
+
+  defaultValue() {
+    return [];
   }
 }
