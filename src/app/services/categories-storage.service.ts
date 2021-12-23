@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Subject} from "rxjs";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +9,10 @@ export class CategoriesStorageService {
   private name= 'categories';
 
   constructor() {
-    this.get();
+    this.update();
   }
 
-  get() {
+  update() {
     let value = localStorage.getItem(this.name);
 
     if (!value) {
@@ -27,15 +27,16 @@ export class CategoriesStorageService {
     if (!Array.isArray(values)) {
       return false;
     }
-
     localStorage.setItem(this.name, JSON.stringify(values));
 
-    this.get();
+    this.update();
 
     return true;
   }
 
   add(name: string): void {
+    if (!name) return;
+
     this.$categories.subscribe((categories: any): boolean => {
       if (categories.indexOf(name) !== -1) {
         return false;
@@ -44,5 +45,21 @@ export class CategoriesStorageService {
       this.save(categories);
       return true;
     })
+      .unsubscribe();
+  }
+
+  remove(name: string): void {
+    if (!name) return;
+
+    this.$categories
+      .subscribe(categories => {
+        const index = categories.indexOf(name);
+        if (index === -1) return;
+
+        categories.splice(index, 1);
+
+        this.save(categories);
+      })
+      .unsubscribe();
   }
 }

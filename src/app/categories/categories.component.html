@@ -6,7 +6,7 @@
   </section>
   <ul *ngIf="categories.length" >
     <li *ngFor="let category of categories; index as i;">
-      <span>{{i + 1}}</span> <span>{{category}}</span>
+      <span>{{category}}</span><button mat-button (click)="removeCategory(category)">DEL</button>
     </li>
   </ul>
 </div>
