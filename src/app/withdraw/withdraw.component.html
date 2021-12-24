@@ -1,1 +1,11 @@
-<p>withdraw works!</p>
+<header mat-dialog-title>WITHDRAW</header>
+<form mat-dialog-content id="settings-form" [formGroup]="addSpendForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="outline">
+    <mat-label>Sum</mat-label>
+    <input type="number" matInput formControlName="sum">
+  </mat-form-field>
+</form>
+<footer mat-dialog-actions>
+  <button mat-flat-button color="primary" mat-dialog-close form="settings-form" type="submit" [disabled]="!addSpendForm.valid">ADD</button>
+  <button mat-flat-button color="accent" mat-dialog-close>CLOSE</button>
+</footer>

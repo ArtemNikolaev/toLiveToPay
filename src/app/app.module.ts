@@ -21,6 +21,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
+import {APP_CONFIG, APP_DI_CONFIG} from "./app-config/app=config.constants";
 
 @NgModule({
   declarations: [
@@ -50,6 +51,10 @@ import {MatCardModule} from "@angular/material/card";
     MatCardModule,
   ],
   providers: [
+    {
+      provide: APP_CONFIG,
+      useValue: APP_DI_CONFIG,
+    },
   ],
   bootstrap: [AppComponent]
 })

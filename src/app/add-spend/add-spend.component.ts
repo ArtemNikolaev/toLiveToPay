@@ -15,7 +15,6 @@ export class AddSpendComponent implements OnInit {
   addSpendForm = new FormGroup({
     sum : new FormControl('0'),
     date : new FormControl(dayjs().format('YYYY-MM-DD')),
-    time: new FormControl(dayjs().unix() - dayjs().startOf('day').unix()),
     category: new FormControl(''),
     description: new FormControl(''),
   });

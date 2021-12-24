@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - change settings amount popup
 - spends storage
 - add-spends popup
+- config
+- save money popup
+- withdraw money popup
 
 ## [3.1.0] - 2021-12-24
 ### Added
