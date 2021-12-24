@@ -20,7 +20,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   constructor(private settingService: SettingsService) {
     this.subscription = settingService.$subject.subscribe((value: Settings) => {
-      console.log(value);
       this.settingsForm.setValue(value);
       this.minBeginDate = value.beginDate;
       this.minEndDate = value.endDate;

@@ -1,14 +1,18 @@
 <h1 mat-dialog-title>CATEGORIES</h1>
 <div mat-dialog-content>
-  <section>
+  <mat-card>
     <input type="text" [(ngModel)]="newCategory" />
     <button (click)="addCategory(newCategory)">ADD</button>
-  </section>
-  <ul *ngIf="categories.length" >
-    <li *ngFor="let category of categories; index as i;">
-      <span>{{category}}</span><button mat-button (click)="removeCategory(category)">DEL</button>
-    </li>
-  </ul>
+  </mat-card>
+
+  <mat-list *ngIf="categories.length">
+    <mat-list-item  *ngFor="let category of categories; index as i;">
+        <span>{{category}}</span>
+        <button mat-button color="warn" (click)="removeCategory(category)">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">remove_circle_outline</mat-icon>
+        </button>
+    </mat-list-item>
+  </mat-list>
 </div>
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>

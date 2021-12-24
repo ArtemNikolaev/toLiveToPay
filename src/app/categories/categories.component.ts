@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CategoriesStorageService } from "../services/categories-storage/categories-storage.service";
 import { Subscription } from "rxjs";
 
+// todo: separate module for categories
+
 @Component({
   selector: 'categories',
   templateUrl: './categories.component.html',

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from "rxjs";
+import {BehaviorSubject, first} from "rxjs";
 import {StorageService} from "../storage/storage.service";
+
+// todo: add category on press enter
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +60,7 @@ export class CategoriesStorageService {
     if (!name) return;
 
     this.$categories
+      .pipe(first())
       .subscribe(categories => {
         const index = categories.indexOf(name);
         if (index === -1) return;
@@ -65,8 +68,7 @@ export class CategoriesStorageService {
         categories.splice(index, 1);
 
         this.save(categories);
-      })
-      .unsubscribe();
+      });
   }
 
   defaultValue() {

@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- change settings amount popup
 
 ## [3.1.0] - 2021-12-24
 ### Added
@@ -15,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - theme for material from purple-green to deeppurple-blue
 - styles for settings dialog
+- categories list style
 
 ## [3.0.0] - 2021-12-23
 ### Added

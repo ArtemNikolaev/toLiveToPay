@@ -1,1 +1,20 @@
-<p>change-sum works!</p>
+<header mat-dialog-title>Change Amount</header>
+
+<section mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Amount</mat-label>
+    <input type="number" matInput [formControl]="amount">
+  </mat-form-field>
+</section>
+
+<footer mat-dialog-actions>
+  <button
+    mat-flat-button
+    color="primary"
+    mat-dialog-close
+    type="submit"
+    (click)="onSave()"
+  >SAVE</button>
+
+  <button mat-flat-button color="accent" mat-dialog-close>CLOSE</button>
+</footer>

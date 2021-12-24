@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, first} from "rxjs";
 import * as dayjs from 'dayjs';
 import {StorageService} from "../storage/storage.service";
 
@@ -49,6 +49,17 @@ export class SettingsService {
     this.storage.set(this.storageName, value);
 
     this.$subject.next(value);
+  }
+
+  changeAmount(value: number) {
+    if (!value) return;
+
+    const subscription = this.$subject
+      .pipe(first())
+      .subscribe( (settings : Settings) => {
+        settings.amount += value;
+        this.change(settings);
+      });
   }
 
   validate(data: Settings) {
