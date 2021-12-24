@@ -22,6 +22,8 @@ import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
 import {APP_CONFIG, APP_DI_CONFIG} from "./app-config/app=config.constants";
+import { TodaySpendsComponent } from './today-spends/today-spends.component';
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import {APP_CONFIG, APP_DI_CONFIG} from "./app-config/app=config.constants";
     SaveMoneyComponent,
     WithdrawComponent,
     CategoriesComponent,
+    TodaySpendsComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import {APP_CONFIG, APP_DI_CONFIG} from "./app-config/app=config.constants";
     MatListModule,
     MatIconModule,
     MatCardModule,
+    MatTableModule,
   ],
   providers: [
     {
