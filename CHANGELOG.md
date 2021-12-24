@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [3.2.0] - 2021-12-24
 ### Added
 - change settings amount popup
 - spends storage
@@ -46,6 +48,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.42.1] - 2021-12-22
 
-[Unreleased]: https://github.com/ArtemNikolaev/toLiveToPay/compare/v3.0.0...HEAD
+[Unreleased]: https://github.com/ArtemNikolaev/toLiveToPay/compare/v3.2.0...HEAD
+[3.2.0]: https://github.com/ArtemNikolaev/toLiveToPay/compare/v3.1.0...v3.2.0
+[3.1.0]: https://github.com/ArtemNikolaev/toLiveToPay/compare/v3.0.0...v3.1.0
 [3.0.0]: https://github.com/ArtemNikolaev/toLiveToPay/compare/v2.42.1...v3.0.0
 [2.42.1]: https://github.com/ArtemNikolaev/toLiveToPay/releases/tag/v2.42.1
