@@ -1,13 +1,22 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, first} from "rxjs";
 import {StorageService} from "../storage/storage.service";
+import * as dayjs from "dayjs";
 
-export interface Spend {
+export class Spend {
   date: number;
   time: number;
   sum: number;
   description?: string;
   category?: string;
+
+  constructor(obj: any) {
+    this.date = dayjs(obj.date, 'YYYY-MM-DD').startOf('day').unix();
+    this.time = dayjs().unix() - dayjs().startOf('day').unix();
+    this.sum = obj.sum;
+    this.description = obj.description;
+    this.category = obj.category;
+  }
 }
 
 @Injectable({
@@ -40,6 +49,7 @@ export class SpendsStorageService {
     if (!this.validate(spends)) return;
 
     this.storage.set(this.storageName, spends);
+    this.$subject.next(spends);
   }
 
   add(spend: Spend) {

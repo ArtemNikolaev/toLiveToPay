@@ -1,1 +1,32 @@
-<p>add-spend works!</p>
+<header mat-dialog-title>SETTINGS</header>
+<form mat-dialog-content id="settings-form" [formGroup]="addSpendForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="outline">
+    <mat-label>Sum</mat-label>
+    <input type="number" matInput formControlName="sum">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="outline">
+    <mat-label>Begin Date</mat-label>
+    <input type="date" matInput formControlName="date">
+  </mat-form-field>
+  <br>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Category</mat-label>
+
+    <select matNativeControl formControlName="category">
+      <option value="''"></option>
+      <option *ngFor="let category of $categories | async" [value]="category">{{category}}</option>
+    </select>
+  </mat-form-field>
+
+  <br>
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <input type="text" matInput formControlName="description">
+  </mat-form-field>
+</form>
+<footer mat-dialog-actions>
+  <button mat-flat-button color="primary" mat-dialog-close form="settings-form" type="submit" [disabled]="!addSpendForm.valid">ADD</button>
+  <button mat-flat-button color="accent" mat-dialog-close>CLOSE</button>
+</footer>
