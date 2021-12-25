@@ -24,6 +24,7 @@ import {MatCardModule} from "@angular/material/card";
 import {APP_CONFIG, APP_DI_CONFIG} from "./app-config/app=config.constants";
 import { TodaySpendsComponent } from './today-spends/today-spends.component';
 import {MatTableModule} from "@angular/material/table";
+import { DaysLeftComponent } from './overall-left/days-left/days-left.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {MatTableModule} from "@angular/material/table";
     WithdrawComponent,
     CategoriesComponent,
     TodaySpendsComponent,
+    DaysLeftComponent,
   ],
   imports: [
     BrowserModule,
