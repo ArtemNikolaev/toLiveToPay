@@ -13,7 +13,6 @@ export class TodaySpendsComponent implements OnInit {
 
   constructor(private spendsService: SpendsStorageService) {
     this.$spends = spendsService.$subject;
-    this.$spends.subscribe(console.log);
   }
 
   ngOnInit(): void {

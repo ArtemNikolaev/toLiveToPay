@@ -3,7 +3,7 @@ import {SettingsService} from "../../services/settings-service/settings.service"
 import {BehaviorSubject} from "rxjs";
 import * as dayjs from "dayjs";
 
-export interface DaysLeft {
+export interface TotalLeft {
   total: number;
   left: number;
 }
@@ -12,7 +12,7 @@ export interface DaysLeft {
   providedIn: 'root'
 })
 export class DaysLeftService{
-  $daysLeft = new BehaviorSubject<DaysLeft>({
+  $subject = new BehaviorSubject<TotalLeft>({
     total: 0,
     left: 0,
   });
@@ -21,7 +21,7 @@ export class DaysLeftService{
     private settingsService: SettingsService
   ) {
     settingsService.$subject.subscribe(settings => {
-      const result: DaysLeft = {
+      const result: TotalLeft = {
         total: 0,
         left: 0,
       };
@@ -35,7 +35,7 @@ export class DaysLeftService{
         result.left = endDate.diff(today) / 1000 / 60 / 60 / 24;
       }
 
-      this.$daysLeft.next(result);
+      this.$subject.next(result);
     })
   }
 }

@@ -24,8 +24,6 @@ export class CategoriesStorageService {
       await this.storage.set(this.storageName, value);
     }
 
-    console.log({value});
-
     this.$categories.next(value);
   }
 

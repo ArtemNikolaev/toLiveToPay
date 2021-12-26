@@ -25,6 +25,7 @@ import {APP_CONFIG, APP_DI_CONFIG} from "./app-config/app=config.constants";
 import { TodaySpendsComponent } from './today-spends/today-spends.component';
 import {MatTableModule} from "@angular/material/table";
 import { DaysLeftComponent } from './overall-left/days-left/days-left.component';
+import { MoneyLeftComponent } from './overall-left/money-left/money-left.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { DaysLeftComponent } from './overall-left/days-left/days-left.component'
     CategoriesComponent,
     TodaySpendsComponent,
     DaysLeftComponent,
+    MoneyLeftComponent,
   ],
   imports: [
     BrowserModule,
