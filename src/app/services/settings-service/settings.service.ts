@@ -17,6 +17,7 @@ export class SettingsService {
   public $subject: BehaviorSubject<Settings>
   public $daysOverall = new BehaviorSubject<number>(0);
   public $daysLeft = new BehaviorSubject<number>(0);
+  public $dayBudget = new BehaviorSubject<number>(0);
 
   constructor(private storage: StorageService) {
     this.$subject = new BehaviorSubject(this.defaultValue());
@@ -79,8 +80,10 @@ export class SettingsService {
 
     const daysOverall = endDate.diff(beginDate) / 1000 / 60 / 60 / 24;
     const daysLeft = endDate.diff(today) / 1000 / 60 / 60 / 24;
+    const dayBudget = Math.floor(value.amount / daysOverall * 100) / 100;
 
     this.$daysOverall.next(daysOverall);
     this.$daysLeft.next(daysLeft);
+    this.$dayBudget.next(dayBudget);
   }
 }

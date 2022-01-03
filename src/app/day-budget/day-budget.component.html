@@ -1,6 +1,6 @@
 <button (click)="openSpend()">SPEND</button>
-<article>
+<article *ngIf="$subject | async as budget ">
   <header>Day Budget</header>
-  <div>-13.97 / 3.03</div>
+  <div>-13.97 / {{budget.dayBudget}}</div>
 </article>
 <button (click)="openSave()">SAVE</button>
