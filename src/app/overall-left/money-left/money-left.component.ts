@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {TotalLeft} from "../days-left/days-left.service";
 import {MoneyLeftService} from "./money-left.service";
 
 @Component({
@@ -9,7 +8,7 @@ import {MoneyLeftService} from "./money-left.service";
   styleUrls: ['./../left.css']
 })
 export class MoneyLeftComponent implements OnInit {
-  $subject: BehaviorSubject<TotalLeft>;
+  $subject: BehaviorSubject<any>;
 
   constructor(private service: MoneyLeftService) {
     this.$subject = service.$subject;

@@ -15,6 +15,8 @@ export interface Settings {
 export class SettingsService {
   private storageName = 'settings';
   public $subject: BehaviorSubject<Settings>
+  public $daysOverall = new BehaviorSubject<number>(0);
+  public $daysLeft = new BehaviorSubject<number>(0);
 
   constructor(private storage: StorageService) {
     this.$subject = new BehaviorSubject(this.defaultValue());
@@ -32,7 +34,7 @@ export class SettingsService {
       await this.storage.set(this.storageName, value);
     }
 
-    this.$subject.next(value);
+    this.calculate(value);
   }
 
   defaultValue(): Settings {
@@ -48,13 +50,13 @@ export class SettingsService {
 
     this.storage.set(this.storageName, value);
 
-    this.$subject.next(value);
+    this.calculate(value);
   }
 
   changeAmount(value: number) {
     if (!value) return;
 
-    const subscription = this.$subject
+    this.$subject
       .pipe(first())
       .subscribe( (settings : Settings) => {
         settings.amount += value;
@@ -66,5 +68,19 @@ export class SettingsService {
     if (!data) return false;
     // todo: settings service validation
     return true;
+  }
+
+  calculate(value: Settings) {
+    this.$subject.next(value);
+
+    const today = dayjs().startOf('day');
+    const endDate = dayjs(value.endDate).startOf('day').add(1, 'day');
+    const beginDate = dayjs(value.beginDate).startOf('day');
+
+    const daysOverall = endDate.diff(beginDate) / 1000 / 60 / 60 / 24;
+    const daysLeft = endDate.diff(today) / 1000 / 60 / 60 / 24;
+
+    this.$daysOverall.next(daysOverall);
+    this.$daysLeft.next(daysLeft);
   }
 }

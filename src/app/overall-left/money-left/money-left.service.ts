@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject, combineLatest} from "rxjs";
 import {SettingsService} from "../../services/settings-service/settings.service";
 import * as dayjs from "dayjs";
-import {TotalLeft} from "../days-left/days-left.service";
 import {SpendsStorageService} from "../../services/spends-service/spends-storage.service";
 
 @Injectable({
@@ -10,9 +9,9 @@ import {SpendsStorageService} from "../../services/spends-service/spends-storage
 })
 export class MoneyLeftService {
 
-  $subject = new BehaviorSubject<TotalLeft>({
+  $subject = new BehaviorSubject<any>({
     total: 0,
-    left: 0,
+    daysLeft: 0,
   });
 
   constructor(
@@ -24,16 +23,16 @@ export class MoneyLeftService {
       spends: spendsService.$subject,
     }).subscribe(({settings, spends}) => {
 
-      const result: TotalLeft = {
+      const result = {
         total: settings.amount,
-        left: 0
+        daysLeft: 0
       };
 
       {
         const endDate = dayjs(settings.endDate).startOf('day').add(1, 'day').unix();
         const beginDate = dayjs(settings.beginDate).startOf('day').unix();
 
-        result.left = result.total - spends
+        result.daysLeft = result.total - spends
           .filter(spend => {
             const date = spend.date + spend.time;
 
