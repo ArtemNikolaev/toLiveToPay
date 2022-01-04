@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - days functionality
 - money functionality
 - savings functionality
+- settings type
 
 ## [3.2.0] - 2021-12-24
 ### Added
