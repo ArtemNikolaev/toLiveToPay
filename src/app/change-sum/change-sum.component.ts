@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl} from "@angular/forms";
-import {SettingsService} from "../services/settings-service/settings.service";
+import { Store } from '@ngrx/store';
+import { addToAmount } from '../state/settings/settings.actions';
 
 @Component({
   selector: 'change-sum',
@@ -10,11 +11,11 @@ import {SettingsService} from "../services/settings-service/settings.service";
 export class ChangeSumComponent {
   amount = new FormControl(0)
 
-  constructor(private settingsService: SettingsService) { }
+  constructor(private store: Store) { }
 
   onSave() {
     if (!this.amount.value) return;
 
-    this.settingsService.changeAmount(this.amount.value)
+    this.store.dispatch(addToAmount({payload: this.amount.value}));
   }
 }
