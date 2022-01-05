@@ -5,18 +5,12 @@ import { addToAmount, AmountPayload, SettingsPayload, update } from './settings.
 import {LocalStorageConnector} from "../../storage/localStorage.connector";
 
 const connector = new LocalStorageConnector<Settings>('settings');
-
 const defaultData: Settings = {
   amount: 0,
   beginDate: dayjs().format('YYYY-MM-DD') as InputDate,
   endDate: dayjs().add(1, 'day').format('YYYY-MM-DD') as InputDate,
 };
-
-function generateInitialState(): Settings {
-  return connector.get() || defaultData;
-}
-
-const initialState: Settings = generateInitialState();
+const initialState: Settings = connector.get() || defaultData;
 
 interface SettingsReducer extends  Action, SettingsPayload {}
 

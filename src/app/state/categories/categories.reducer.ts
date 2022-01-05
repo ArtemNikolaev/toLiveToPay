@@ -4,14 +4,8 @@ import { createReducer, on } from '@ngrx/store';
 import { add, CategoryPayload, remove } from './categories.actions';
 
 const connector = new LocalStorageConnector<Categories>('categories');
-
 const defaultData: Categories = [];
-
-function generateInitialState(): Categories {
-  return connector.get() || defaultData;
-}
-
-const initialState: Categories = generateInitialState();
+const initialState: Categories = connector.get() || defaultData;
 
 function addReducer(state: Categories, {payload: category}: CategoryPayload): Categories {
   const result = [...state];
