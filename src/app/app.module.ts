@@ -26,6 +26,8 @@ import { TodaySpendsComponent } from './today-spends/today-spends.component';
 import {MatTableModule} from "@angular/material/table";
 import { DaysLeftComponent } from './overall-left/days-left/days-left.component';
 import { MoneyLeftComponent } from './overall-left/money-left/money-left.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,9 @@ import { MoneyLeftComponent } from './overall-left/money-left/money-left.compone
     MatIconModule,
     MatCardModule,
     MatTableModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers
+    }),
   ],
   providers: [
     {
