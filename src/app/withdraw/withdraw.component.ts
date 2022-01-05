@@ -1,9 +1,11 @@
 import {Component, Inject} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {Spend, SpendsStorageService} from "../services/spends-service/spends-storage.service";
 import {APP_CONFIG} from "../app-config/app=config.constants";
 import {AppConfig} from "../app-config/app-config.interface";
 import * as dayjs from "dayjs";
+import { Store } from '@ngrx/store';
+import { add } from '../state/spends/spends.actions';
+import { Spend } from '../models/spends.model';
 
 @Component({
   selector: 'withdraw',
@@ -13,8 +15,9 @@ import * as dayjs from "dayjs";
 export class WithdrawComponent {
   addSpendForm: FormGroup;
 
+
   constructor(
-    private spendsService: SpendsStorageService,
+    private store: Store,
     @Inject( APP_CONFIG ) private config: AppConfig
   ) {
     this.addSpendForm = new FormGroup({
@@ -26,9 +29,9 @@ export class WithdrawComponent {
   }
 
   onSubmit() {
-    const value = new Spend(this.addSpendForm.value);
-    value.sum = -value.sum;
+    const payload = new Spend(this.addSpendForm.value);
+    payload.sum = -payload.sum;
 
-    this.spendsService.add(value);
+    this.store.dispatch(add({payload}));
   }
 }
