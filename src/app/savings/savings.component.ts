@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {WithdrawComponent} from "../withdraw/withdraw.component";
-import {SavingsService} from "./savings.service";
+import { Store } from '@ngrx/store';
+import { selectSavingsCount } from '../state/selectors';
 
 @Component({
   selector: 'savings',
@@ -9,14 +10,12 @@ import {SavingsService} from "./savings.service";
   styleUrls: ['./savings.component.css']
 })
 export class SavingsComponent {
-  $savings;
+  savings$ = this.store.select(selectSavingsCount);
 
   constructor(
+    private store: Store,
     public dialog: MatDialog,
-    private savings: SavingsService
-  ) {
-    this.$savings = savings.$subject;
-  }
+  ) { }
 
   openWithdraw() {
     this.dialog.open(WithdrawComponent);
