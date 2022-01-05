@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, combineLatest} from "rxjs";
-import {SettingsService} from "../../services/settings-service/settings.service";
 import * as dayjs from "dayjs";
 import {SpendsStorageService} from "../../services/spends-service/spends-storage.service";
+import { Store } from '@ngrx/store';
+import { selectSettings } from '../../state/selectors';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoneyLeftService {
+  settings$ = this.store.select(selectSettings);
 
   $subject = new BehaviorSubject<any>({
     total: 0,
@@ -15,11 +17,11 @@ export class MoneyLeftService {
   });
 
   constructor(
-    private settingsService: SettingsService,
+    private store: Store,
     private spendsService: SpendsStorageService,
   ) {
     combineLatest({
-      settings: settingsService.$subject,
+      settings: this.settings$,
       spends: spendsService.$subject,
     }).subscribe(({settings, spends}) => {
 
