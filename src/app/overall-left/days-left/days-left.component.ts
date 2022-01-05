@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
-import {combineLatest, Observable} from "rxjs";
-import {SettingsService} from "../../services/settings-service/settings.service";
-
-interface DaysLeftInterface {
-  total: number,
-  left: number,
-}
+import { selectDays } from '../../state/selectors';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'days-left',
@@ -13,13 +8,9 @@ interface DaysLeftInterface {
   styleUrls: ['../left.css']
 })
 export class DaysLeftComponent {
-  $subject: Observable<DaysLeftInterface>;
+  days$ = this.store.select(selectDays);
 
-  constructor(private settingsService: SettingsService  ) {
-    this.$subject = combineLatest({
-      total: settingsService.$daysOverall,
-      left: settingsService.$daysLeft
-    })
+  constructor(private store: Store  ) {
   }
 
 }

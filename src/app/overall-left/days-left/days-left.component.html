@@ -1,2 +1,2 @@
 <header>Days</header>
-<div *ngIf="$subject | async as days">{{days.left}} / {{days.total}}</div>
+<div *ngIf="days$ | async as days">{{days.left}} / {{days.overall}}</div>
