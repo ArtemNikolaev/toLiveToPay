@@ -12,16 +12,15 @@ NodeJS 16
 
 ```bash
 npm install
+npm run start
 ```
 
-...then start [Rollup](https://rollupjs.org):
+## Debug
 
-```bash
-npm run dev
-```
-
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
-
+### Store
+- [Instruction](https://ngrx.io/guide/store-devtools)
+- [Chrome](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)
+- [DevTool Repo](https://github.com/zalmoxisus/redux-devtools-extension/)
 
 ## Deploying to the web
 
