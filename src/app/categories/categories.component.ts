@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from "rxjs";
 import { Store } from '@ngrx/store';
 import { selectCategories } from '../state/selectors';
-import { add } from '../state/categories/categories.actions';
+import { add, remove } from '../state/categories/categories.actions';
 
 // todo: separate module for categories
 
@@ -24,7 +24,8 @@ export class CategoriesComponent implements OnDestroy {
     this.newCategory = '';
   }
 
-  removeCategory(value: string) {
+  removeCategory(payload: string) {
+    this.store.dispatch(remove({payload}))
   }
 
   ngOnDestroy() {

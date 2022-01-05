@@ -9,3 +9,8 @@ export const add = createAction(
   '[Categories] add',
   props<CategoryPayload>()
 )
+
+export const remove = createAction(
+  '[Categories] remove',
+  props<CategoryPayload>()
+)
