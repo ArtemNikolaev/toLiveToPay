@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Spend, SpendsStorageService} from "../services/spends-service/spends-storage.service";
 import {APP_CONFIG} from "../app-config/app=config.constants";
@@ -10,7 +10,7 @@ import * as dayjs from "dayjs";
   templateUrl: './withdraw.component.html',
   styleUrls: ['./withdraw.component.css']
 })
-export class WithdrawComponent implements OnInit {
+export class WithdrawComponent {
   addSpendForm: FormGroup;
 
   constructor(
@@ -23,9 +23,6 @@ export class WithdrawComponent implements OnInit {
       category: new FormControl(config.categories.withdraw),
       description: new FormControl(''),
     })
-  }
-
-  ngOnInit(): void {
   }
 
   onSubmit() {

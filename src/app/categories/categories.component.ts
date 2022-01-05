@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { CategoriesStorageService } from "../services/categories-storage/categories-storage.service";
 import { Subscription } from "rxjs";
 
@@ -9,7 +9,7 @@ import { Subscription } from "rxjs";
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
-export class CategoriesComponent implements OnInit, OnDestroy {
+export class CategoriesComponent implements OnDestroy {
   categoriesSubscription: Subscription;
   categories : string[] = [];
   newCategory: string = '';
@@ -18,9 +18,6 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     this.categoriesSubscription = this.categoriesService.$categories.subscribe(categories => {
       this.categories = categories;
     });
-  }
-
-  ngOnInit(): void {
   }
 
   addCategory(value: string) {

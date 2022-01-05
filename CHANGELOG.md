@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - savings functionality
 - settings type
 - [NGRX](https://ngrx.io/)
+- [ESLint](https://eslint.org/)
 
 ## [3.2.0] - 2021-12-24
 ### Added

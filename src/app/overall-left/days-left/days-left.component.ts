@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {combineLatest, Observable} from "rxjs";
 import {SettingsService} from "../../services/settings-service/settings.service";
 
@@ -12,7 +12,7 @@ interface DaysLeftInterface {
   templateUrl: './days-left.component.html',
   styleUrls: ['../left.css']
 })
-export class DaysLeftComponent implements OnInit {
+export class DaysLeftComponent {
   $subject: Observable<DaysLeftInterface>;
 
   constructor(private settingsService: SettingsService  ) {
@@ -20,9 +20,6 @@ export class DaysLeftComponent implements OnInit {
       total: settingsService.$daysOverall,
       left: settingsService.$daysLeft
     })
-  }
-
-  ngOnInit(): void {
   }
 
 }

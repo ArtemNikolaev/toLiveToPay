@@ -1,11 +1,11 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { SettingsService } from '../settings.service';
 import { Store } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 import { Settings } from '../models/settings.model';
-import { updateAll, updateAmount } from '../state/settings.actions';
+import { updateAll } from '../state/settings.actions';
 import { selectSettings } from '../state/settings.selector';
 
 @Component({
@@ -13,7 +13,7 @@ import { selectSettings } from '../state/settings.selector';
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.css']
 })
-export class SettingsComponent implements OnInit, OnDestroy {
+export class SettingsComponent implements OnInit {
   settings$ : Observable<Settings> = this.store.select(selectSettings);
   settingsForm = new FormGroup({
     amount : new FormControl('0'),
@@ -44,8 +44,5 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.store.dispatch(updateAll(this.settingsForm.value))
-  }
-
-  ngOnDestroy() {
   }
 }

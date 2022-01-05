@@ -68,6 +68,7 @@ import { environment } from '../environments/environment';
       maxAge: 100,
       logOnly: environment.production,
       autoPause: true,
+      name: `toLiveToPay [${environment.production ? 'Production' : 'Dev'}]: ${environment.version}`
     })
   ],
   providers: [

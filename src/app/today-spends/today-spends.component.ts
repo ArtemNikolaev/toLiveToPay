@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {Spend, SpendsStorageService} from "../services/spends-service/spends-storage.service";
 import {BehaviorSubject} from "rxjs";
 
@@ -7,15 +7,12 @@ import {BehaviorSubject} from "rxjs";
   templateUrl: './today-spends.component.html',
   styleUrls: ['./today-spends.component.css']
 })
-export class TodaySpendsComponent implements OnInit {
+export class TodaySpendsComponent {
   $spends: BehaviorSubject<Spend[]>;
   displayedColumns: string[] = ['time', 'sum', 'category', 'description'];
 
   constructor(private spendsService: SpendsStorageService) {
     this.$spends = spendsService.$subject;
-  }
-
-  ngOnInit(): void {
   }
 
 }

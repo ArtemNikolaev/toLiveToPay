@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import * as dayjs from "dayjs";
 import {BehaviorSubject} from "rxjs";
@@ -10,7 +10,7 @@ import {Spend, SpendsStorageService} from "../services/spends-service/spends-sto
   templateUrl: './add-spend.component.html',
   styleUrls: ['./add-spend.component.css']
 })
-export class AddSpendComponent implements OnInit {
+export class AddSpendComponent {
   $categories: BehaviorSubject<string[]>;
   addSpendForm = new FormGroup({
     sum : new FormControl('0'),
@@ -24,9 +24,6 @@ export class AddSpendComponent implements OnInit {
     private spendsService: SpendsStorageService,
   ) {
     this.$categories = categoriesService.$categories;
-  }
-
-  ngOnInit(): void {
   }
 
   onSubmit() {

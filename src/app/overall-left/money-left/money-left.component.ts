@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {MoneyLeftService} from "./money-left.service";
 
@@ -7,14 +7,11 @@ import {MoneyLeftService} from "./money-left.service";
   templateUrl: './money-left.component.html',
   styleUrls: ['./../left.css']
 })
-export class MoneyLeftComponent implements OnInit {
+export class MoneyLeftComponent {
   $subject: BehaviorSubject<any>;
 
   constructor(private service: MoneyLeftService) {
     this.$subject = service.$subject;
-  }
-
-  ngOnInit(): void {
   }
 
 }

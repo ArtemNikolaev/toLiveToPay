@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {AddSpendComponent} from "../add-spend/add-spend.component";
 import {SaveMoneyComponent} from "../save-money/save-money.component";
@@ -10,16 +10,13 @@ import {Observable} from "rxjs";
   templateUrl: './day-budget.component.html',
   styleUrls: ['./day-budget.component.css']
 })
-export class DayBudgetComponent implements OnInit {
+export class DayBudgetComponent {
   public $subject: Observable<DayBudgetInterface>;
 
   constructor(public dialog: MatDialog,
               private service: DayBudgetService) {
     this.$subject = service.$subject;
     service.$subject.subscribe(console.log);
-  }
-
-  ngOnInit(): void {
   }
 
   openSpend() {

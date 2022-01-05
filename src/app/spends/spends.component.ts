@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {CategoriesComponent} from "../categories/categories.component";
 
@@ -7,12 +7,9 @@ import {CategoriesComponent} from "../categories/categories.component";
   templateUrl: './spends.component.html',
   styleUrls: ['./spends.component.css']
 })
-export class SpendsComponent implements OnInit {
+export class SpendsComponent {
 
   constructor(public dialog: MatDialog) { }
-
-  ngOnInit(): void {
-  }
 
   openCategories() {
     this.dialog.open(CategoriesComponent);

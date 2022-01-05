@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {SettingsComponent} from "../settings/settings.component";
 import {ChangeSumComponent} from "../change-sum/change-sum.component";
@@ -8,12 +8,9 @@ import {ChangeSumComponent} from "../change-sum/change-sum.component";
   templateUrl: './overall-left.component.html',
   styleUrls: ['./overall-left.component.css']
 })
-export class OverallLeftComponent implements OnInit {
+export class OverallLeftComponent {
 
   constructor(public dialog: MatDialog) { }
-
-  ngOnInit(): void {
-  }
 
   openSettings() {
     this.dialog.open(SettingsComponent);

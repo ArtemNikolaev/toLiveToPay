@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {SettingsService} from "../services/settings-service/settings.service";
 
@@ -7,13 +7,10 @@ import {SettingsService} from "../services/settings-service/settings.service";
   templateUrl: './change-sum.component.html',
   styleUrls: ['./change-sum.component.css']
 })
-export class ChangeSumComponent implements OnInit {
+export class ChangeSumComponent {
   amount = new FormControl(0)
 
   constructor(private settingsService: SettingsService) { }
-
-  ngOnInit(): void {
-  }
 
   onSave() {
     if (!this.amount.value) return;

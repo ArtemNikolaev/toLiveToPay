@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import * as dayjs from "dayjs";
 import {Spend, SpendsStorageService} from "../services/spends-service/spends-storage.service";
@@ -10,7 +10,7 @@ import {AppConfig} from "../app-config/app-config.interface";
   templateUrl: './save-money.component.html',
   styleUrls: ['./save-money.component.css']
 })
-export class SaveMoneyComponent implements OnInit {
+export class SaveMoneyComponent {
   addSpendForm: FormGroup;
 
   constructor(
@@ -23,9 +23,6 @@ export class SaveMoneyComponent implements OnInit {
       category: new FormControl(config.categories.deposit),
       description: new FormControl(''),
     })
-  }
-
-  ngOnInit(): void {
   }
 
   onSubmit() {

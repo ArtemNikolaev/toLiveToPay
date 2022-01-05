@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {WithdrawComponent} from "../withdraw/withdraw.component";
 import {SavingsService} from "./savings.service";
@@ -8,7 +8,7 @@ import {SavingsService} from "./savings.service";
   templateUrl: './savings.component.html',
   styleUrls: ['./savings.component.css']
 })
-export class SavingsComponent implements OnInit {
+export class SavingsComponent {
   $savings;
 
   constructor(
@@ -16,9 +16,6 @@ export class SavingsComponent implements OnInit {
     private savings: SavingsService
   ) {
     this.$savings = savings.$subject;
-  }
-
-  ngOnInit(): void {
   }
 
   openWithdraw() {
