@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import { FormControl, FormGroup } from "@angular/forms";
 import * as dayjs from "dayjs";
-import {Spend, SpendsStorageService} from "../services/spends-service/spends-storage.service";
 import { Store } from '@ngrx/store';
 import { selectCategories } from '../state/selectors';
+import { add } from '../state/spends/spends.actions';
+import { Spend } from '../models/spends.model';
 
 @Component({
   selector: 'add-spend',
@@ -21,11 +22,9 @@ export class AddSpendComponent {
 
   constructor(
     private store: Store,
-    private spendsService: SpendsStorageService,
-  ) {
-  }
+  ) { }
 
   onSubmit() {
-    this.spendsService.add(new Spend(this.addSpendForm.value));
+    this.store.dispatch(add({payload: new Spend(this.addSpendForm.value)}));
   }
 }
