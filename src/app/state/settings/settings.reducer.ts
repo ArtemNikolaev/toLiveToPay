@@ -16,7 +16,7 @@ function generateInitialState(): Settings {
   return connector.get() || defaultData;
 }
 
-export const initialState: Settings = generateInitialState();
+const initialState: Settings = generateInitialState();
 
 interface SettingsReducer extends  Action, SettingsPayload {}
 

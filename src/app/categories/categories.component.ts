@@ -1,6 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
-import { CategoriesStorageService } from "../services/categories-storage/categories-storage.service";
 import { Subscription } from "rxjs";
+import { Store } from '@ngrx/store';
+import { selectCategories } from '../state/selectors';
+import { add } from '../state/categories/categories.actions';
 
 // todo: separate module for categories
 
@@ -10,27 +12,21 @@ import { Subscription } from "rxjs";
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnDestroy {
-  categoriesSubscription: Subscription;
-  categories : string[] = [];
-  newCategory: string = '';
+  categories$ = this.store.select(selectCategories);
+  newCategory = '';
 
-  constructor(private categoriesService: CategoriesStorageService) {
-    this.categoriesSubscription = this.categoriesService.$categories.subscribe(categories => {
-      this.categories = categories;
-    });
+  constructor(private store: Store) {
   }
 
-  addCategory(value: string) {
-    this.categoriesService.add(value);
+  addCategory(payload: string) {
+    this.store.dispatch(add({payload}));
 
     this.newCategory = '';
   }
 
   removeCategory(value: string) {
-    this.categoriesService.remove(value);
   }
 
   ngOnDestroy() {
-    this.categoriesSubscription.unsubscribe();
   }
 }
