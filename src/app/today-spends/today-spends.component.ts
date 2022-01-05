@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {Spend, SpendsStorageService} from "../services/spends-service/spends-storage.service";
-import {BehaviorSubject} from "rxjs";
+import { Store } from '@ngrx/store';
+import { selectSpends } from '../state/selectors';
 
 @Component({
   selector: 'today-spends',
@@ -8,11 +8,11 @@ import {BehaviorSubject} from "rxjs";
   styleUrls: ['./today-spends.component.css']
 })
 export class TodaySpendsComponent {
-  $spends: BehaviorSubject<Spend[]>;
+  spends$ = this.store.select(selectSpends);
   displayedColumns: string[] = ['time', 'sum', 'category', 'description'];
 
-  constructor(private spendsService: SpendsStorageService) {
-    this.$spends = spendsService.$subject;
-  }
+  constructor(
+    private store: Store,
+  ) { }
 
 }
