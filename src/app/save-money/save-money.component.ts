@@ -4,6 +4,8 @@ import * as dayjs from "dayjs";
 import {Spend, SpendsStorageService} from "../services/spends-service/spends-storage.service";
 import {APP_CONFIG} from "../app-config/app=config.constants";
 import {AppConfig} from "../app-config/app-config.interface";
+import { Store } from '@ngrx/store';
+import { add } from '../state/spends/spends.actions';
 
 @Component({
   selector: 'save-money',
@@ -14,6 +16,7 @@ export class SaveMoneyComponent {
   addSpendForm: FormGroup;
 
   constructor(
+    private store: Store,
     private spendsService: SpendsStorageService,
     @Inject( APP_CONFIG ) private config: AppConfig
   ) {
@@ -26,6 +29,6 @@ export class SaveMoneyComponent {
   }
 
   onSubmit() {
-    this.spendsService.add(new Spend(this.addSpendForm.value));
+    this.store.dispatch(add({ payload: new Spend(this.addSpendForm.value) }));
   }
 }
