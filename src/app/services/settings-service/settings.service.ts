@@ -3,6 +3,8 @@ import {BehaviorSubject, first} from "rxjs";
 import * as dayjs from 'dayjs';
 import {StorageService} from "../storage/storage.service";
 
+// todo: remove this file and dependencies
+
 export interface Settings {
   beginDate: string;
   endDate: string;
