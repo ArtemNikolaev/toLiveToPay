@@ -1,11 +1,11 @@
 import {Component, Inject } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import * as dayjs from "dayjs";
-import {Spend, SpendsStorageService} from "../services/spends-service/spends-storage.service";
 import {APP_CONFIG} from "../app-config/app=config.constants";
 import {AppConfig} from "../app-config/app-config.interface";
 import { Store } from '@ngrx/store';
 import { add } from '../state/spends/spends.actions';
+import { Spend } from '../models/spends.model';
 
 @Component({
   selector: 'save-money',
@@ -17,7 +17,6 @@ export class SaveMoneyComponent {
 
   constructor(
     private store: Store,
-    private spendsService: SpendsStorageService,
     @Inject( APP_CONFIG ) private config: AppConfig
   ) {
     this.addSpendForm = new FormGroup({
