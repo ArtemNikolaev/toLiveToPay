@@ -4,6 +4,7 @@ import * as dayjs from 'dayjs';
 import { Days } from '../models/overallLeft.model';
 import { Categories } from '../models/categories.model';
 import { Spends } from '../models/spends.model';
+import { APP_DI_CONFIG } from '../app-config/app=config.constants';
 
 export const selectSettings = (state: any): Settings => state.settings;
 export const selectCategories = (state: any): Categories => state.categories;
@@ -21,4 +22,17 @@ export const selectDays = createSelector(
         left: endDate.diff(today) / 1000 / 60 / 60 / 24,
     };
   }
+)
+
+export const selectSavingsCount = createSelector(
+  selectSpends,
+  (spends: Spends): number => {
+      return spends
+        .filter(el =>
+          el.category === APP_DI_CONFIG.categories.withdraw ||
+          el.category === APP_DI_CONFIG.categories.deposit
+        )
+        .reduce((sum, el) => sum + el.sum, 0)
+  }
+
 )
