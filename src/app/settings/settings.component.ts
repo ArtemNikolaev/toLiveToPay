@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { SettingsService } from '../settings.service';
 import { Store } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 import { Settings } from '../models/settings.model';
-import { updateAll } from '../state/settings.actions';
-import { selectSettings } from '../state/settings.selector';
+import { update } from '../state/settings/settings.actions';
+import { selectSettings } from '../state/selectors';
 
 @Component({
   selector: 'settings',
@@ -14,7 +13,7 @@ import { selectSettings } from '../state/settings.selector';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-  settings$ : Observable<Settings> = this.store.select(selectSettings);
+  settings$ = this.store.select(selectSettings);
   settingsForm = new FormGroup({
     amount : new FormControl('0'),
     beginDate : new FormControl(''),
@@ -37,12 +36,12 @@ export class SettingsComponent implements OnInit {
       (settings: Settings | null) => {
         if (!settings) return;
 
-        this.store.dispatch(updateAll(settings))
+        this.store.dispatch(update({payload: settings}))
       }
     );
   }
 
   onSubmit() {
-    this.store.dispatch(updateAll(this.settingsForm.value))
+    this.store.dispatch(update(this.settingsForm.value))
   }
 }

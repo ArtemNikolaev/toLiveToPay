@@ -27,7 +27,7 @@ import {MatTableModule} from "@angular/material/table";
 import { DaysLeftComponent } from './overall-left/days-left/days-left.component';
 import { MoneyLeftComponent } from './overall-left/money-left/money-left.component';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
+import { reducers, metaReducers } from './state/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 
@@ -68,7 +68,7 @@ import { environment } from '../environments/environment';
       maxAge: 100,
       logOnly: environment.production,
       autoPause: true,
-      name: `toLiveToPay [${environment.production ? 'Production' : 'Dev'}]: ${environment.version}`
+      name: `${environment.appName}: ${environment.version}${environment.production ? '' : ' [Dev]'}`
     })
   ],
   providers: [
