@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { SettingsService } from '../settings.service';
 import { Store } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 import { Settings } from '../models/settings.model';
@@ -24,8 +23,7 @@ export class SettingsComponent {
   minEndDate = dayjs().add(1, 'day').format('YYYY-MM-DD');
 
   constructor(
-    private store: Store,
-    private settingsService: SettingsService
+    private store: Store
   ) {
     this.settings$.pipe(first()).subscribe((value: Settings) => {
       this.settingsForm.setValue(value);
@@ -33,7 +31,6 @@ export class SettingsComponent {
   }
 
   onSubmit() {
-    console.log(this.settingsForm.value);
     this.store.dispatch(update({payload: this.settingsForm.value}))
   }
 }
