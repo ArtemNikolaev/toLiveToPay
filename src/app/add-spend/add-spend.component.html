@@ -16,7 +16,7 @@
 
     <select matNativeControl formControlName="category">
       <option value="''"></option>
-      <option *ngFor="let category of $categories | async" [value]="category">{{category}}</option>
+      <option *ngFor="let category of categories$ | async" [value]="category">{{category}}</option>
     </select>
   </mat-form-field>
 

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import * as dayjs from "dayjs";
-import {BehaviorSubject} from "rxjs";
-import {CategoriesStorageService} from "../services/categories-storage/categories-storage.service";
 import {Spend, SpendsStorageService} from "../services/spends-service/spends-storage.service";
+import { Store } from '@ngrx/store';
+import { selectCategories } from '../state/selectors';
 
 @Component({
   selector: 'add-spend',
@@ -11,7 +11,7 @@ import {Spend, SpendsStorageService} from "../services/spends-service/spends-sto
   styleUrls: ['./add-spend.component.css']
 })
 export class AddSpendComponent {
-  $categories: BehaviorSubject<string[]>;
+  categories$ = this.store.select(selectCategories);
   addSpendForm = new FormGroup({
     sum : new FormControl('0'),
     date : new FormControl(dayjs().format('YYYY-MM-DD')),
@@ -20,10 +20,9 @@ export class AddSpendComponent {
   });
 
   constructor(
-    private categoriesService: CategoriesStorageService,
+    private store: Store,
     private spendsService: SpendsStorageService,
   ) {
-    this.$categories = categoriesService.$categories;
   }
 
   onSubmit() {
