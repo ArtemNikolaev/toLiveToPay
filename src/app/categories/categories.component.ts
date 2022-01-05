@@ -1,17 +1,14 @@
-import { Component, OnDestroy } from '@angular/core';
-import { Subscription } from "rxjs";
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectCategories } from '../state/selectors';
 import { add, remove } from '../state/categories/categories.actions';
-
-// todo: separate module for categories
 
 @Component({
   selector: 'categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
-export class CategoriesComponent implements OnDestroy {
+export class CategoriesComponent {
   categories$ = this.store.select(selectCategories);
   newCategory = '';
 
@@ -28,6 +25,4 @@ export class CategoriesComponent implements OnDestroy {
     this.store.dispatch(remove({payload}))
   }
 
-  ngOnDestroy() {
-  }
 }
