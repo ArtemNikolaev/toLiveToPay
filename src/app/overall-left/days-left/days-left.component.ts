@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { selectDays } from '../../state/selectors';
+import { selectDaysLeft } from '../../state/selectors';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { DaysLeft } from '../../models/overallLeft.model';
@@ -10,7 +10,7 @@ import { DaysLeft } from '../../models/overallLeft.model';
   styleUrls: ['../left.css']
 })
 export class DaysLeftComponent {
-  days$: Observable<DaysLeft> = this.store.select(selectDays);
+  days$: Observable<DaysLeft> = this.store.select(selectDaysLeft);
 
   constructor(private store: Store  ) {
   }

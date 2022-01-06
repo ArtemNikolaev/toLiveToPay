@@ -10,7 +10,7 @@ export const selectSettings = (state: any): Settings => state.settings;
 export const selectCategories = (state: any): Categories => state.categories;
 export const selectSpends = (state: any): Spends => state.spends;
 
-export const selectDays = createSelector(
+export const selectDaysLeft = createSelector(
   selectSettings,
   (settings: Settings): DaysLeft => {
     const today = dayjs().startOf('day');
