@@ -5,7 +5,7 @@ import * as dayjs from 'dayjs';
 import { Settings } from '../models/settings.model';
 import { update } from '../state/settings/settings.actions';
 import {first} from "rxjs";
-import { selectSettings } from '../state/selectors/main';
+import { selectSettings } from '../state/selectors/main.selector';
 
 @Component({
   selector: 'settings',
