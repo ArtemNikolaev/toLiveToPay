@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectSpends } from '../state/selectors/spends.selector';
+import {selectInBudgetSpends} from "../state/selectors/inBudgetSpends.selector";
 
 @Component({
   selector: 'today-spends',
@@ -8,7 +8,7 @@ import { selectSpends } from '../state/selectors/spends.selector';
   styleUrls: ['./today-spends.component.css']
 })
 export class TodaySpendsComponent {
-  spends$ = this.store.select(selectSpends);
+  spends$ = this.store.select(selectInBudgetSpends);
   displayedColumns: string[] = ['time', 'sum', 'category', 'description'];
 
   constructor(
