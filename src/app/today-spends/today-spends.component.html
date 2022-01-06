@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="spends$" class="mat-evevation-z8">
+<table mat-table [dataSource]="spends" class="mat-evevation-z8">
   <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
     <th mat-header-cell *matHeaderCellDef> {{column}} </th>
     <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
