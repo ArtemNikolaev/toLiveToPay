@@ -3,6 +3,6 @@ interface OverallLeft {
   left: number;
 }
 
-export type Days = OverallLeft;
-export type Money = OverallLeft;
-export type Budget = OverallLeft;
+export type DaysLeft = OverallLeft;
+export type MoneyLeft = OverallLeft;
+export type BudgetLeft = OverallLeft;

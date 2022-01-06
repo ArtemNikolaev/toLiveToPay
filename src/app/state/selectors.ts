@@ -1,7 +1,7 @@
 import {Settings} from "../models/settings.model";
 import { createSelector } from '@ngrx/store';
 import * as dayjs from 'dayjs';
-import { Days } from '../models/overallLeft.model';
+import { DaysLeft } from '../models/overallLeft.model';
 import { Categories } from '../models/categories.model';
 import { Spends } from '../models/spends.model';
 import { APP_DI_CONFIG } from '../app-config/app=config.constants';
@@ -12,7 +12,7 @@ export const selectSpends = (state: any): Spends => state.spends;
 
 export const selectDays = createSelector(
   selectSettings,
-  (settings: Settings): Days => {
+  (settings: Settings): DaysLeft => {
     const today = dayjs().startOf('day');
     const endDate = dayjs(settings.endDate).startOf('day').add(1, 'day');
     const beginDate = dayjs(settings.beginDate).startOf('day');
