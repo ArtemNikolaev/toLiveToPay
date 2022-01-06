@@ -1,8 +1,8 @@
 import { createSelector } from '@ngrx/store';
-import { selectSettings } from './main.selector';
 import { Settings } from '../../models/settings.model';
 import { DaysLeft } from '../../models/overallLeft.model';
 import * as dayjs from 'dayjs';
+import {selectSettings} from "./settings.selector";
 
 export const selectDaysLeft = createSelector(
   selectSettings,

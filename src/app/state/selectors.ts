@@ -4,7 +4,8 @@ import * as dayjs from 'dayjs';
 import { MoneyLeft } from '../models/overallLeft.model';
 import { Spends } from '../models/spends.model';
 import { APP_DI_CONFIG } from '../app-config/app=config.constants';
-import { selectSettings, selectSpends } from './selectors/main.selector';
+import { selectSpends } from './selectors/main.selector';
+import {selectSettings} from "./selectors/settings.selector";
 
 export const selectMoneyLeft = createSelector(
   selectSettings,
