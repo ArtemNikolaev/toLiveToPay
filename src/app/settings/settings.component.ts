@@ -4,8 +4,8 @@ import { Store } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 import { Settings } from '../models/settings.model';
 import { update } from '../state/settings/settings.actions';
-import { selectSettings } from '../state/selectors';
 import {first} from "rxjs";
+import { selectSettings } from '../state/selectors/main';
 
 @Component({
   selector: 'settings',

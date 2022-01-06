@@ -2,13 +2,9 @@ import { Money, Settings } from "../models/settings.model";
 import { createSelector } from '@ngrx/store';
 import * as dayjs from 'dayjs';
 import { DaysLeft, MoneyLeft } from '../models/overallLeft.model';
-import { Categories } from '../models/categories.model';
 import { Spends } from '../models/spends.model';
 import { APP_DI_CONFIG } from '../app-config/app=config.constants';
-
-export const selectSettings = (state: any): Settings => state.settings;
-export const selectCategories = (state: any): Categories => state.categories;
-export const selectSpends = (state: any): Spends => state.spends;
+import { selectSettings, selectSpends } from './selectors/main';
 
 export const selectDaysLeft = createSelector(
   selectSettings,

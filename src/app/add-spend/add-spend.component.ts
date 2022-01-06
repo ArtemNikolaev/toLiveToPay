@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
 import * as dayjs from "dayjs";
 import { Store } from '@ngrx/store';
-import { selectCategories } from '../state/selectors';
 import { add } from '../state/spends/spends.actions';
 import { Spend } from '../models/spends.model';
+import { selectCategories } from '../state/selectors/main';
 
 @Component({
   selector: 'add-spend',
