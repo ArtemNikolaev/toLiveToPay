@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { add, remove } from '../state/categories/categories.actions';
-import { selectCategories } from '../state/selectors/main.selector';
+import {selectCategories} from "../state/selectors/categories.selector";
 
 @Component({
   selector: 'categories',

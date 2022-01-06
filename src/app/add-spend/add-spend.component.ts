@@ -4,7 +4,7 @@ import * as dayjs from "dayjs";
 import { Store } from '@ngrx/store';
 import { add } from '../state/spends/spends.actions';
 import { Spend } from '../models/spends.model';
-import { selectCategories } from '../state/selectors/main.selector';
+import {selectCategories} from "../state/selectors/categories.selector";
 
 @Component({
   selector: 'add-spend',
