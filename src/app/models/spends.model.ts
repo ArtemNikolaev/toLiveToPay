@@ -1,9 +1,10 @@
 import * as dayjs from 'dayjs';
+import { Money } from './settings.model';
 
 export class Spend {
   date: number;
   time: number;
-  sum: number;
+  sum: Money;
   description?: string;
   category?: string;
 
