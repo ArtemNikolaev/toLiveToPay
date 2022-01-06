@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { selectDaysLeft } from '../../state/selectors';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { DaysLeft } from '../../models/overallLeft.model';
+import { selectDaysLeft } from '../../state/selectors/daysLeft.selector';
 
 @Component({
   selector: 'days-left',
