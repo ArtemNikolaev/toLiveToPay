@@ -1,7 +1,7 @@
 import { createSelector } from '@ngrx/store';
-import { Spends } from '../models/spends.model';
-import { APP_DI_CONFIG } from '../app-config/app=config.constants';
-import { selectSpends } from './selectors/spends.selector';
+import { Spends } from '../../models/spends.model';
+import { APP_DI_CONFIG } from '../../app-config/app=config.constants';
+import { selectSpends } from './spends.selector';
 
 export const selectSavingsCount = createSelector(
   selectSpends,
