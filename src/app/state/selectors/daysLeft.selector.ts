@@ -7,7 +7,7 @@ export const selectDaysLeft = createSelector(
   selectSettings,
   ({endDate}:Settings): number => {
     const today = dayjs().startOf('day');
-    const last = dayjs(endDate).startOf('day').add(1, 'day');
+    const last = dayjs(endDate).startOf('day');
 
     return last.diff(today) / 1000 / 60 / 60 / 24;
   }
