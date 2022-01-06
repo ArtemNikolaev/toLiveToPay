@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectMoneyLeft } from '../../state/selectors';
+import {selectMoneyLeft} from "../../state/selectors/moneyLeft.selector";
 
 @Component({
   selector: 'money-left',
