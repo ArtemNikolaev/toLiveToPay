@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { DaysLeft } from '../../models/overallLeft.model';
-import { selectDaysLeft } from '../../state/selectors/daysLeft.selector';
+import { DaysInfo } from '../../models/overallInfo.model';
+import { selectDaysInfo } from '../../state/selectors/daysInfo.selector';
 
 @Component({
   selector: 'days-left',
@@ -10,7 +10,7 @@ import { selectDaysLeft } from '../../state/selectors/daysLeft.selector';
   styleUrls: ['../left.css']
 })
 export class DaysLeftComponent {
-  days$: Observable<DaysLeft> = this.store.select(selectDaysLeft);
+  days$: Observable<DaysInfo> = this.store.select(selectDaysInfo);
 
   constructor(private store: Store  ) {
   }

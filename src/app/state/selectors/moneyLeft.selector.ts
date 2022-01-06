@@ -3,13 +3,13 @@ import {selectSettings} from "./settings.selector";
 import {selectSpends} from "./spends.selector";
 import {Money, Settings} from "../../models/settings.model";
 import {Spends} from "../../models/spends.model";
-import {MoneyLeft} from "../../models/overallLeft.model";
+import {MoneyInfo} from "../../models/overallInfo.model";
 import * as dayjs from "dayjs";
 
 export const selectMoneyLeft = createSelector(
   selectSettings,
   selectSpends,
-  (settings: Settings, spends: Spends): MoneyLeft => {
+  (settings: Settings, spends: Spends): MoneyInfo => {
     const todayUnix = dayjs(settings.beginDate, 'YYYY-MM-DD').unix();
     console.log({settings, spends, todayUnix})
     const overall: Money = settings.amount;
