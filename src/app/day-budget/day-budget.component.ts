@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {AddSpendComponent} from "../add-spend/add-spend.component";
 import {SaveMoneyComponent} from "../save-money/save-money.component";
-import {DayBudgetInterface, DayBudgetService} from "./day-budget.service";
-import {Observable} from "rxjs";
+import {Store} from "@ngrx/store";
+import {selectBudgetInfo} from "../state/selectors/budgetInfo.selector";
 
 @Component({
   selector: 'day-budget',
@@ -11,13 +11,12 @@ import {Observable} from "rxjs";
   styleUrls: ['./day-budget.component.css']
 })
 export class DayBudgetComponent {
-  public $subject: Observable<DayBudgetInterface>;
+  budget$ = this.store.select(selectBudgetInfo);
 
-  constructor(public dialog: MatDialog,
-              private service: DayBudgetService) {
-    this.$subject = service.$subject;
-    service.$subject.subscribe(console.log);
-  }
+  constructor(
+    public dialog: MatDialog,
+    private store: Store,
+  ) { }
 
   openSpend() {
     this.dialog.open(AddSpendComponent);

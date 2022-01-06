@@ -1,10 +1,10 @@
 import { createSelector } from '@ngrx/store';
 import { Spends } from '../../models/spends.model';
 import { APP_DI_CONFIG } from '../../app-config/app=config.constants';
-import { selectSpends } from './spends.selector';
+import {selectInBudgetSpends} from "./inBudgetSpends.selector";
 
 export const selectSavingsCount = createSelector(
-  selectSpends,
+  selectInBudgetSpends,
   (spends: Spends): number => {
       return spends
         .filter(el =>

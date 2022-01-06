@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [NGRX](https://ngrx.io/)
 - [ESLint](https://eslint.org/)
 - categories storage
+- budget works well
 
 ## [3.2.0] - 2021-12-24
 ### Added
