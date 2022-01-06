@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {BehaviorSubject} from "rxjs";
-import {MoneyLeftService} from "./money-left.service";
+import { Store } from '@ngrx/store';
+import { selectMoneyLeft } from '../../state/selectors';
 
 @Component({
   selector: 'money-left',
@@ -8,10 +8,9 @@ import {MoneyLeftService} from "./money-left.service";
   styleUrls: ['./../left.css']
 })
 export class MoneyLeftComponent {
-  $subject: BehaviorSubject<any>;
+  moneyLeft$ = this.store.select(selectMoneyLeft);
 
-  constructor(private service: MoneyLeftService) {
-    this.$subject = service.$subject;
+  constructor(private store: Store) {
   }
 
 }
