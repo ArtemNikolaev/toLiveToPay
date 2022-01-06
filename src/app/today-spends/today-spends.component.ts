@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectSpends } from '../state/selectors/main.selector';
+import { selectSpends } from '../state/selectors/spends.selector';
 
 @Component({
   selector: 'today-spends',
