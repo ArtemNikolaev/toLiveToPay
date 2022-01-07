@@ -2,7 +2,7 @@
 <div mat-dialog-content>
   <mat-card>
     <input type="text" [(ngModel)]="newCategory" />
-    <button (click)="addCategory(newCategory)">ADD</button>
+    <button (click)="addCategory(newCategory)" mat-stroked-button	>ADD</button>
   </mat-card>
 
   <mat-list *ngIf="categories$ | async as categories">
