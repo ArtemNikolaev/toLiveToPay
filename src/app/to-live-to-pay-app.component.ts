@@ -3,9 +3,9 @@ import {environment} from "../environments/environment";
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './to-live-to-pay-app.component.html',
+  styleUrls: ['./to-live-to-pay-app.component.css']
 })
-export class AppComponent {
+export class ToLiveToPayApp {
   title = environment.appName;
 }

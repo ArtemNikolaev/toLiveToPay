@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {SettingsComponent} from "../settings/settings.component";
 import {ChangeSumComponent} from "../change-sum/change-sum.component";
 
 @Component({
@@ -11,10 +10,6 @@ import {ChangeSumComponent} from "../change-sum/change-sum.component";
 export class OverallLeftComponent {
 
   constructor(public dialog: MatDialog) { }
-
-  openSettings() {
-    this.dialog.open(SettingsComponent);
-  }
 
   openChanges() {
     this.dialog.open(ChangeSumComponent)

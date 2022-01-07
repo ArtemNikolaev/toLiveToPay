@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
+import { ToLiveToPayApp } from './to-live-to-pay-app.component';
 import { OverallLeftComponent } from './overall-left/overall-left.component';
 import { DayBudgetComponent } from './day-budget/day-budget.component';
 import { SavingsComponent } from './savings/savings.component';
@@ -14,6 +14,7 @@ import { WithdrawComponent } from './withdraw/withdraw.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from "@angular/material/dialog";
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -30,10 +31,12 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './state/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { AppToolbarComponent } from './components/app-toolbar/app-toolbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    ToLiveToPayApp,
     OverallLeftComponent,
     DayBudgetComponent,
     SavingsComponent,
@@ -47,6 +50,7 @@ import { environment } from '../environments/environment';
     TodaySpendsComponent,
     DaysLeftComponent,
     MoneyLeftComponent,
+    AppToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +65,7 @@ import { environment } from '../environments/environment';
     MatIconModule,
     MatCardModule,
     MatTableModule,
+    MatSnackBarModule,
     StoreModule.forRoot(reducers, {
       metaReducers
     }),
@@ -68,8 +73,9 @@ import { environment } from '../environments/environment';
       maxAge: 100,
       logOnly: environment.production,
       autoPause: true,
-      name: `${environment.appName}: ${environment.version}${environment.production ? '' : ' [Dev]'}`
-    })
+      name: `${ environment.appName }: ${ environment.version }${ environment.production ? '' : ' [Dev]' }`
+    }),
+    MatToolbarModule
   ],
   providers: [
     {
@@ -77,6 +83,6 @@ import { environment } from '../environments/environment';
       useValue: APP_DI_CONFIG,
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [ToLiveToPayApp]
 })
 export class AppModule { }
