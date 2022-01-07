@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { ToLiveToPayApp } from './to-live-to-pay-app.component';
 import { OverallInfoComponent } from './components/overall-info/overall-info.component';
-import { DayBudgetComponent } from './day-budget/day-budget.component';
 import { SavingsComponent } from './savings/savings.component';
 import { SpendsComponent } from './spends/spends.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -32,6 +31,7 @@ import { environment } from '../environments/environment';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppToolbarComponent } from './components/app-toolbar/app-toolbar.component';
 import { InfoBadgeComponent } from './components/info-badge/info-badge.component';
+import { DayBudgetComponent } from './components/day-budget/day-budget.component';
 
 @NgModule({
   declarations: [

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {AddSpendComponent} from "../add-spend/add-spend.component";
-import {SaveMoneyComponent} from "../save-money/save-money.component";
 import {Store} from "@ngrx/store";
-import {selectBudgetInfo} from "../state/selectors/budgetInfo.selector";
+import { selectBudgetInfo } from '../../state/selectors/budgetInfo.selector';
+import { AddSpendComponent } from '../../add-spend/add-spend.component';
+import { SaveMoneyComponent } from '../../save-money/save-money.component';
 
 @Component({
   selector: 'day-budget',

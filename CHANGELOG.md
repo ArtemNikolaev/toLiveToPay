@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - styles for toolbar
 - styles for overallInfo
+- styles for day budget
 
 ## [3.3.0] - 2022-01-06
 ### Added 
