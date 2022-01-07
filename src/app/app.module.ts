@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { ToLiveToPayApp } from './to-live-to-pay-app.component';
-import { OverallLeftComponent } from './overall-left/overall-left.component';
+import { OverallInfoComponent } from './components/overall-info/overall-info.component';
 import { DayBudgetComponent } from './day-budget/day-budget.component';
 import { SavingsComponent } from './savings/savings.component';
 import { SpendsComponent } from './spends/spends.component';
@@ -25,19 +25,18 @@ import {MatCardModule} from "@angular/material/card";
 import {APP_CONFIG, APP_DI_CONFIG} from "./app-config/app=config.constants";
 import { TodaySpendsComponent } from './today-spends/today-spends.component';
 import {MatTableModule} from "@angular/material/table";
-import { DaysLeftComponent } from './overall-left/days-left/days-left.component';
-import { MoneyLeftComponent } from './overall-left/money-left/money-left.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './state/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppToolbarComponent } from './components/app-toolbar/app-toolbar.component';
+import { InfoBadgeComponent } from './components/info-badge/info-badge.component';
 
 @NgModule({
   declarations: [
     ToLiveToPayApp,
-    OverallLeftComponent,
+    OverallInfoComponent,
     DayBudgetComponent,
     SavingsComponent,
     SpendsComponent,
@@ -48,9 +47,8 @@ import { AppToolbarComponent } from './components/app-toolbar/app-toolbar.compon
     WithdrawComponent,
     CategoriesComponent,
     TodaySpendsComponent,
-    DaysLeftComponent,
-    MoneyLeftComponent,
-    AppToolbarComponent
+    AppToolbarComponent,
+    InfoBadgeComponent
   ],
   imports: [
     BrowserModule,

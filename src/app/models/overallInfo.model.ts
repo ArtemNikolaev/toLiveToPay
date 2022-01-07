@@ -1,4 +1,4 @@
-interface OverallLeft {
+export interface OverallLeft {
   overall: number;
   left: number;
 }

@@ -6,7 +6,7 @@ import {Spends} from "../../models/spends.model";
 import {MoneyInfo} from "../../models/overallInfo.model";
 import * as dayjs from "dayjs";
 
-export const selectMoneyLeft = createSelector(
+export const selectMoneyInfo = createSelector(
   selectSettings,
   selectSpends,
   (settings: Settings, spends: Spends): MoneyInfo => {

@@ -1,14 +1,18 @@
-<mat-toolbar class="toolbar" color="accent">
+<mat-toolbar class="mat-elevation-z1" color="accent">
     <button
             mat-icon-button
-            class="example-icon"
+            class="example-icon mat-elevation-z0"
             aria-label="Example icon-button with menu icon"
             (click)="openMenu()"
     >
         <mat-icon>menu</mat-icon>
     </button>
 
-    <header>To Live To Pay</header>
+    <header class="mat-elevation-z0">To Live To Pay</header>
 
-    <button (click)="openSettings()" mat-stroked-button	>SETTINGS</button>
+    <button
+            class="mat-elevation-z1"
+            (click)="openSettings()"
+            mat-stroked-button
+    >SETTINGS</button>
 </mat-toolbar>
