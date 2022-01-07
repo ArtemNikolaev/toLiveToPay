@@ -13,5 +13,5 @@ export const selectDayBudgetLeft = createSelector(
     daysPassed: number,
     allSpends: Money
   ): Money =>
-    overallDayBudget - daysPassed * allSpends
+    overallDayBudget * daysPassed - allSpends
 )

@@ -11,7 +11,6 @@ export const selectMoneyInfo = createSelector(
   selectSpends,
   (settings: Settings, spends: Spends): MoneyInfo => {
     const todayUnix = dayjs(settings.beginDate, 'YYYY-MM-DD').unix();
-    console.log({settings, spends, todayUnix})
     const overall: Money = settings.amount;
     const left: Money = overall - spends
       .filter(el => el.date >= todayUnix)
