@@ -1,0 +1,10 @@
+mat-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.mat-card-subtitle, .mat-card-title {
+    margin-bottom: 0;
+    margin-top: 0;
+}

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {WithdrawComponent} from "../withdraw/withdraw.component";
 import { Store } from '@ngrx/store';
-import { selectSavingsCount } from '../state/selectors/savingsCount.selector';
+import { selectSavingsCount } from '../../state/selectors/savingsCount.selector';
+import { WithdrawComponent } from '../../withdraw/withdraw.component';
 
 @Component({
   selector: 'savings',
