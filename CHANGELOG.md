@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - styles for overallInfo
 - styles for day budget
 - styles for savings
+- styles for spends
 
 ## [3.3.0] - 2022-01-06
 ### Added 
