@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.4.1] - 2022-01-08
+### Changed
+- build folder
+
 ## [3.4.0] - 2022-01-08
 ### Added
 - styles for toolbar
@@ -68,7 +72,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.42.1] - 2021-12-22
 
-[Unreleased]: https://github.com/ArtemNikolaev/toLiveToPay/compare/v3.3.0...HEAD
+[Unreleased]: https://github.com/ArtemNikolaev/toLiveToPay/compare/v3.4.1...HEAD
+[3.4.1]: https://github.com/ArtemNikolaev/toLiveToPay/compare/v3.4.0...v3.4.1
+[3.4.0]: https://github.com/ArtemNikolaev/toLiveToPay/compare/v3.3.0...v3.4.0
 [3.3.0]: https://github.com/ArtemNikolaev/toLiveToPay/compare/v3.2.0...v3.3.0
 [3.2.0]: https://github.com/ArtemNikolaev/toLiveToPay/compare/v3.1.0...v3.2.0
 [3.1.0]: https://github.com/ArtemNikolaev/toLiveToPay/compare/v3.0.0...v3.1.0
