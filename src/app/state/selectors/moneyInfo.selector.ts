@@ -1,20 +1,14 @@
 import {createSelector} from "@ngrx/store";
-import {selectSettings} from "./settings.selector";
-import {selectSpends} from "./spends.selector";
-import {Money, Settings} from "../../models/settings.model";
-import {Spends} from "../../models/spends.model";
+import {Money} from "../../models/settings.model";
 import {MoneyInfo} from "../../models/overallInfo.model";
-import * as dayjs from "dayjs";
+import { selectSpendsSum } from './spendsSum.selector';
+import { selectOverallMoney } from './overallMoney.selector';
 
 export const selectMoneyInfo = createSelector(
-  selectSettings,
-  selectSpends,
-  (settings: Settings, spends: Spends): MoneyInfo => {
-    const todayUnix = dayjs(settings.beginDate, 'YYYY-MM-DD').unix();
-    const overall: Money = settings.amount;
-    const left: Money = overall - spends
-      .filter(el => el.date >= todayUnix)
-      .reduce((result, el) => result + el.sum, 0);
+  selectOverallMoney,
+  selectSpendsSum,
+  (overall: Money, spendsSum: Money): MoneyInfo => {
+    const left = Math.floor((overall - spendsSum) * 100) / 100;
 
     return {overall, left};
   }

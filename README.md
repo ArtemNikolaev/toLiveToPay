@@ -1,6 +1,4 @@
 # To Live To Pay
-[![Netlify Status](https://api.netlify.com/api/v1/badges/cf2f861f-acca-4062-bcad-091240de6b4f/deploy-status)](https://app.netlify.com/sites/tolivetopay/deploys)
-
 ####[CHANGELOG](CHANGELOG.md)
 
 _Easy budgeting application, which helps you spend your money wisely._

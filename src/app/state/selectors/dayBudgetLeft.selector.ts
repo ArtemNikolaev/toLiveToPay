@@ -12,6 +12,8 @@ export const selectDayBudgetLeft = createSelector(
     overallDayBudget: Money,
     daysPassed: number,
     allSpends: Money
-  ): Money =>
-    overallDayBudget * daysPassed - allSpends
+  ): Money => {
+    const dayBudgetLeft = overallDayBudget * daysPassed - allSpends;
+    return Math.floor(dayBudgetLeft * 100) / 100;
+  }
 )
