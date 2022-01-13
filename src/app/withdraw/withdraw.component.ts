@@ -6,6 +6,7 @@ import * as dayjs from "dayjs";
 import { Store } from '@ngrx/store';
 import { add } from '../state/spends/spends.actions';
 import { Spend } from '../models/spends.model';
+import {PredefinedCategories} from "../models/categories.model";
 
 @Component({
   selector: 'withdraw',
@@ -23,7 +24,7 @@ export class WithdrawComponent {
     this.addSpendForm = new FormGroup({
       sum : new FormControl('0'),
       date : new FormControl(dayjs().format('YYYY-MM-DD')),
-      category: new FormControl(config.categories.withdraw),
+      category: new FormControl(PredefinedCategories.Withdraw),
       description: new FormControl(''),
     })
   }

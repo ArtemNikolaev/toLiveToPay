@@ -6,6 +6,7 @@ import {AppConfig} from "../app-config/app-config.interface";
 import { Store } from '@ngrx/store';
 import { add } from '../state/spends/spends.actions';
 import { Spend } from '../models/spends.model';
+import {PredefinedCategories} from "../models/categories.model";
 
 @Component({
   selector: 'save-money',
@@ -22,7 +23,7 @@ export class SaveMoneyComponent {
     this.addSpendForm = new FormGroup({
       sum : new FormControl('0'),
       date : new FormControl(dayjs().format('YYYY-MM-DD')),
-      category: new FormControl(config.categories.deposit),
+      category: new FormControl(PredefinedCategories.Deposit),
       description: new FormControl(''),
     })
   }

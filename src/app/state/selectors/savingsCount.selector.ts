@@ -1,15 +1,15 @@
-import { createSelector } from '@ngrx/store';
-import { Spends } from '../../models/spends.model';
-import { APP_DI_CONFIG } from '../../app-config/app-config.constants';
+import {createSelector} from '@ngrx/store';
+import {Spends} from '../../models/spends.model';
 import {selectInBudgetSpends} from "./inBudgetSpends.selector";
+import {PredefinedCategories} from "../../models/categories.model";
 
 export const selectSavingsCount = createSelector(
   selectInBudgetSpends,
   (spends: Spends): number => {
       return spends
         .filter(el =>
-          el.category === APP_DI_CONFIG.categories.withdraw ||
-          el.category === APP_DI_CONFIG.categories.deposit
+          el.category === PredefinedCategories.Withdraw||
+          el.category === PredefinedCategories.Deposit
         )
         .reduce((sum, el) => sum + el.sum, 0)
   }

@@ -30,7 +30,7 @@ export class SettingsComponent {
     private store: Store,
     @Inject( APP_CONFIG ) private config: AppConfig
   ) {
-    this.budgetTypes = config.budgetTypes;
+    this.budgetTypes = Object.values(BudgetType);
     this.settings$.pipe(first()).subscribe((value: Settings) => {
       if (!value.budgetType) {
         value.budgetType = BudgetType.Static;
