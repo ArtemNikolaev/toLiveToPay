@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectMoneyInfo } from '../../state/selectors/moneyInfo.selector';
+import { selectMoneyInfo } from '../../state/publicSelectors/moneyInfo.selector';
 import { selectDaysInfo } from '../../state/selectors/daysInfo.selector';
 
 @Component({
