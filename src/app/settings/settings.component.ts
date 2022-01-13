@@ -1,11 +1,13 @@
-import {Component} from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Store } from '@ngrx/store';
+import {Component, Inject} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+import {Store} from '@ngrx/store';
 import * as dayjs from 'dayjs';
-import { Settings } from '../models/settings.model';
-import { update } from '../state/settings/settings.actions';
+import {BudgetType, Settings} from '../models/settings.model';
+import {update} from '../state/settings/settings.actions';
 import {first} from "rxjs";
 import {selectSettings} from "../state/selectors/settings.selector";
+import {AppConfig} from "../app-config/app-config.interface";
+import {APP_CONFIG} from "../app-config/app-config.constants";
 
 @Component({
   selector: 'settings',
@@ -18,14 +20,23 @@ export class SettingsComponent {
     amount : new FormControl('0'),
     beginDate : new FormControl(''),
     endDate : new FormControl(''),
+    budgetType: new FormControl(BudgetType.Static),
   });
   minBeginDate = dayjs().format('YYYY-MM-DD');
   minEndDate = dayjs().add(1, 'day').format('YYYY-MM-DD');
+  budgetTypes: BudgetType[];
 
   constructor(
-    private store: Store
+    private store: Store,
+    @Inject( APP_CONFIG ) private config: AppConfig
   ) {
+    this.budgetTypes = config.budgetTypes;
     this.settings$.pipe(first()).subscribe((value: Settings) => {
+      if (!value.budgetType) {
+        value.budgetType = BudgetType.Static;
+        this.store.dispatch(update({payload: value}));
+      }
+
       this.settingsForm.setValue(value);
     })
   }

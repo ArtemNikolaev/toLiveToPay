@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {APP_CONFIG} from "../app-config/app=config.constants";
+import {APP_CONFIG} from "../app-config/app-config.constants";
 import {AppConfig} from "../app-config/app-config.interface";
 import * as dayjs from "dayjs";
 import { Store } from '@ngrx/store';

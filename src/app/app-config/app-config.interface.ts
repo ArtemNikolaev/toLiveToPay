@@ -1,3 +1,4 @@
+import {BudgetType} from "../models/settings.model";
 
 interface PredefinedCategories {
   deposit: string;
@@ -7,5 +8,5 @@ interface PredefinedCategories {
 export interface AppConfig {
 
   categories: PredefinedCategories
-
+  budgetTypes: BudgetType[],
 }

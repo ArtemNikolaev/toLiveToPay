@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { OverallLeft } from '../../models/overallInfo.model';
 import { Observable } from 'rxjs';
 
@@ -7,13 +7,10 @@ import { Observable } from 'rxjs';
   templateUrl: './info-badge.component.html',
   styleUrls: ['./info-badge.component.css']
 })
-export class InfoBadgeComponent implements OnInit {
+export class InfoBadgeComponent {
   @Input() name = 'Default Badge Name';
   @Input() value$ = new Observable<OverallLeft>();
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

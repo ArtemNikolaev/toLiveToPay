@@ -1,7 +1,7 @@
 import * as dayjs from 'dayjs';
 import {Action, createReducer, on} from '@ngrx/store';
-import {InputDate, Settings} from '../../models/settings.model';
-import { addToAmount, AmountPayload, SettingsPayload, update } from './settings.actions';
+import {BudgetType, InputDate, Settings} from '../../models/settings.model';
+import {addToAmount, AmountPayload, SettingsPayload, update} from './settings.actions';
 import {LocalStorageConnector} from "../../storage/localStorage.connector";
 
 const connector = new LocalStorageConnector<Settings>('settings');
@@ -9,6 +9,7 @@ const defaultData: Settings = {
   amount: 0,
   beginDate: dayjs().format('YYYY-MM-DD') as InputDate,
   endDate: dayjs().add(1, 'day').format('YYYY-MM-DD') as InputDate,
+  budgetType: BudgetType.Static,
 };
 const initialState: Settings = connector.get() || defaultData;
 

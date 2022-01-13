@@ -20,7 +20,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
-import {APP_CONFIG, APP_DI_CONFIG} from "./app-config/app=config.constants";
+import {APP_CONFIG, APP_DI_CONFIG} from "./app-config/app-config.constants";
 import { TodaySpendsComponent } from './today-spends/today-spends.component';
 import {MatTableModule} from "@angular/material/table";
 import { StoreModule } from '@ngrx/store';
@@ -32,6 +32,7 @@ import { AppToolbarComponent } from './components/app-toolbar/app-toolbar.compon
 import { InfoBadgeComponent } from './components/info-badge/info-badge.component';
 import { DayBudgetComponent } from './components/day-budget/day-budget.component';
 import { SavingsComponent } from './components/savings/savings.component';
+import {MaterialModule} from "./material.module";
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { SavingsComponent } from './components/savings/savings.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    MaterialModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,

@@ -5,8 +5,14 @@ export type InputDate = `${YYYY}-${MM}-${DD}`;
 
 export type Money = number;
 
+export enum BudgetType {
+  Static = 'static',
+  Dynamic = 'dynamic',
+}
+
 export interface Settings {
   amount: Money;
   beginDate: InputDate;
   endDate: InputDate;
+  budgetType: BudgetType;
 }

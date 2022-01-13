@@ -6,6 +6,14 @@
   </mat-form-field>
   <br>
   <mat-form-field appearance="outline">
+    <mat-label>Budget Type :</mat-label>
+    <mat-select formControlName="budgetType">
+     <mat-option *ngFor="let bType of budgetTypes" [value]="bType">
+        {{bType.toUpperCase()}}
+      </mat-option>
+    </mat-select>  </mat-form-field>
+  <br>
+  <mat-form-field appearance="outline">
     <mat-label>Begin Date</mat-label>
     <input type="date" [min]="minBeginDate" matInput formControlName="beginDate">
   </mat-form-field>
@@ -16,6 +24,6 @@
   </mat-form-field>
 </form>
 <footer mat-dialog-actions>
-  <button mat-flat-button color="primary" mat-dialog-close form="settings-form" type="submit" [disabled]="!settingsForm.valid">SAVE</button>
-  <button mat-flat-button color="accent" mat-dialog-close>CLOSE</button>
+  <button mat-flat-button color="primary" mat-dialog-close="button" form="settings-form" type="submit" [disabled]="!settingsForm.valid">SAVE</button>
+  <button mat-flat-button color="accent" mat-dialog-close="button">CLOSE</button>
 </footer>
