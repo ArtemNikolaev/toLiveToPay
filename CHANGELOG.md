@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - bug with savings money
 - bug with static budget
+- settings fix for old versions
 
 ## [3.6.0] - 2022-01-14
 ### Added

@@ -32,12 +32,13 @@ export class SettingsComponent {
   ) {
     this.budgetTypes = Object.values(BudgetType);
     this.settings$.pipe(first()).subscribe((value: Settings) => {
-      if (!value.budgetType) {
-        value.budgetType = BudgetType.Static;
+      const result = Object.assign({}, value);
+      if (!result.budgetType) {
+        result.budgetType = BudgetType.Static;
         this.store.dispatch(update({payload: value}));
       }
 
-      this.settingsForm.setValue(value);
+      this.settingsForm.setValue(result);
     })
   }
 
