@@ -1,5 +1,5 @@
 # To Live To Pay
-####[CHANGELOG](CHANGELOG.md)
+#### [CHANGELOG](CHANGELOG.md)
 
 _Easy budgeting application, which helps you spend your money wisely._
 
