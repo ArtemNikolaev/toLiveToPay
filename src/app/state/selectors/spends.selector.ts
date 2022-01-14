@@ -1,3 +1,47 @@
-import { Spends } from '../../models/spends.model';
+import {Spend, Spends} from '../../models/spends.model';
+import {createSelector} from "@ngrx/store";
+import * as dayjs from "dayjs";
+import {PredefinedCategories} from "../../models/categories.model";
+import {InputDate, Money} from "../../models/settings.model";
+import {selectBeginDate} from "./settings.selector";
+
+function filterSavings(spend: Spend): Boolean {
+  return spend.category !== PredefinedCategories.Withdraw &&
+    spend.category !== PredefinedCategories.Deposit
+}
 
 export const selectSpends = (state: any): Spends => state.spends;
+
+export const selectTodaySpends = createSelector(
+  selectSpends,
+  (spends: Spends):Spends =>
+    spends
+      .filter(spend => spend.date === dayjs().startOf('day').unix())
+      .filter(filterSavings)
+)
+
+export const selectOverallSpends = createSelector(
+  selectSpends,
+  selectBeginDate,
+  (spends: Spends, beginDate: InputDate):Spends =>
+    spends
+      .filter(spend =>
+        spend.date >= dayjs(beginDate, 'YYYY-MM-DD').startOf('day').unix() &&
+        spend.date < dayjs().startOf('day').unix()
+      )
+      .filter(filterSavings)
+)
+
+function spendsSum(spends: Spends): Money {
+  return spends.reduce((sum, spend) => sum + spend.sum, 0)
+}
+
+export const selectTodaySpendsMoney = createSelector(
+  selectTodaySpends,
+  spendsSum
+)
+
+export const selectOverallSpendsMoney = createSelector(
+  selectOverallSpends,
+  spendsSum
+)

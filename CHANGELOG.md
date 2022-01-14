@@ -6,7 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- budgetType field in settings
+- Budget Type: Static or Dynamic 
+- Static Budget Type implementation
 ### Fix
 - show savings as part of existing money
 
