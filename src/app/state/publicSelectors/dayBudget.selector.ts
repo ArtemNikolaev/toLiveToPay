@@ -13,7 +13,9 @@ export const selectDayBudget = createSelector(
     budgetType: BudgetType,
     staticDB: BudgetInfo,
     dynamicDB: BudgetInfo
-  ): BudgetInfo =>
-    budgetType === BudgetType.Dynamic ?
+  ): BudgetInfo => {
+    console.log(budgetType, staticDB, dynamicDB)
+    return budgetType === BudgetType.Dynamic ?
       dynamicDB : staticDB
+  }
 )

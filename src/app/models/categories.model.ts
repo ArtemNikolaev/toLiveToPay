@@ -1,5 +1,5 @@
 export enum PredefinedCategories {
-  Deposit = 'deposti',
+  Deposit = 'deposit',
   Withdraw = 'withdraw',
 }
 export type Category = PredefinedCategories | string;

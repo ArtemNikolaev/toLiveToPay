@@ -9,6 +9,10 @@ function filterSavings(spend: Spend): Boolean {
   return spend.category !== PredefinedCategories.Withdraw &&
     spend.category !== PredefinedCategories.Deposit
 }
+function filterSpends(spend: Spend): Boolean {
+  return spend.category === PredefinedCategories.Withdraw ||
+    spend.category === PredefinedCategories.Deposit
+}
 
 export const selectSpends = (state: any): Spends => state.spends;
 
@@ -43,7 +47,19 @@ export const selectOverallBeforeTodaySpends = createSelector(
       .filter(filterSavings)
 )
 
+const selectSavings = createSelector(
+  selectSpends,
+  selectBeginDate,
+  (spends: Spends, beginDate: InputDate):Spends =>
+    spends
+      .filter(spend =>
+        spend.date >= dayjs(beginDate, 'YYYY-MM-DD').startOf('day').unix()
+      )
+      .filter(filterSpends)
+)
+
 function spendsSum(spends: Spends): Money {
+  console.log({spends});
   return spends.reduce((sum, spend) => sum + spend.sum, 0)
 }
 
@@ -59,5 +75,10 @@ export const selectOverallSpendsMoney = createSelector(
 
 export const selectOverallBeforeTodaySpendsMoney = createSelector(
   selectOverallBeforeTodaySpends,
+  spendsSum
+)
+
+export const selectSavingsMoney = createSelector(
+  selectSavings,
   spendsSum
 )
