@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
   templateUrl: './info-badge.component.html',
   styleUrls: ['./info-badge.component.css']
 })
-export class InfoBadgeComponent {
+export class InfoBadgeComponent<Type> {
   @Input() name = 'Default Badge Name';
-  @Input() value$ = new Observable<OverallLeft>();
+  @Input() value$ = new Observable<OverallLeft<Type>>();
 
   constructor() { }
 
