@@ -26,6 +26,17 @@ export const selectOverallSpends = createSelector(
   (spends: Spends, beginDate: InputDate):Spends =>
     spends
       .filter(spend =>
+        spend.date >= dayjs(beginDate, 'YYYY-MM-DD').startOf('day').unix()
+      )
+      .filter(filterSavings)
+)
+
+export const selectOverallBeforeTodaySpends = createSelector(
+  selectSpends,
+  selectBeginDate,
+  (spends: Spends, beginDate: InputDate):Spends =>
+    spends
+      .filter(spend =>
         spend.date >= dayjs(beginDate, 'YYYY-MM-DD').startOf('day').unix() &&
         spend.date < dayjs().startOf('day').unix()
       )
@@ -43,5 +54,10 @@ export const selectTodaySpendsMoney = createSelector(
 
 export const selectOverallSpendsMoney = createSelector(
   selectOverallSpends,
+  spendsSum
+)
+
+export const selectOverallBeforeTodaySpendsMoney = createSelector(
+  selectOverallBeforeTodaySpends,
   spendsSum
 )
