@@ -59,7 +59,6 @@ const selectSavings = createSelector(
 )
 
 function spendsSum(spends: Spends): Money {
-  console.log({spends});
   return spends.reduce((sum, spend) => sum + spend.sum, 0)
 }
 

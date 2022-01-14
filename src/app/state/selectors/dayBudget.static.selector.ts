@@ -3,7 +3,7 @@ import {selectOverallDays} from "./overallDays.selector";
 import {Money} from "../../models/settings.model";
 import {createSelector} from "@ngrx/store";
 import {selectDaysPassed} from "./daysPassed.selector";
-import {selectOverallSpendsMoney} from "./spends.selector";
+import {selectOverallSpendsMoney, selectSavingsMoney} from "./spends.selector";
 import {BudgetInfo} from "../../models/overallInfo.model";
 
 const selectStaticDayBudgetOverall = createSelector(
@@ -17,8 +17,16 @@ const selectStaticDayBudgetToday = createSelector(
   selectStaticDayBudgetOverall,
   selectDaysPassed,
   selectOverallSpendsMoney,
-  (dayBudget: Money, days: number, spends: Money ): Money =>
-    Math.floor((dayBudget * 100 * days) - spends * 100) / 100
+  selectSavingsMoney,
+  (
+    dayBudget: Money,
+    days: number,
+    spends: Money,
+    savings: Money
+  ): Money =>
+    Math.floor(
+      (dayBudget * 100 * days) - spends * 100 - savings * 100
+    ) / 100
 )
 
 export const selectStaticDayBudget = createSelector(
