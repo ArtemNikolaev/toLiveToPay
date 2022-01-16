@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {selectInBudgetSpends} from "../state/selectors/inBudgetSpends.selector";
 import * as dayjs from "dayjs";
+import * as utc from 'dayjs/plugin/utc'
 
 @Component({
   selector: 'today-spends',
@@ -16,6 +17,8 @@ export class TodaySpendsComponent {
   constructor(
     private store: Store,
   ) {
+    dayjs.extend(utc)
+
     this.spends$.subscribe(
       data => {
         this.spends = [];
@@ -23,7 +26,8 @@ export class TodaySpendsComponent {
           this.spends.push({
             date: el.date,
             sum: el.sum,
-            time: dayjs.unix(el.time).format('hh:mm'),
+            // todo: Костыль - убрать
+            time: dayjs.unix(el.time).utc().format('hh:mm'),
             category: el.category,
             description: el.description,
 
