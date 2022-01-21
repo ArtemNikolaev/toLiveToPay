@@ -1,7 +1,7 @@
 <mat-drawer-container>
   <app-toolbar [menuFn]="menu.toggle.bind(menu)"></app-toolbar>
 
-  <main-page></main-page>
+  <router-outlet></router-outlet>
 
   <mat-drawer #menu mode="over" position="start">
     <side-menu></side-menu>
