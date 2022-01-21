@@ -32,6 +32,8 @@ import { InfoBadgeComponent } from './components/info-badge/info-badge.component
 import { DayBudgetComponent } from './components/day-budget/day-budget.component';
 import { SavingsComponent } from './components/savings/savings.component';
 import { MaterialModule } from "./material.module";
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { MaterialModule } from "./material.module";
     CategoriesComponent,
     TodaySpendsComponent,
     AppToolbarComponent,
-    InfoBadgeComponent
+    InfoBadgeComponent,
+    SideMenuComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
