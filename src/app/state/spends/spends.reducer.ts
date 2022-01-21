@@ -16,8 +16,7 @@ function addReducer(state: Spends, {payload: spend}: SpendPayload): Spends {
 }
 
 function removeReducer(state: Spends, {payload}: SpendPayload): Spends {
-  console.log({state, payload});
-  return state.filter((spend: Spend): boolean => {
+  const result = state.filter((spend: Spend): boolean => {
     for (let property in spend) {
       if (property === 'time') {
         continue;
@@ -30,6 +29,10 @@ function removeReducer(state: Spends, {payload}: SpendPayload): Spends {
 
     return false;
   });
+
+  connector.set(result);
+
+  return result;
 }
 
 export const spendsReducer = createReducer(
