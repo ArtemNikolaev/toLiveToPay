@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {CategoriesComponent} from "../categories/categories.component";
+import {CategoriesComponent} from "../../categories/categories.component";
 
 @Component({
   selector: 'spends',

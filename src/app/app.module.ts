@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { ToLiveToPayApp } from './to-live-to-pay-app.component';
 import { OverallInfoComponent } from './components/overall-info/overall-info.component';
-import { SpendsComponent } from './spends/spends.component';
+import { SpendsComponent } from './components/spends/spends.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ChangeSumComponent } from './change-sum/change-sum.component';
 import { AddSpendComponent } from './add-spend/add-spend.component';
@@ -34,6 +34,7 @@ import { SavingsComponent } from './components/savings/savings.component';
 import { MaterialModule } from "./material.module";
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { MainPageComponent } from './components/main-page/main-page.component';
       name: `${ environment.appName }: ${ environment.version }${ environment.production ? '' : ' [Dev]' }`
     }),
     MatToolbarModule,
+    AppRoutingModule,
   ],
   providers: [
     {
