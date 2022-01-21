@@ -1,0 +1,10 @@
+mat-drawer-container {
+  height: 100%;
+}
+
+@media (orientation: landscape) {
+  mat-drawer-container {
+    margin: 0 auto;
+    width: 50vh;
+  }
+}

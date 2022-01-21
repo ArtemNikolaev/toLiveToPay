@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Routing
 - Sidemenu
+- UI for PC #63
 
 ### Fixed
 - time bug in spends
