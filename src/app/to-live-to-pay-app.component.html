@@ -1,5 +1,15 @@
-<app-toolbar></app-toolbar>
-<overall-left></overall-left>
-<day-budget></day-budget>
-<savings></savings>
-<spends></spends>
+<mat-drawer-container autosize>
+  <mat-drawer
+    #menu
+    mode="over"
+    position="start"
+  >
+    <p>side content</p>
+  </mat-drawer>
+
+  <app-toolbar [menuFn]="menu.toggle.bind(menu)"></app-toolbar>
+  <overall-left></overall-left>
+  <day-budget></day-budget>
+  <savings></savings>
+  <spends></spends>
+</mat-drawer-container>
