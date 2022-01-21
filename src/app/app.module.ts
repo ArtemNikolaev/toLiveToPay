@@ -12,7 +12,6 @@ import { WithdrawComponent } from './withdraw/withdraw.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from "@angular/material/dialog";
-import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -32,7 +31,7 @@ import { AppToolbarComponent } from './components/app-toolbar/app-toolbar.compon
 import { InfoBadgeComponent } from './components/info-badge/info-badge.component';
 import { DayBudgetComponent } from './components/day-budget/day-budget.component';
 import { SavingsComponent } from './components/savings/savings.component';
-import {MaterialModule} from "./material.module";
+import { MaterialModule } from "./material.module";
 
 @NgModule({
   declarations: [
@@ -65,7 +64,6 @@ import {MaterialModule} from "./material.module";
     MatIconModule,
     MatCardModule,
     MatTableModule,
-    MatSnackBarModule,
     StoreModule.forRoot(reducers, {
       metaReducers
     }),
@@ -75,7 +73,7 @@ import {MaterialModule} from "./material.module";
       autoPause: true,
       name: `${ environment.appName }: ${ environment.version }${ environment.production ? '' : ' [Dev]' }`
     }),
-    MatToolbarModule
+    MatToolbarModule,
   ],
   providers: [
     {
