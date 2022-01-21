@@ -9,3 +9,8 @@ export const add = createAction(
   '[Spends] add',
   props<SpendPayload>(),
 )
+
+export const rm = createAction(
+  '[Spends] remove',
+  props<SpendPayload>(),
+)

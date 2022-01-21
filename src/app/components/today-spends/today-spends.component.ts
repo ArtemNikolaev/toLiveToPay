@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import {selectInBudgetSpends} from "../state/selectors/inBudgetSpends.selector";
+import {selectInBudgetSpends} from "../../state/selectors/inBudgetSpends.selector";
 import * as dayjs from "dayjs";
 import * as utc from 'dayjs/plugin/utc'
+import {rm} from "../../state/spends/spends.actions";
+import {Spend} from "../../models/spends.model";
 
 @Component({
   selector: 'today-spends',
@@ -37,4 +39,8 @@ export class TodaySpendsComponent {
     )
   }
 
+  removeSpend(spend: Spend) {
+    // spend.time = dayjs(spend.time, 'HH:mm');
+    this.store.dispatch(rm({payload: spend}));
+  }
 }

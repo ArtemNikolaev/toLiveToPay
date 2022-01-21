@@ -20,7 +20,7 @@ import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
 import {APP_CONFIG, APP_DI_CONFIG} from "./app-config/app-config.constants";
-import { TodaySpendsComponent } from './today-spends/today-spends.component';
+import { TodaySpendsComponent } from './components/today-spends/today-spends.component';
 import {MatTableModule} from "@angular/material/table";
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './state/reducers';

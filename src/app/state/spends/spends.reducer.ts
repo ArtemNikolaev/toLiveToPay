@@ -1,6 +1,6 @@
 import { LocalStorageConnector } from '../../storage/localStorage.connector';
-import { Spends } from '../../models/spends.model';
-import { add, SpendPayload } from './spends.actions';
+import {Spend, Spends} from '../../models/spends.model';
+import {add, rm, SpendPayload} from './spends.actions';
 import { createReducer, on } from '@ngrx/store';
 
 const connector = new LocalStorageConnector<Spends>('spends');
@@ -15,7 +15,25 @@ function addReducer(state: Spends, {payload: spend}: SpendPayload): Spends {
   return result;
 }
 
+function removeReducer(state: Spends, {payload}: SpendPayload): Spends {
+  console.log({state, payload});
+  return state.filter((spend: Spend): boolean => {
+    for (let property in spend) {
+      if (property === 'time') {
+        continue;
+      }
+
+      // @ts-ignore
+      if  (payload[property] !== spend[property]) return true;
+
+    }
+
+    return false;
+  });
+}
+
 export const spendsReducer = createReducer(
   initialState,
   on(add, addReducer),
+  on(rm, removeReducer),
 );
